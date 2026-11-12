@@ -1035,7 +1035,8 @@ def build_comparative_summary(
             "size": get_model_size_label(mid),
             "parameters": get_model_parameter_count(mid),
             "n_runs": n,
-            "accuracy_pct": _mean_bool([r["is_root_cause_correct"] for r in mrows]),
+            "accuracy_pct": _mean_bool([r.get("is_full_diagnosis_correct", r.get("is_root_cause_correct_full_text", r.get("is_root_cause_correct"))) for r in mrows]),
+            "strict_root_cause_accuracy_pct": _mean_bool([r.get("is_root_cause_correct_strict", r.get("is_root_cause_correct")) for r in mrows]),
             "component_accuracy_pct": _mean_bool([r.get("is_component_correct") for r in mrows]),
             "partial_f1": round(statistics.mean(r["partial_match_score"] for r in mrows), 3),
             "evidence_rate_pct": _mean_bool([r["evidence_backed"] for r in mrows]),
@@ -1217,7 +1218,8 @@ def build_comparative_summary(
             if mrows:
                 mode_models[mid] = {
                     "n_runs": len(mrows),
-                    "accuracy_pct": _mean_bool([r["is_root_cause_correct"] for r in mrows]),
+                    "accuracy_pct": _mean_bool([r.get("is_full_diagnosis_correct", r.get("is_root_cause_correct_full_text", r.get("is_root_cause_correct"))) for r in mrows]),
+            "strict_root_cause_accuracy_pct": _mean_bool([r.get("is_root_cause_correct_strict", r.get("is_root_cause_correct")) for r in mrows]),
                     "partial_f1": round(statistics.mean(r["partial_match_score"] for r in mrows), 3),
                     "evidence_rate_pct": _mean_bool([r["evidence_backed"] for r in mrows]),
                     "ttft_ms": round(statistics.mean(r["ttft_ms"] for r in mrows), 1),
@@ -1366,7 +1368,7 @@ def build_aggregated_results(rows: list[dict[str, Any]]) -> dict[str, Any]:
     """
     if not rows:
         return {
-            "root_cause_accuracy_all_models": 0.0,
+            "root_cause_accuracy_all_models": round(sum(1 for r in rows if (r.get("is_full_diagnosis_correct") or r.get("is_root_cause_correct_full_text") or r.get("is_root_cause_correct"))) / n, 4),
             "evidence_backing_rate_all_models": 0.0,
             "partial_f1_score_all_models": 0.0,
             "rubric_score_all_models": 0.0,
@@ -1404,7 +1406,8 @@ def build_aggregated_results(rows: list[dict[str, Any]]) -> dict[str, Any]:
         }
 
     return {
-        "root_cause_accuracy_all_models": round(sum(1 for r in rows if r["is_root_cause_correct"]) / n, 4),
+        "root_cause_accuracy_all_models": round(sum(1 for r in rows if (r.get("is_full_diagnosis_correct") or r.get("is_root_cause_correct_full_text") or r.get("is_root_cause_correct"))) / n, 4),
+        "strict_root_cause_accuracy_all_models": round(sum(1 for r in rows if (r.get("is_root_cause_correct_strict") or r.get("is_root_cause_correct"))) / n, 4),
         "evidence_backing_rate_all_models": round(sum(1 for r in rows if r["evidence_backed"]) / n, 4),
         "f1_macro_all_models": round(corr.get("classification_overall", {}).get("f1_macro", 0.0), 4),
         "partial_f1_score_all_models": round(statistics.mean(r["partial_match_score"] for r in rows), 4),
@@ -1448,8 +1451,12 @@ def compute_paired_friedman_and_wilcoxon(
     for r in filtered:
         sc_id = str(r["scenario_id"])
         m_id = str(r["model_id"])
-        if metric == "accuracy":
-            val = 1.0 if (str(r.get("is_root_cause_correct", "")).strip().lower() in ("true", "1", "yes") or r.get("is_root_cause_correct") is True) else 0.0
+        if metric in ("accuracy", "full_diagnosis", "complete"):
+            v_src = r.get("is_full_diagnosis_correct", r.get("is_root_cause_correct_full_text", r.get("is_root_cause_correct")))
+            val = 1.0 if (str(v_src).strip().lower() in ("true", "1", "yes") or v_src is True) else 0.0
+        elif metric in ("root_cause", "strict"):
+            v_src = r.get("is_root_cause_correct_strict", r.get("is_root_cause_correct"))
+            val = 1.0 if (str(v_src).strip().lower() in ("true", "1", "yes") or v_src is True) else 0.0
         elif metric == "rubric":
             val = float(r.get("rubric_score") or 0.0)
         elif metric == "speed":

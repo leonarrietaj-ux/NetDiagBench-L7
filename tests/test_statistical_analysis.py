@@ -356,7 +356,7 @@ class TestDatasetBundle:
             csv_header = set(next(reader))
 
         assert schema_cols == csv_header, f"Diferencias: {schema_cols ^ csv_header}"
-        assert len(schema_cols) in (41, 42, 67, 79, 98)
+        assert len(schema_cols) in (41, 42, 67, 79, 98, 99)
 
     def test_bundle_sha256_integrity(self):
         bundle_path = Path("data/benchmark_results/dataset_bundle.json")

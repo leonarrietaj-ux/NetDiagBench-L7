@@ -229,7 +229,10 @@ class ResultadoEvaluacionContract(BaseModel):
     fault_class: str
 
     # Métricas de precisión
-    is_root_cause_correct: bool
+    is_root_cause_correct: bool = Field(..., description="Acierto estricto en aislamiento de causa raíz (71/162, 43.8%)")
+    is_full_diagnosis_correct: bool = Field(False, description="Acierto en diagnóstico completo de la falla (122/162, 75.3%)")
+    is_root_cause_correct_strict: bool | None = Field(None, description="Alias de compatibilidad para causa raíz estricta (71/162)")
+    is_root_cause_correct_full_text: bool | None = Field(None, description="Alias de compatibilidad para diagnóstico completo (122/162)")
     is_component_correct: bool
     partial_match_score: float = Field(..., ge=0.0, le=1.0)
     evidence_backed: bool

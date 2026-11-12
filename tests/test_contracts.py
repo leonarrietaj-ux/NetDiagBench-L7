@@ -125,6 +125,7 @@ def test_resultado_evaluacion_contract_json_roundtrip():
     assert reconstructed.scenario_id == r.scenario_id
     assert reconstructed.ttft_ms == r.ttft_ms
     assert reconstructed.is_root_cause_correct is True
+    assert hasattr(reconstructed, "is_full_diagnosis_correct")
 
 
 def test_service_categories_and_fault_classes_completeness():

@@ -246,7 +246,7 @@
       "repetition_index": "Índice de repetición experimental",
       "category": "Familia de servicio de red (DNS, HTTP_WEB, API_GATEWAY, TLS)",
       "fault_class": "Taxonomía oficial IETF de la falla L7",
-      "is_root_cause_correct": "Booleano de evaluación formal de causa raíz",
+      "is_root_cause_correct": "Acierto estricto en aislamiento de causa raíz (71/162, 43.8%)",
       "is_component_correct": "Booleano de aislamiento del componente afectado",
       "partial_match_score": "Puntaje continuo de similitud léxica y componente (0.0..1.0)",
       "evidence_backed": "Booleano de sustento en evidencia técnica empírica",
@@ -337,12 +337,13 @@
       "human_eval_c5": "Métrica / atributo human_eval_c5 del benchmark experimental",
       "human_eval_c6": "Métrica / atributo human_eval_c6 del benchmark experimental",
       "human_eval_s": "Métrica / atributo human_eval_s del benchmark experimental",
-      "human_score_source": "Métrica / atributo human_score_source del benchmark experimental"
+      "human_score_source": "Métrica / atributo human_score_source del benchmark experimental",
+      "is_full_diagnosis_correct": "Acierto en diagnóstico completo de la falla Layer 7 (122/162, 75.3%)"
     }
   },
   "file_integrity_fingerprints_sha256": {
-    "data/benchmark_results/resultados.csv": "369AAD9DEC89A5B17CF87F376E5059974F8F7ED49A8F531FD5BE8C6EE2F6F6D5",
-    "data/benchmark_results/resultados_recalculados.csv": "626B6E72E6465120080D34DCF15FAB95E75D0075826AB0EBB875716015DBFCB4"
+    "data/benchmark_results/resultados.csv": "0B63EB335EBA2BB923DD341BA0DC6A6EFC09E3A14D91F1F6A69F86F2D96B4F27",
+    "data/benchmark_results/resultados_recalculados.csv": "F423F16AEF5E2C6C0D33D4A2862F8C09313C23FCE3894A16DBCC543C30B0868C"
   },
   "total_registros": 162
 }

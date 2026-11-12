@@ -106,6 +106,8 @@ La campaña oficial consta de **162 corridas experimentales controladas** (18 es
 | **Phi-4-mini-instruct** | **35 / 54** | **64.8%** | **14 / 54** | **25.9%** | **33 / 54** | **61.1%** |
 | **TOTAL BENCHMARK** | **122 / 162** | **75.3%** | **71 / 162** | **43.8%** | **120 / 162** | **74.1%** |
 
+
+*Nomenclatura Canónica en Dataset:* Diagnóstico Completo (`is_full_diagnosis_correct` = 122/162, 75.3%), Causa Raíz Estricta (`is_root_cause_correct` = 71/162, 43.8%), Coincidencia Canónica (`fault_class_match` = 120/162, 74.1%), Evidencia Read-Only (`evidence_backed` = 38/162, 23.5%).
 *Desglose de auditoría sobre las 162 ejecuciones:*
 - Aciertos directos conservados: **71** (43.8%)
 - Aciertos fundamentados demostrables corregidos: **51** (31.5%)

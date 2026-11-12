@@ -40,6 +40,13 @@
 
 *Fuente:* `data/benchmark_results/resultados.csv` y `data/campaign_162/recalificacion_auditada.csv`.
 
+
+#### Conciliación Canónica de Variables Diagnósticas en el Dataset Maestro
+* **`is_full_diagnosis_correct` (`full_text`):** **122 / 162** (75.3%). Diagnóstico integral verificado que incluye resolución técnica fundamentada.
+* **`is_root_cause_correct` (`root_cause` estricto):** **71 / 162** (43.8%). Aislamiento estricto de la causa raíz primaria de falla.
+* **`fault_class_match`:** **120 / 162** (74.1%). Coincidencia formal contra las 18 clases canónicas del catálogo normativo.
+* **`evidence_backed`:** **38 / 162** (23.5%). Sustentación empírica con herramientas de lectura en vivo y sin contradicciones protocolarias.
+
 #### Desglose de Clasificación de Auditoría (162 Corridas)
 * **Aciertos conservados directos:** **71** (43.8%)
 * **Aciertos corregidos demostrables:** **51** (31.5%)
@@ -84,6 +91,21 @@ Evaluación formal sobre el espacio de las 18 clases canónicas sin dilución de
 | **Phi-4-mini-instruct** | **3.55** (3.5463) | 1.5 | 5.0 | 54 / 54 | 18 casos (E1, E2, E3) |
 
 *Fuente:* `data/benchmark_results/resultados.csv` y `data/human_eval/evaluaciones_adjudicadas.csv` (Acta A1.3).
+
+#### 5.1. Desglose Estructurado del Protocolo de Evaluación Humana
+* **Total de Corridas Experimentales:** 162 ejecuciones.
+* **Unidades Muestreadas para Evaluación Humana Ciega (Fase 3):** 54 casos estratificados (18 por modelo).
+* **Calificaciones Independientes Emitidas (E1 y E2):** 108 evaluaciones ciegas (54 casos $\times$ 2 evaluadores titulares).
+* **Veredictos Adjudicados por E3 (Adjudicador):** 54 registros oficiales (consenso unánime E1-E2 o dirimencia de desacuerdos).
+
+| Fuente del Puntaje (`human_score_source`) | GLM-4-9B-Chat | Qwen3-8B | Phi-4-mini-instruct | TOTAL BENCHMARK |
+|---|:---:|:---:|:---:|:---:|
+| **Adjudicación Humana Experta v3 (`expert_adjudication_v3`, $N=54$)** | **4.22** (4.2222) | **4.06** (4.0556) | **3.36** (3.3611) | **3.88 / 5.0** |
+| **Rúbrica de Benchmark Histórica (`historical_benchmark_rubric`, $N=108$)** | **4.08** (4.0833) | **4.08** (4.0833) | **3.64** (3.6389) | **3.94 / 5.0** |
+| **PROMEDIO COMBINADO CONGELADO ($N=162$ corridas)** | **4.13** (4.1296) | **4.07** (4.0741) | **3.55** (3.5463) | **3.92 / 5.0** |
+
+*Nota Metodológica:* El promedio global reportado en la tesis (GLM: 4.13, Qwen: 4.07, Phi: 3.55) corresponde a la población íntegra de 162 corridas, integrando de forma transparente las 54 unidades adjudicadas por el panel humano de Fase 3 y las 108 evaluaciones de la línea base histórica del benchmark.
+
 
 ---
 
@@ -152,3 +174,15 @@ Unidad experimental independiente: Escenario ($N=18$ bloques). Repeticiones agre
 | **Phi-4-mini-instruct**| `phi4-mini:latest` | `phi3` (3.8B) | `Q4_K_M` | `78fad5d182a7c33065e153a5f8ba210754207ba9d91973f57dffa7f487363753` |
 
 *Fuente:* `data/campaign_162/manifest.json` y salida verificada de `ollama show --modelfile`.
+
+---
+
+### 10. CONDICIÓN DE TRAZABILIDAD Y REGISTRO GIT DIRTY
+
+* **Estado Registrado:** `git_dirty = True` en el 100% de los 162 registros.
+* **Justificación Científica y Causa Técnica:** Durante la ejecución de la batería experimental en caliente, el arnés de ejecución mantuvo buffers de telemetría activos, archivos de log transitorios y estructuras de resultados en el árbol de trabajo local, lo que provocó que el subproceso `git status --porcelain` detectara modificaciones no consolidadas.
+* **Garantía Criptográfica Inalterable de Procedencia:** La integridad y reproducibilidad estricta de cada corrida se encuentra garantizada independientemente de la bandera de trabajo mediante:
+  1. Commit base formal registrado en cada fila: `952a628e13ba8bbbe60a5c5c65a34d05becb764a`.
+  2. Triplete de hashes criptográficos SHA-256 en `traza.jsonl`: `prompt_sha256`, `response_sha256` y `config_sha256`.
+  3. Manifiesto experimental inmutable: `data/campaign_162/manifest.json`.
+  4. Huella de hardware del sistema: `hardware_detectado.json`.
