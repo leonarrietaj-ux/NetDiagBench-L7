@@ -33,10 +33,10 @@ jobs:
       - name: Install Project Dependencies
         run: |
           python -m pip install --upgrade pip setuptools wheel
+          pip install -r requirements.txt
           pip install -e .
-          pip install pytest scipy pytest-asyncio
 
-      - name: Run Pytest Test Suite (158 Unit Tests)
+      - name: Run Pytest Test Suite
         run: |
           python -m pytest tests/ -v --tb=short
 
@@ -46,10 +46,10 @@ jobs:
           python -m src.layer6_interface.cli list-scenarios
           python -m src.layer6_interface.cli list-models
 
-      - name: Execute Statistical Correlation Verification (Tarea 4.1.2)
+      - name: Execute Statistical Correlation Verification
         run: |
           python -m src.layer6_interface.cli analyze-correlation
 
       - name: Validate Single Scenario Diagnostic Pipeline
         run: |
-          python -m src.layer6_interface.cli run-scenario DNS-NXD-01 --model phi-4-mini-instruct --seed 42
+          python -m src.layer6_interface.cli run-scenario DNS-NXD-01 --model phi-4-mini-instruct --seed 42 --simulate

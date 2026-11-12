@@ -9,7 +9,7 @@
     "year": 2026
   },
   "benchmark_protocol": {
-    "version": "1.0.0",
+    "version": "1.0.1",
     "models_count": 3,
     "models": [
       "qwen3-8b",
@@ -23,7 +23,7 @@
       2026
     ],
     "total_runs": 162,
-    "evaluator_concepts_sha256": "bc0b1f55b085"
+    "evaluator_concepts_sha256": "b26a394b7fb3"
   },
   "hardware_detected": {
     "gpu_model": "AMD Radeon(TM) 610M",
@@ -242,7 +242,7 @@
     "format": "CSV (RFC 4180)",
     "encoding": "UTF-8",
     "row_count": 162,
-    "column_count": 42,
+    "column_count": 99,
     "columns": {
       "scenario_id": "Identificador del escenario de falla L7",
       "model_id": "Modelo de lenguaje local evaluado",

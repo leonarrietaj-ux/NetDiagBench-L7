@@ -43,7 +43,7 @@ Cada fila del archivo `resultados.csv` corresponde a una prueba individual deter
 23. `modelo_version`: Versión o etiqueta del modelo local en Ollama.
 24. `model_family`: Linaje arquitectónico del modelo (`qwen`, `glm`, `phi`, etc.).
 25. `model_group`: Grupo de ingesta (`principal` para la terna base, `adicional` para modelos dinámicos).
-26. `evaluator_version`: Resumen criptográfico SHA-256 (12 caracteres) de `configs/evaluator_concepts.yaml` (`1f8c1a7e3a9d`).
+26. `evaluator_version`: Resumen criptográfico SHA-256 (12 caracteres) de `configs/evaluator_concepts.yaml` (prefijo canónico publicado: `b26a394b7fb3`; prefijo preliminar histórico: `1f8c1a7e3a9d`).
 27. `ollama_version`: Versión del runtime de servicio Ollama.
 28. `semilla`: Semilla experimental de la corrida.
 29. `timestamp`: Marca temporal de inicio de ejecución.
@@ -92,7 +92,7 @@ A continuación se presentan las magnitudes cuantitativas consolidadas obtenidas
 
 El marco de evaluación de causa raíz de NetDiagBench-L7 opera bajo un principio determinista de cero fuga de datos y cero calibración empírica sobre respuestas de modelos:
 
-- **Origen de Criterios:** Criterios derivados estrictamente de fuentes normativas oficiales, versionados en `configs/evaluator_concepts.yaml` (v3.0.0, SHA-256: `1f8c1a7e3a9d`).
+- **Origen de Criterios:** Criterios derivados estrictamente de fuentes normativas oficiales, versionados en `configs/evaluator_concepts.yaml` (v3.0.0, SHA-256 canónico: `b26a394b7fb3`, preliminar histórico: `1f8c1a7e3a9d`).
 - **Fuentes Normativas Estándar:** RFC 1034 / RFC 1035 (DNS RCODE 2/3/5, TC-bit), RFC 2308, RFC 6891 (EDNS0), BIND 9 Administrator Reference Manual §6.2, RFC 9110 (HTTP Semantics), RFC 9112, RFC 6585 (429 Rate Limiting), RFC 8446 (TLS 1.3), RFC 5280 (X.509 PKI notAfter/Chains), RFC 6066 (SNI), y manual de Linux Traffic Control (`tc-netem`).
 - **Regla Única Universal:**
   $$\text{is\_correct} = (\text{cumple} \ge 1\ \text{cause\_group}) \land (\neg \text{clase vecina no-negada en 1ra oración}) \land (\neg \text{solo síntoma})$$

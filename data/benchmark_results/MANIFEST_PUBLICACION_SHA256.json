@@ -1,8 +1,8 @@
 {
   "project": "NetDiagBench-L7",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "release_type": "scientific_public_release",
-  "generated_at": "2026-11-12T17:48:52.891992+00:00",
+  "generated_at": "2026-11-12T19:58:00.524164+00:00",
   "repository": "https://github.com/leonarrietaj-ux/NetDiagBench-L7.git",
   "experimental_summary": {
     "total_runs": 162,
@@ -39,7 +39,7 @@
         "size_bytes": 2287090
       },
       "data/benchmark_results/dataset_bundle.json": {
-        "sha256": "E153707EA0048EF0D4AE700BB2D8DCDD30F073AD4D57DBB8FF0340EE00F721DE",
+        "sha256": "37194DB0F7F5EFB1211D0DA1582DCDA298A20D2EE624C527B9C31B7EB2A42D4D",
         "size_bytes": 16144
       }
     },
@@ -87,16 +87,12 @@
     },
     "documentacion_academica_y_tecnica": {
       "README.md": {
-        "sha256": "C82502E6730D9BAD25C58DCE73F18BA06EC4810FF8CCD89746B8BA84AE957973",
-        "size_bytes": 16561
-      },
-      "docs/DOCUMENTO_FINAL_TESIS_GRADO.md": {
-        "sha256": "0F6B123C01717E41F45B0D5B7A8A0186776F14E194F4938D689168E912AE3FE7",
-        "size_bytes": 78088
+        "sha256": "B16810145C14F131C5F46ADF06ED026AB29407796D8DE208EF1554D396E3A78A",
+        "size_bytes": 16557
       },
       "docs/GUIA_REPRODUCIBILIDAD.md": {
-        "sha256": "AF4CF25F0C7871F210A23E0E8A98A4AD1D2DDAE074E49FE934EB0FA69B97FA65",
-        "size_bytes": 12523
+        "sha256": "559DE375E548349E8C6A022C4780D43AA38D20725C749EB705846CF94738BF68",
+        "size_bytes": 12604
       },
       "docs/MANUAL_TECNICO_SISTEMA.md": {
         "sha256": "4E1CBC30E68ADD669E70D96CD79E6EF1DD6B21289519D37FFFFD05D169E2AE89",
@@ -106,29 +102,33 @@
         "sha256": "B6246286AA362884AB36357DD26BBCA238F72636343B2639F326B2B74891989D",
         "size_bytes": 5396
       },
-      "docs/MATRIZ_CIFRAS_OFICIALES_TESIS.md": {
-        "sha256": "EA3B62C32A4BEDAE5CD1263B493A72A056BD8E40FF4AD13D6F946D57BAAAF174",
-        "size_bytes": 12127
-      },
       "docs/E1_matriz_caracterizacion_y_acta_seleccion.md": {
         "sha256": "0381AE38C1B862CAC86F8BF0B9D5CF224E7F079337E56918A6BBF653B41FB76F",
         "size_bytes": 8652
       },
       "docs/E4_conjunto_datos_y_tabla_comparativa.md": {
-        "sha256": "18735DFA47292FC5F7666842B290EAA7FF2F4921AA2D66E625BA8BE463E70318",
-        "size_bytes": 19256
+        "sha256": "12471A0A2426BD3BD2A3E9DF5A080722AF9074A550ABDBF3729673B08C0A6041",
+        "size_bytes": 19381
       },
       "docs/E5_informe_tecnico_evaluacion_comparativa_tradeoff.md": {
         "sha256": "A45C63C8F7EB53B6A6DC81C05DCBF5F45332CBE9642CACB5336EFBCCBDAC498B",
         "size_bytes": 9352
       },
-      "docs/E6_articulo_manuscrito_academico.md": {
-        "sha256": "C608B4508C7A1A8EA4D4E541F7EC924458EE344D32E5A17E33B1A8D6B379FE1D",
-        "size_bytes": 25065
+      "docs/INFORME_PARTE_1.md": {
+        "sha256": "CDBC9375D28E9EF465F6F20302ECE03E1300C1AB1F23FC646128D7E174D594CC",
+        "size_bytes": 7499
       },
-      "docs/E7_documento_final_trabajo_de_grado.md": {
-        "sha256": "4FE608494D5E8B40B4E155BC7EDD1414C304BF24897A5BF7E470F32F3E293646",
-        "size_bytes": 13280
+      "docs/INFORME_PARTE_2.md": {
+        "sha256": "D1DE4491C91E2A26B8D4ADF0BE210CD3A5D5466DFE75D859BB158084159DE02A",
+        "size_bytes": 15311
+      },
+      "docs/INFORME_PARTE_3.md": {
+        "sha256": "6BE02D418500F2BC3B486B7253C5A892B2D67A65DE7D02EEA21CC441FFA4D975",
+        "size_bytes": 10470
+      },
+      "docs/INFORME_PARTE_4.md": {
+        "sha256": "CEF910B5FB2ACA57488A6335FDBC6A9EF81844822DB21BEF53B951D226D8D98B",
+        "size_bytes": 5835
       },
       "docs/INFORME_SEGURIDAD.md": {
         "sha256": "672ED3BAABF9AF169A40A75091539FF41C1E71946C6E534496B364EE839A7DF1",
@@ -138,23 +138,19 @@
         "sha256": "6E8D20370AF719F64074F2AA34649D18B98D2EE09F1489A4E7EDA13FC26188A7",
         "size_bytes": 6091
       },
-      "docs/INTEGRIDAD_TRAZABILIDAD_FINAL.md": {
-        "sha256": "87A2B3B35FA37F6FFDFA2CED80A2735EF7A5182A5EAADC91611B2CB265F788CC",
-        "size_bytes": 4354
-      },
-      "docs/DICTAMEN_FINAL_NETDIAGBENCH_L7.md": {
-        "sha256": "AE7BD1D6EBFB89895AD36765C5BD5531CD109842B2392BB068B9633894DFC704",
-        "size_bytes": 9588
+      "docs/INFORME_AUDITORIA_CORRECTIVA_PUBLICACION_v1.0.1.md": {
+        "sha256": "B57C623CF754B3DCAA068030EB57431F1815BEBD5B29020DC3C102515A44255E",
+        "size_bytes": 22139
       }
     },
     "metadatos_del_proyecto": {
       "pyproject.toml": {
-        "sha256": "F557B18AA604DB5AED77014488FDD5F34515B0D552410355CDD1D164860A4BC0",
+        "sha256": "A7392616945BD2C2B2C9FBA6F14DD52990066DFECD93C7F6C71B417ED87CB3F2",
         "size_bytes": 2911
       },
       "requirements.txt": {
-        "sha256": "1431A0522108E78A7649EBBF0CF7085F12C9D06FA6185FA604723C1A8AC23499",
-        "size_bytes": 920
+        "sha256": "62D7269D0EA8BF1AFA444BBAB3C0C76E357D65483E690718195321EC54A0099F",
+        "size_bytes": 940
       },
       ".gitignore": {
         "sha256": "8B24082D2DBD96ACB162973EF2EB1485F98EE3909470D34507609BA8DDAD87A8",

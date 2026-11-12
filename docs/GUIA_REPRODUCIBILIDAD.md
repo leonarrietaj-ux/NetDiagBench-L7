@@ -164,7 +164,7 @@ Abra el navegador en `http://127.0.0.1:8000`:
 ## 6. Estructura de Salidas y Almacenamiento
 
 - `data/runs/`: Contratos de diagnóstico emitidos en formato JSON y Markdown por cada escenario ejecutado.
-- `data/benchmark_results/resultados.csv`: Registro granular de cada corrida con 42 columnas estandarizadas de datos y trazabilidad experimental (incluyendo `execution_mode`, `is_root_cause_correct`, `is_component_correct`, `partial_match_score`, `ttft_ms`, `tokens_per_sec`, `peak_vram_gb`, `energy_kwh`, `rubric_score`, `evaluator_version` SHA-256 `1f8c1a7e3a9d`, `reasoning_text`, etc.).
+- `data/benchmark_results/resultados.csv`: Registro granular de cada corrida con 99 columnas estandarizadas de datos y trazabilidad experimental (versión canónica publicada que expande el núcleo inicial de 42 columnas de telemetría hacia la totalidad de dimensiones de evaluación humana E1/E2/E3, adjudicaciones, telemetría extendida y hash normativo del evaluador SHA-256 `b26a394b7fb3`, con `1f8c1a7e3a9d` correspondiente a la calibración preliminar histórica).
 - `data/benchmark_results/resultados_resumen.md`: Informe final consolidado que sustenta las conclusiones del Objetivo Específico 4.
 - `data/benchmark_results/analisis_correlacional.md`: Reporte estadístico formal con correlaciones de Pearson, Spearman, Kruskal-Wallis, Bootstrap 95% y tamaño de efecto ($d$ de Cohen).
 

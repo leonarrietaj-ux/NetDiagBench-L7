@@ -5,7 +5,7 @@
 [![Execution: 100% Local](https://img.shields.io/badge/Inference-100%25%20Local%20(Ollama)-purple.svg)](#)
 [![Docker Support](https://img.shields.io/badge/Docker-Compose%20Ready-blue.svg)](#)
 [![Security Hardened](https://img.shields.io/badge/Security-Defense--in--Depth-darkgreen.svg)](docs/INFORME_SEGURIDAD.md)
-[![Academic Thesis](https://img.shields.io/badge/Thesis-Universidad%20de%20Pamplona-red.svg)](docs/MATRIZ_CIFRAS_OFICIALES_TESIS.md)
+[![Academic Thesis](https://img.shields.io/badge/Thesis-Universidad%20de%20Pamplona-red.svg)](docs/GUIA_REPRODUCIBILIDAD.md)
 
 > **Trabajo de Grado - Universidad de Pamplona**  
 > **Facultad de Ingenierías y Arquitectura | Departamento de Eléctrica, Electrónica, Sistemas y Telecomunicaciones (E.E.S.T.)**  
@@ -263,11 +263,11 @@ NetDiagBench-L7/
 │   ├── benchmark_results/         # Conjunto de datos consolidado oficial
 │   ├── campaign_162/              # 162 corridas oficiales con trazas y hashes
 │   └── human_eval/                # Evaluaciones humanas adjudicadas anonimizadas
-├── docs/                          # Documentación académica, manuales y matrices
+├── docs/                          # Documentación académica, manuales y guías técnicas
 │   ├── GUIA_REPRODUCIBILIDAD.md
 │   ├── MANUAL_TECNICO_SISTEMA.md
 │   ├── MANUAL_USUARIO_SISTEMA.md
-│   ├── MATRIZ_CIFRAS_OFICIALES_TESIS.md
+│   ├── INFORME_ESTADISTICO_FINAL.md
 │   └── INFORME_SEGURIDAD.md
 ├── infra/                         # Topologías Docker para pruebas emuladas
 ├── knowledge/                     # RFCs y corpus normativo para RAG léxico

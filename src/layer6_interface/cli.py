@@ -102,7 +102,8 @@ def run_scenario(
     scenario_id: str = typer.Argument(..., help="ID del escenario (ej: DNS-NXD-01, HTTP-502-01)"),
     model_id: str = typer.Option("qwen3-8b", "--model", "-m", help="ID del modelo (qwen3-8b, glm-4-9b-chat, phi-4-mini-instruct)"),
     seed: int = typer.Option(42, "--seed", "-s", help="Semilla determinista"),
-    output_dir: str | None = typer.Option(None, "--output-dir", "-o", help="Directorio para guardar diagnostico.json y .md")
+    output_dir: str | None = typer.Option(None, "--output-dir", "-o", help="Directorio para guardar diagnostico.json y .md"),
+    simulate: bool = typer.Option(False, "--simulate", help="Forzar modo simulación determinista sin requerir servicio Ollama local"),
 ):
     """Ejecuta el pipeline de diagnóstico completo para un escenario y modelo específicos."""
     runner = ScenarioLabRunner()
@@ -128,7 +129,10 @@ def run_scenario(
         contexto_rag = rag.query(query_str, top_k=2)
 
     with console.status("[bold blue]4. Orquestando diagnóstico con herramientas de red Read-Only...[/bold blue]"):
-        engine = LocalInferenceEngine()
+        engine = LocalInferenceEngine(force_simulation=simulate)
+        if not simulate and not engine._is_ollama_available():
+            console.print("[yellow]Advertencia: Ollama no está disponible localmente. Activando modo simulación determinista para diagnóstico offline.[/yellow]")
+            engine.force_simulation = True
         orchestrator = DiagnosticOrchestratorAgent(inference_engine=engine)
         traza, diagnostico, inf_resp = orchestrator.run_diagnosis(
             scenario=sc,
