@@ -37,8 +37,8 @@ def test_session_id(tmp_path):
         shutil.rmtree(s_dir, ignore_errors=True)
     if prev_session:
         set_active_session(prev_session)
-    else:
-        set_active_session("SESION_KIT_CASO2")
+    elif CURRENT_SESSION_FILE.exists():
+        CURRENT_SESSION_FILE.unlink(missing_ok=True)
 
 
 def test_cli_human_eval_workflow(test_session_id):

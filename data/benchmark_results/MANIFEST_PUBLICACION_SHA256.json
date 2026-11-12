@@ -1,0 +1,169 @@
+{
+  "project": "NetDiagBench-L7",
+  "version": "1.0.0",
+  "release_type": "scientific_public_release",
+  "generated_at": "2026-11-12T17:48:52.891992+00:00",
+  "repository": "https://github.com/leonarrietaj-ux/NetDiagBench-L7.git",
+  "experimental_summary": {
+    "total_runs": 162,
+    "scenarios": 18,
+    "models": [
+      "glm-4-9b-chat",
+      "qwen3-8b",
+      "phi-4-mini-instruct"
+    ],
+    "seeds": [
+      42,
+      1337,
+      2026
+    ],
+    "full_diagnosis_correct": 122,
+    "strict_root_cause_correct": 71,
+    "fault_class_correct": 120,
+    "evidence_backed_correct": 38,
+    "rubric_scores": {
+      "glm-4-9b-chat": 4.13,
+      "qwen3-8b": 4.07,
+      "phi-4-mini-instruct": 3.55,
+      "global_mean": 3.92
+    }
+  },
+  "integrity_hashes": {
+    "dataset_canonico": {
+      "data/benchmark_results/resultados.csv": {
+        "sha256": "0B63EB335EBA2BB923DD341BA0DC6A6EFC09E3A14D91F1F6A69F86F2D96B4F27",
+        "size_bytes": 280505
+      },
+      "data/benchmark_results/traza.jsonl": {
+        "sha256": "611FA9C0100B69E801E68217D6149B5A5B281FA9BBB25D17C15F63216648EF83",
+        "size_bytes": 2287090
+      },
+      "data/benchmark_results/dataset_bundle.json": {
+        "sha256": "E153707EA0048EF0D4AE700BB2D8DCDD30F073AD4D57DBB8FF0340EE00F721DE",
+        "size_bytes": 16144
+      }
+    },
+    "campana_congelada_162": {
+      "data/campaign_162/resultados.csv": {
+        "sha256": "045BB8B1A3E92F29AA2230512F5845EC7E6E09E9B7A1AB5D62F0CB5847C042F9",
+        "size_bytes": 259728
+      },
+      "data/campaign_162/recalificacion_auditada.csv": {
+        "sha256": "7D0817F6A0890F85630E2B2B01BA605A37F20398A116FB2961ABBED9EEA8B542",
+        "size_bytes": 280484
+      },
+      "data/campaign_162/traza.jsonl": {
+        "sha256": "FFC1DBD7A008ED94823D5F41CB48EF270B2D3E900DBF5464A944CE5145840025",
+        "size_bytes": 2027692
+      },
+      "data/campaign_162/manifest.json": {
+        "sha256": "07CF3DBFB6CC099D1C33660B71E37094A7DDD3F05AE13B1CDEA6AFB770AEBF0C",
+        "size_bytes": 2715
+      }
+    },
+    "evaluacion_humana_publica": {
+      "data/human_eval/evaluaciones_adjudicadas.csv": {
+        "sha256": "43FCBF3C5AF8F021B9763A413A62697CA0E02910B80459086ABBABAF1E1603F9",
+        "size_bytes": 6465
+      }
+    },
+    "configuraciones_oficiales": {
+      "configs/models.yaml": {
+        "sha256": "432D205C8C80B6044BBA6EDEC9C08C35401E14AF6499B041F178E0772A068DFD",
+        "size_bytes": 1412
+      },
+      "configs/benchmark_config.yaml": {
+        "sha256": "C098B3F2E1ABBA879D77115FAF79D8AAA60F3E102FA86512B0872C9E4C6B65A5",
+        "size_bytes": 1268
+      },
+      "configs/evaluator_concepts.yaml": {
+        "sha256": "B26A394B7FB37DE4A7432D018EA1E7285166D856CDAAA621B6EB354B672C0350",
+        "size_bytes": 22365
+      },
+      "configs/hardware_reference.yaml": {
+        "sha256": "18894E488F0EAA5B1327C30D7B63857E8A1B523C631BA9C06A0DFB841BD17375",
+        "size_bytes": 681
+      }
+    },
+    "documentacion_academica_y_tecnica": {
+      "README.md": {
+        "sha256": "C82502E6730D9BAD25C58DCE73F18BA06EC4810FF8CCD89746B8BA84AE957973",
+        "size_bytes": 16561
+      },
+      "docs/DOCUMENTO_FINAL_TESIS_GRADO.md": {
+        "sha256": "0F6B123C01717E41F45B0D5B7A8A0186776F14E194F4938D689168E912AE3FE7",
+        "size_bytes": 78088
+      },
+      "docs/GUIA_REPRODUCIBILIDAD.md": {
+        "sha256": "AF4CF25F0C7871F210A23E0E8A98A4AD1D2DDAE074E49FE934EB0FA69B97FA65",
+        "size_bytes": 12523
+      },
+      "docs/MANUAL_TECNICO_SISTEMA.md": {
+        "sha256": "4E1CBC30E68ADD669E70D96CD79E6EF1DD6B21289519D37FFFFD05D169E2AE89",
+        "size_bytes": 12999
+      },
+      "docs/MANUAL_USUARIO_SISTEMA.md": {
+        "sha256": "B6246286AA362884AB36357DD26BBCA238F72636343B2639F326B2B74891989D",
+        "size_bytes": 5396
+      },
+      "docs/MATRIZ_CIFRAS_OFICIALES_TESIS.md": {
+        "sha256": "EA3B62C32A4BEDAE5CD1263B493A72A056BD8E40FF4AD13D6F946D57BAAAF174",
+        "size_bytes": 12127
+      },
+      "docs/E1_matriz_caracterizacion_y_acta_seleccion.md": {
+        "sha256": "0381AE38C1B862CAC86F8BF0B9D5CF224E7F079337E56918A6BBF653B41FB76F",
+        "size_bytes": 8652
+      },
+      "docs/E4_conjunto_datos_y_tabla_comparativa.md": {
+        "sha256": "18735DFA47292FC5F7666842B290EAA7FF2F4921AA2D66E625BA8BE463E70318",
+        "size_bytes": 19256
+      },
+      "docs/E5_informe_tecnico_evaluacion_comparativa_tradeoff.md": {
+        "sha256": "A45C63C8F7EB53B6A6DC81C05DCBF5F45332CBE9642CACB5336EFBCCBDAC498B",
+        "size_bytes": 9352
+      },
+      "docs/E6_articulo_manuscrito_academico.md": {
+        "sha256": "C608B4508C7A1A8EA4D4E541F7EC924458EE344D32E5A17E33B1A8D6B379FE1D",
+        "size_bytes": 25065
+      },
+      "docs/E7_documento_final_trabajo_de_grado.md": {
+        "sha256": "4FE608494D5E8B40B4E155BC7EDD1414C304BF24897A5BF7E470F32F3E293646",
+        "size_bytes": 13280
+      },
+      "docs/INFORME_SEGURIDAD.md": {
+        "sha256": "672ED3BAABF9AF169A40A75091539FF41C1E71946C6E534496B364EE839A7DF1",
+        "size_bytes": 12870
+      },
+      "docs/INFORME_ESTADISTICO_FINAL.md": {
+        "sha256": "6E8D20370AF719F64074F2AA34649D18B98D2EE09F1489A4E7EDA13FC26188A7",
+        "size_bytes": 6091
+      },
+      "docs/INTEGRIDAD_TRAZABILIDAD_FINAL.md": {
+        "sha256": "87A2B3B35FA37F6FFDFA2CED80A2735EF7A5182A5EAADC91611B2CB265F788CC",
+        "size_bytes": 4354
+      },
+      "docs/DICTAMEN_FINAL_NETDIAGBENCH_L7.md": {
+        "sha256": "AE7BD1D6EBFB89895AD36765C5BD5531CD109842B2392BB068B9633894DFC704",
+        "size_bytes": 9588
+      }
+    },
+    "metadatos_del_proyecto": {
+      "pyproject.toml": {
+        "sha256": "F557B18AA604DB5AED77014488FDD5F34515B0D552410355CDD1D164860A4BC0",
+        "size_bytes": 2911
+      },
+      "requirements.txt": {
+        "sha256": "1431A0522108E78A7649EBBF0CF7085F12C9D06FA6185FA604723C1A8AC23499",
+        "size_bytes": 920
+      },
+      ".gitignore": {
+        "sha256": "8B24082D2DBD96ACB162973EF2EB1485F98EE3909470D34507609BA8DDAD87A8",
+        "size_bytes": 1005
+      },
+      "LICENSE": {
+        "sha256": "B3729F8029408BA7E49E4064FEABA919D56764AFC4A320EF534FD9321604ACF4",
+        "size_bytes": 1201
+      }
+    }
+  }
+}

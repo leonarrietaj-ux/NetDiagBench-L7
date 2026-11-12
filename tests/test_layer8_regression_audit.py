@@ -32,6 +32,7 @@ from src.layer8_human_eval.sampler import (
 )
 from src.layer8_human_eval.session import (
     CURRENT_SESSION_FILE,
+    HUMAN_EVAL_BASE_DIR,
     create_new_session_dir,
     get_active_session_id,
     get_session_dir,
@@ -60,8 +61,8 @@ def preserve_active_session():
     yield
     if original_session:
         set_active_session(original_session)
-    else:
-        set_active_session("SESION_KIT_CASO2")
+    elif CURRENT_SESSION_FILE.exists():
+        CURRENT_SESSION_FILE.unlink(missing_ok=True)
 
 
 # ---------------------------------------------------------------------------
@@ -116,11 +117,17 @@ def test_01_nueva_sesion_creates_unique_id_and_rejects_overwrite(tmp_path: Path)
 
     # 5. Probar comportamiento vía endpoint API HTTP
     # Inicializar con sesión existente retorna 409
-    res_conflict = api_init_session(InitSessionRequest(seed=2026, sesion_id="SESION_KIT_CASO2"))
-    assert res_conflict.status_code == 409
-    data_conflict = json.loads(res_conflict.body.decode())
-    assert data_conflict["ok"] is False
-    assert "ya existe" in data_conflict["error"]
+    conflict_sesion = "SESION_EXISTENTE_TEST_CONFLICT"
+    conflict_path = HUMAN_EVAL_BASE_DIR / conflict_sesion
+    conflict_path.mkdir(parents=True, exist_ok=True)
+    try:
+        res_conflict = api_init_session(InitSessionRequest(seed=2026, sesion_id=conflict_sesion))
+        assert res_conflict.status_code == 409
+        data_conflict = json.loads(res_conflict.body.decode())
+        assert data_conflict["ok"] is False
+        assert "ya existe" in data_conflict["error"]
+    finally:
+        shutil.rmtree(conflict_path, ignore_errors=True)
 
 
 # ---------------------------------------------------------------------------

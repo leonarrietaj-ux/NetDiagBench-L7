@@ -1533,17 +1533,19 @@ def vista_human_eval_fragment():
 
     """Genera el fragmento HTML reactivo e interactivo de la 6ª vista para la barra lateral."""
 
+    active_id = None
     try:
-
         active_id = get_active_session_id(fallback_create=False)
-
     except Exception:
+        active_id = None
 
-        active_id = "default"
-
-
-
-    state = get_session_state(active_id)
+    if active_id:
+        try:
+            state = get_session_state(active_id)
+        except Exception:
+            state = {"phase": "NO_INICIALIZADA", "active": False}
+    else:
+        state = {"phase": "NO_INICIALIZADA", "active": False}
 
     is_blind = (state.get("phase") != "CLAVE_ABIERTA")
 
@@ -3117,7 +3119,7 @@ def vista_human_eval_fragment():
 
     """
 
-    html = html.replace("__SESION_ID__", active_id).replace("__IS_BLIND__", str(is_blind).lower())
+    html = html.replace("__SESION_ID__", active_id or "").replace("__IS_BLIND__", str(is_blind).lower())
 
     return HTMLResponse(content=html, headers={"Cache-Control": "no-cache, no-store, must-revalidate"})
 

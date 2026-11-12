@@ -878,6 +878,8 @@ def test_13_web_view_http_agreement_metric_and_no_undefined(tmp_path):
     finally:
         if prev_session:
             set_active_session(prev_session)
+        elif CURRENT_SESSION_FILE.exists():
+            CURRENT_SESSION_FILE.unlink(missing_ok=True)
         shutil.rmtree(s_dir, ignore_errors=True)
 
 
@@ -911,6 +913,8 @@ def test_14_empty_session_view_has_no_passing_dictamens():
     finally:
         if prev_session:
             set_active_session(prev_session)
+        elif CURRENT_SESSION_FILE.exists():
+            CURRENT_SESSION_FILE.unlink(missing_ok=True)
         shutil.rmtree(s_dir, ignore_errors=True)
 
 
