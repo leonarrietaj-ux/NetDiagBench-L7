@@ -1,0 +1,28 @@
+### REGISTRO DE EVENTOS Y TELEMETRÍA (VENTANA TEMPORAL)
+**Incidente:** INCIDENTE-L7
+**Servicio:** {{ service_type }}
+**Ventana:** {{ window_start }} a {{ window_end }}
+
+#### RESUMEN DE TELEMETRÍA:
+- Tasa de error observada: {{ telemetry_summary.error_rate_pct }}%
+- Muestras procesadas: {{ telemetry_summary.sample_count }}
+{% if telemetry_summary.p50_latency_ms %}
+- Latencia p50: {{ telemetry_summary.p50_latency_ms }} ms
+- Latencia p95: {{ telemetry_summary.p95_latency_ms }} ms
+{% endif %}
+
+#### REGISTROS NORMALIZADOS (DRAIN3):
+{% for log in parsed_logs %}
+- [{{ log.timestamp }}] [{{ log.source_service }}] [{{ log.log_level }}] Plantilla: {{ log.template_pattern | default(log.raw_message) }}
+{% endfor %}
+
+#### DIRECTRIZ OBLIGATORIA DE IDIOMA Y FORMATO (UNIVERSAL PARA TODOS LOS MODELOS):
+DEBES RESPONDER ÚNICA Y EXCLUSIVAMENTE EN IDIOMA ESPAÑOL. TRADUCE CUALQUIER TÉRMINO TÉCNICO AL ESPAÑOL (excepto comandos o logs brutos).
+
+FORMATO REQUERIDO (JSON NATIVO DE 4 CLAVES EXACTAS):
+{
+  "causa_raiz": "Explicación directa en español.",
+  "componente": "Nombre técnico del componente afectado.",
+  "mitigacion": "Pasos de solución en español.",
+  "fundamentacion_tecnica": "Explicación técnica detallada en español (entre 6 y 15 oraciones completas). Contrasta la telemetría observada y las especificaciones RFC. Asegúrate de que todas las oraciones terminen completas."
+}

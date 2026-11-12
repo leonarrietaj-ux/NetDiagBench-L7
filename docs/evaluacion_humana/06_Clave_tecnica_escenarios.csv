@@ -1,0 +1,1 @@
+﻿scenario_id,fault_class_id,expected_root_cause,affected_component,minimum_evidence,observed_ground_truth,source_yaml_path,source_yaml_sha256,source_version,reviewed_by,review_date,notes

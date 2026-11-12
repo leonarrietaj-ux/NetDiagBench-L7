@@ -1,0 +1,32 @@
+{
+  "scenario_id": "DNS-TRUNC-01",
+  "model_id": "qwen3-8b",
+  "root_cause": "Bloqueo de tráfico TCP en puerto 53 por el firewall del resolver DNS causando timeout y errores masivos.",
+  "affected_component": "bind9-resolver-firewall",
+  "suggested_action": "Configurar reglas en el firewall para permitir conexiones TCP entrantes en puerto 53 (ej: `iptables -A INPUT -p tcp --dport 53 -j ACCEPT`) y habilitar EDNS0 en la configuración de bind9.",
+  "natural_language_explanation": "La telemetría muestra errores persistentes al intentar establecer conexiones TCP en puerto 53, coincidiendo con el RFC 6891 que requiere EDNS0 para respuestas voluminosas. La herramienta `dig` confirmó timeout en TCP, indicando bloqueo de tráfico. Según SOP DNS, los firewalls deben permitir TCP/53 cuando se usen registros grandes sin EDNS0. El componente afectado es el firewall del resolver (bind9-resolver-firewall) ya que las reglas actuales están rechazando conexiones TCP necesarias para evitar truncamiento de respuestas. Esto viola la especificación RFC 1035 que permite retries en TCP cuando UDP no puede transportar datos completos.",
+  "supporting_evidence": [
+    "dig @127.0.0.1 -p 5353 large-recordset.corp.internal ANY +tcp -> ; <<>> DiG 9.18.18 <<>> @127.0.0.1 -p 5353 large-recordset.corp.internal ANY +bufsize=512 +notcp ;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 60124 ;; flags: qr tc rd; QUERY: 1, ANSWER: 0, AUTHORITY: 0, ADDITIONAL: 0 ;; Truncation, retrying in TCP mode. ;; connection timed out; no servers could be reached over TCP port 53"
+  ],
+  "is_evidence_backed": true,
+  "tool_blocked_penalty": false,
+  "confidence_score": 1.0,
+  "execution_mode": "sintetico_determinista",
+  "engine_mode": "live_ollama",
+  "factual_accuracy_c6": 2,
+  "c6_automated_evidence_check": 2,
+  "c6_human_score": null,
+  "evidence_status": "backed",
+  "sustentation_status": "sustentado",
+  "model_diagnosis_text": "Okay, let me try to figure this out. The user provided a DNS incident report with high error rates and timeouts. The logs show multiple \"Connection timed out\" errors on port 53, which is the standard DNS port. The telemetría shows that 89% of queries are failing, with very high latency.\n\nLooking at the RFCs and SOPs mentioned, there's a section about DNS truncation and EDNS0. The user ran a dig command over TCP on port 5353, which timed out. That suggests that the server isn't responding to TCP requests, which is required when UDP responses are too large. \n\nThe component options are bind9-authoritative, etc. Since the issue is about DNS queries timing out on TCP, it's likely a firewall blocking TCP traffic on port 53. The logs mention \"client TCP retry connection timed out,\" pointing to the resolver not being able to establish a TCP connection. So the firewall might be dropping TCP packets on port 53.\n\nThe mitigation steps from the SOP suggest allowing TCP on port 53 in the firewall. Therefore, the component affected is bind9-resolver-firewall because the firewall is blocking necessary traffic. The root cause is the firewall not permitting TCP connections on port 53, leading to timeouts when EDNS0 isn't used.\n{\n  \"causa_raiz\": \"Bloqueo de tráfico TCP en puerto 53 por el firewall del resolver DNS causando timeout y errores masivos.\",\n  \"componente\": \"bind9-resolver-firewall\",\n  \"mitigacion\": \"Configurar reglas en el firewall para permitir conexiones TCP entrantes en puerto 53 (ej: `iptables -A INPUT -p tcp --dport 53 -j ACCEPT`) y habilitar EDNS0 en la configuración de bind9.\",\n  \"fundamentacion_tecnica\": \"La telemetría muestra errores persistentes al intentar establecer conexiones TCP en puerto 53, coincidiendo con el RFC 6891 que requiere EDNS0 para respuestas voluminosas. La herramienta `dig` confirmó timeout en TCP, indicando bloqueo de tráfico. Según SOP DNS, los firewalls deben permitir TCP/53 cuando se usen registros grandes sin EDNS0. El componente afectado es el firewall del resolver (bind9-resolver-firewall) ya que las reglas actuales están rechazando conexiones TCP necesarias para evitar truncamiento de respuestas. Esto viola la especificación RFC 1035 que permite retries en TCP cuando UDP no puede transportar datos completos.\"\n}",
+  "git_commit_hash": "952a628e13ba8bbbe60a5c5c65a34d05becb764a",
+  "git_dirty": true,
+  "container_image_digest": "",
+  "docker_version": "",
+  "reasoning_text": "",
+  "parse_status": "ok",
+  "context_truncated": false,
+  "reasoning_tokens": 0,
+  "ttft_final_ms": 56226.0,
+  "rescore_commit": ""
+}

@@ -1,0 +1,15 @@
+scenario_id: "TLS-EXP-01"
+category: "TLS"
+fault_class: "TLS_EXPIRED_CERT"
+description: "Fallo en negociación TLS (SSL Handshake Failed) debido a certificado X.509 expirado en el endpoint seguro de Nginx"
+injection_script: "scenarios/injectors/http_failures.py"
+ground_truth:
+  root_cause: "El certificado digital del servidor HTTPS expiró, provocando que los clientes aborten el handshake TLS con error de verificación de validez temporal (certificate has expired)."
+  affected_component: "nginx-tls-termination"
+  suggested_action: "Renovar el certificado digital X.509 e instalar la nueva clave y cadena en el bloque SSL de Nginx."
+  minimum_required_evidence:
+    - "openssl s_client -connect 127.0.0.1:443 -servername secure.corp.internal -> verify error:num=10:certificate has expired"
+    - "curl -Iv https://secure.corp.internal -> SSL certificate problem: certificate has expired"
+metadata:
+  target_url: "https://secure.corp.internal:443"
+  port: 443

@@ -1,0 +1,15 @@
+scenario_id: "HTTP-503-01"
+category: "HTTP_WEB"
+fault_class: "HTTP_503_SERVICE_UNAVAILABLE"
+description: "Servidor web backend responde con HTTP 503 Service Unavailable debido a saturación completa del grupo de workers o modo mantenimiento activo"
+injection_script: "scenarios/injectors/http_failures.py"
+ground_truth:
+  root_cause: "Todos los procesos worker del servidor backend de aplicaciones se encuentran saturados con solicitudes pendientes o la aplicación se encuentra en modo mantenimiento (HTTP 503)."
+  affected_component: "backend-application-pool"
+  suggested_action: "Escalar horizontalmente las instancias de backend o incrementar el número de workers de ejecución asíncrona (Uvicorn/Gunicorn)."
+  minimum_required_evidence:
+    - "curl -I -s http://127.0.0.1:80/api/v1/orders -> HTTP/1.1 503 Service Unavailable"
+    - "nginx error.log: '[error] upstream temporarily unavailable while reading response header, client: 127.0.0.1'"
+metadata:
+  target_url: "http://127.0.0.1:80/api/v1/orders"
+  expected_status_code: 503

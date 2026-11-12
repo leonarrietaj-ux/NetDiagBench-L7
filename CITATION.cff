@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use this benchmark, code, or datasets in your research, please cite it as below."
+title: "NetDiagBench-L7: Benchmark Reproducible para Diagnóstico de Fallas en Servicios de Capa de Aplicación sobre IP con SLMs Locales"
+authors:
+  - family-names: "León Arrieta"
+    given-names: "Juan David"
+    orcid: "https://orcid.org/0009-0000-0000-0000"
+    affiliation: "Universidad de Pamplona"
+  - family-names: "Mendoza Gáfaro"
+    given-names: "Richard Eliseo"
+    affiliation: "Universidad de Pamplona"
+version: 1.0.0
+date-released: 2026-11-11
+url: "https://github.com/leonarrietaj-ux/NetDiagBench-L7"
+keywords:
+  - "network-troubleshooting"
+  - "benchmark"
+  - "small-language-models"
+  - "dns"
+  - "http"
+  - "tls"
+  - "autonomous-agents"
+  - "reproducibility"
+license: "MIT"

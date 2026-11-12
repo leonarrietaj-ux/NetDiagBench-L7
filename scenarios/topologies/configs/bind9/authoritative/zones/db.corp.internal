@@ -1,0 +1,14 @@
+; Zone file for corp.internal
+; NetDiagBench-L7: Laboratorio L1
+$TTL    86400
+@       IN      SOA     ns1.corp.internal. admin.corp.internal. (
+                              2026092501 ; Serial
+                                  604800 ; Refresh
+                                   86400 ; Retry
+                                 2419200 ; Expire
+                                   86400 ) ; Negative Cache TTL
+;
+@       IN      NS      ns1.corp.internal.
+ns1     IN      A       10.0.0.3
+gateway IN      A       10.0.0.2
+; Nota: app.internal.corp falta intencionalmente para inducir fallo NXDOMAIN (DNS-NXD-01)

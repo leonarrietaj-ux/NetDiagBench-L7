@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  # Servicio Principal: Dashboard Web y Motor de Diagnóstico NetDiagBench-L7
+  benchapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: netdiagbench-app
+    ports:
+      - "8000:8000"
+    environment:
+      - OLLAMA_HOST=http://host.docker.internal:11434
+      - BENCHMARK_MODE=container
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ./data/benchmark_results:/app/data/benchmark_results
+      - ./data/runs:/app/data/runs
+    depends_on:
+      - ollama
+    restart: unless-stopped
+
+  # Motor de Inferencia Local Ollama (Opcional para inferencia con pesos reales en GPU/CPU)
+  ollama:
+    image: ollama/ollama:latest
+    container_name: netdiagbench-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_models:/root/.ollama
+    # Descomentar si se cuenta con GPU NVIDIA y nvidia-container-toolkit instalado en el host:
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: 1
+    #           capabilities: [gpu]
+    restart: unless-stopped
+
+volumes:
+  ollama_models:
+    name: netdiagbench-ollama-models

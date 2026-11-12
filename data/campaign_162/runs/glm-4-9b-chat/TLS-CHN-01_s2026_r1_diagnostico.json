@@ -1,0 +1,32 @@
+{
+  "scenario_id": "TLS-CHN-01",
+  "model_id": "glm-4-9b-chat",
+  "root_cause": "La falta de certificado de la Autoridad de Certificación intermedia en el servidor, lo que provoca un fallo en la verificación de la cadena de certificados.",
+  "affected_component": "nginx-tls-termination",
+  "suggested_action": "Concatenar el certificado intermedio en el archivo `fullchain.pem` y recargar Nginx (`cat intermediate.pem >> fullchain.pem && nginx -s reload`). Verificar también la configuración del paquete de CA intermedias.",
+  "natural_language_explanation": "La telemetría observada muestra múltiples intentos fallidos de handshake TLS, con mensajes de error como `certificate verify failed` y `unable to get local issuer certificate`. La salida de la herramienta `openssl s_client` confirma el fallo en la verificación del certificado raíz. Según las especificaciones RFC 5280, un certificado debe estar firmado por una autoridad certificadora válida. En este caso, falta el certificado intermedio en la cadena de certificados, lo que impide la validación completa de la identidad del emisor. La acción correctiva propuesta soluciona esta deficiencia al incluir el certificado intermedio y recargar Nginx para aplicar los cambios.",
+  "supporting_evidence": [
+    "openssl s_client -> CONNECTED(00000003) depth=0 C = CO, ST = Norte de Santander, O = UniPamplona, CN = secure.corp.internal verify error:num=20:unable to get local issuer certificate verify return:1 --- Certificate chain 0 s:CN = secure.corp.internal --- Verify return code: 20 (unable to get local issuer certificate)"
+  ],
+  "is_evidence_backed": true,
+  "tool_blocked_penalty": false,
+  "confidence_score": 1.0,
+  "execution_mode": "sintetico_determinista",
+  "engine_mode": "live_ollama",
+  "factual_accuracy_c6": 2,
+  "c6_automated_evidence_check": 2,
+  "c6_human_score": null,
+  "evidence_status": "backed",
+  "sustentation_status": "sustentado",
+  "model_diagnosis_text": "\n```json\n{\n  \"causa_raiz\": \"La causa raíz del incidente es la falta de certificado de la Autoridad de Certificación intermedia en el servidor, lo que provoca un fallo en la verificación de la cadena de certificados.\",\n  \"componente\": \"nginx-tls-termination\",\n  \"mitigacion\": \"Concatenar el certificado intermedio en el archivo `fullchain.pem` y recargar Nginx (`cat intermediate.pem >> fullchain.pem && nginx -s reload`). Verificar también la configuración del paquete de CA intermedias.\",\n  \"fundamentacion_tecnica\": \"La telemetría observada muestra múltiples intentos fallidos de handshake TLS, con mensajes de error como `certificate verify failed` y `unable to get local issuer certificate`. La salida de la herramienta `openssl s_client` confirma el fallo en la verificación del certificado raíz. Según las especificaciones RFC 5280, un certificado debe estar firmado por una autoridad certificadora válida. En este caso, falta el certificado intermedio en la cadena de certificados, lo que impide la validación completa de la identidad del emisor. La acción correctiva propuesta soluciona esta deficiencia al incluir el certificado intermedio y recargar Nginx para aplicar los cambios.\"\n}\n```",
+  "git_commit_hash": "952a628e13ba8bbbe60a5c5c65a34d05becb764a",
+  "git_dirty": true,
+  "container_image_digest": "",
+  "docker_version": "",
+  "reasoning_text": "",
+  "parse_status": "ok",
+  "context_truncated": false,
+  "reasoning_tokens": 0,
+  "ttft_final_ms": 54218.96,
+  "rescore_commit": ""
+}

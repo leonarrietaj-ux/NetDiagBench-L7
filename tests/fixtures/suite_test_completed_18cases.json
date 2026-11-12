@@ -1,0 +1,729 @@
+{
+  "run_id": "suite_test_completed_18cases",
+  "model_id": "deepseek-r1-1-5b",
+  "model_name": "Deepseek R1 (1.5B)",
+  "seed": 1337,
+  "status": "completed",
+  "total_cases": 18,
+  "completed_cases": 18,
+  "start_time": "2026-10-23T11:19:12.564107",
+  "updated_at": "2026-10-30T09:29:52.755167",
+  "completed_at": "2026-10-30T09:29:52.755153",
+  "cases": [
+    {
+      "index": 1,
+      "scenario_id": "SCENARIO-01",
+      "category": "DNS",
+      "fault_class": "NXDOMAIN",
+      "description": "Escenario real de prueba 1",
+      "prediction": {
+        "root_cause": "Conexión rechazada en backend upstream",
+        "affected_component": "api-gateway",
+        "suggested_action": "Reiniciar servicio y verificar socket",
+        "confidence_score": 0.96,
+        "natural_language_explanation": "Paso 1: Análisis de paquetes SYN.\nPaso 2: Se observa timeout L7 en puerto 8080.\nConclusión para caso 1: Falla confirmada en gateway.",
+        "is_evidence_backed": true
+      },
+      "ground_truth": {
+        "root_cause": "Conexión rechazada en backend upstream",
+        "affected_component": "api-gateway",
+        "suggested_action": "Reiniciar backend"
+      },
+      "telemetry": {
+        "ttft_ms": 110.5,
+        "tok_per_sec": 48.2,
+        "total_latency_ms": 1250.0,
+        "vram_peak_gb": 2.8,
+        "completion_tokens": 180
+      },
+      "evaluation": {
+        "root_cause_correct": true,
+        "component_correct": true,
+        "partial_score": 1.0,
+        "rubric_score": 5.0,
+        "tool_called": true
+      },
+      "tool_execution": {
+        "tool_name": "curl",
+        "command": "curl -I http://127.0.0.1:8080",
+        "output": "HTTP/1.1 504 Gateway Timeout"
+      }
+    },
+    {
+      "index": 2,
+      "scenario_id": "SCENARIO-02",
+      "category": "HTTP",
+      "fault_class": "GATEWAY_TIMEOUT",
+      "description": "Escenario real de prueba 2",
+      "prediction": {
+        "root_cause": "Conexión rechazada en backend upstream",
+        "affected_component": "api-gateway",
+        "suggested_action": "Reiniciar servicio y verificar socket",
+        "confidence_score": 0.96,
+        "natural_language_explanation": "Paso 1: Análisis de paquetes SYN.\nPaso 2: Se observa timeout L7 en puerto 8080.\nConclusión para caso 2: Falla confirmada en gateway.",
+        "is_evidence_backed": true
+      },
+      "ground_truth": {
+        "root_cause": "Conexión rechazada en backend upstream",
+        "affected_component": "api-gateway",
+        "suggested_action": "Reiniciar backend"
+      },
+      "telemetry": {
+        "ttft_ms": 110.5,
+        "tok_per_sec": 48.2,
+        "total_latency_ms": 1250.0,
+        "vram_peak_gb": 2.8,
+        "completion_tokens": 180
+      },
+      "evaluation": {
+        "root_cause_correct": true,
+        "component_correct": true,
+        "partial_score": 1.0,
+        "rubric_score": 5.0,
+        "tool_called": true
+      },
+      "tool_execution": {
+        "tool_name": "curl",
+        "command": "curl -I http://127.0.0.1:8080",
+        "output": "HTTP/1.1 504 Gateway Timeout"
+      }
+    },
+    {
+      "index": 3,
+      "scenario_id": "SCENARIO-03",
+      "category": "DNS",
+      "fault_class": "NXDOMAIN",
+      "description": "Escenario real de prueba 3",
+      "prediction": {
+        "root_cause": "Conexión rechazada en backend upstream",
+        "affected_component": "api-gateway",
+        "suggested_action": "Reiniciar servicio y verificar socket",
+        "confidence_score": 0.96,
+        "natural_language_explanation": "Paso 1: Análisis de paquetes SYN.\nPaso 2: Se observa timeout L7 en puerto 8080.\nConclusión para caso 3: Falla confirmada en gateway.",
+        "is_evidence_backed": true
+      },
+      "ground_truth": {
+        "root_cause": "Conexión rechazada en backend upstream",
+        "affected_component": "api-gateway",
+        "suggested_action": "Reiniciar backend"
+      },
+      "telemetry": {
+        "ttft_ms": 110.5,
+        "tok_per_sec": 48.2,
+        "total_latency_ms": 1250.0,
+        "vram_peak_gb": 2.8,
+        "completion_tokens": 180
+      },
+      "evaluation": {
+        "root_cause_correct": true,
+        "component_correct": true,
+        "partial_score": 1.0,
+        "rubric_score": 5.0,
+        "tool_called": true
+      },
+      "tool_execution": {
+        "tool_name": "curl",
+        "command": "curl -I http://127.0.0.1:8080",
+        "output": "HTTP/1.1 504 Gateway Timeout"
+      }
+    },
+    {
+      "index": 4,
+      "scenario_id": "SCENARIO-04",
+      "category": "HTTP",
+      "fault_class": "GATEWAY_TIMEOUT",
+      "description": "Escenario real de prueba 4",
+      "prediction": {
+        "root_cause": "Conexión rechazada en backend upstream",
+        "affected_component": "api-gateway",
+        "suggested_action": "Reiniciar servicio y verificar socket",
+        "confidence_score": 0.96,
+        "natural_language_explanation": "Paso 1: Análisis de paquetes SYN.\nPaso 2: Se observa timeout L7 en puerto 8080.\nConclusión para caso 4: Falla confirmada en gateway.",
+        "is_evidence_backed": true
+      },
+      "ground_truth": {
+        "root_cause": "Conexión rechazada en backend upstream",
+        "affected_component": "api-gateway",
+        "suggested_action": "Reiniciar backend"
+      },
+      "telemetry": {
+        "ttft_ms": 110.5,
+        "tok_per_sec": 48.2,
+        "total_latency_ms": 1250.0,
+        "vram_peak_gb": 2.8,
+        "completion_tokens": 180
+      },
+      "evaluation": {
+        "root_cause_correct": true,
+        "component_correct": true,
+        "partial_score": 1.0,
+        "rubric_score": 5.0,
+        "tool_called": true
+      },
+      "tool_execution": {
+        "tool_name": "curl",
+        "command": "curl -I http://127.0.0.1:8080",
+        "output": "HTTP/1.1 504 Gateway Timeout"
+      }
+    },
+    {
+      "index": 5,
+      "scenario_id": "SCENARIO-05",
+      "category": "DNS",
+      "fault_class": "NXDOMAIN",
+      "description": "Escenario real de prueba 5",
+      "prediction": {
+        "root_cause": "Conexión rechazada en backend upstream",
+        "affected_component": "api-gateway",
+        "suggested_action": "Reiniciar servicio y verificar socket",
+        "confidence_score": 0.96,
+        "natural_language_explanation": "Paso 1: Análisis de paquetes SYN.\nPaso 2: Se observa timeout L7 en puerto 8080.\nConclusión para caso 5: Falla confirmada en gateway.",
+        "is_evidence_backed": true
+      },
+      "ground_truth": {
+        "root_cause": "Conexión rechazada en backend upstream",
+        "affected_component": "api-gateway",
+        "suggested_action": "Reiniciar backend"
+      },
+      "telemetry": {
+        "ttft_ms": 110.5,
+        "tok_per_sec": 48.2,
+        "total_latency_ms": 1250.0,
+        "vram_peak_gb": 2.8,
+        "completion_tokens": 180
+      },
+      "evaluation": {
+        "root_cause_correct": true,
+        "component_correct": true,
+        "partial_score": 1.0,
+        "rubric_score": 5.0,
+        "tool_called": true
+      },
+      "tool_execution": {
+        "tool_name": "curl",
+        "command": "curl -I http://127.0.0.1:8080",
+        "output": "HTTP/1.1 504 Gateway Timeout"
+      }
+    },
+    {
+      "index": 6,
+      "scenario_id": "SCENARIO-06",
+      "category": "HTTP",
+      "fault_class": "GATEWAY_TIMEOUT",
+      "description": "Escenario real de prueba 6",
+      "prediction": {
+        "root_cause": "Conexión rechazada en backend upstream",
+        "affected_component": "api-gateway",
+        "suggested_action": "Reiniciar servicio y verificar socket",
+        "confidence_score": 0.96,
+        "natural_language_explanation": "Paso 1: Análisis de paquetes SYN.\nPaso 2: Se observa timeout L7 en puerto 8080.\nConclusión para caso 6: Falla confirmada en gateway.",
+        "is_evidence_backed": true
+      },
+      "ground_truth": {
+        "root_cause": "Conexión rechazada en backend upstream",
+        "affected_component": "api-gateway",
+        "suggested_action": "Reiniciar backend"
+      },
+      "telemetry": {
+        "ttft_ms": 110.5,
+        "tok_per_sec": 48.2,
+        "total_latency_ms": 1250.0,
+        "vram_peak_gb": 2.8,
+        "completion_tokens": 180
+      },
+      "evaluation": {
+        "root_cause_correct": true,
+        "component_correct": true,
+        "partial_score": 1.0,
+        "rubric_score": 5.0,
+        "tool_called": true
+      },
+      "tool_execution": {
+        "tool_name": "curl",
+        "command": "curl -I http://127.0.0.1:8080",
+        "output": "HTTP/1.1 504 Gateway Timeout"
+      }
+    },
+    {
+      "index": 7,
+      "scenario_id": "SCENARIO-07",
+      "category": "DNS",
+      "fault_class": "NXDOMAIN",
+      "description": "Escenario real de prueba 7",
+      "prediction": {
+        "root_cause": "Conexión rechazada en backend upstream",
+        "affected_component": "api-gateway",
+        "suggested_action": "Reiniciar servicio y verificar socket",
+        "confidence_score": 0.96,
+        "natural_language_explanation": "Paso 1: Análisis de paquetes SYN.\nPaso 2: Se observa timeout L7 en puerto 8080.\nConclusión para caso 7: Falla confirmada en gateway.",
+        "is_evidence_backed": true
+      },
+      "ground_truth": {
+        "root_cause": "Conexión rechazada en backend upstream",
+        "affected_component": "api-gateway",
+        "suggested_action": "Reiniciar backend"
+      },
+      "telemetry": {
+        "ttft_ms": 110.5,
+        "tok_per_sec": 48.2,
+        "total_latency_ms": 1250.0,
+        "vram_peak_gb": 2.8,
+        "completion_tokens": 180
+      },
+      "evaluation": {
+        "root_cause_correct": true,
+        "component_correct": true,
+        "partial_score": 1.0,
+        "rubric_score": 5.0,
+        "tool_called": true
+      },
+      "tool_execution": {
+        "tool_name": "curl",
+        "command": "curl -I http://127.0.0.1:8080",
+        "output": "HTTP/1.1 504 Gateway Timeout"
+      }
+    },
+    {
+      "index": 8,
+      "scenario_id": "SCENARIO-08",
+      "category": "HTTP",
+      "fault_class": "GATEWAY_TIMEOUT",
+      "description": "Escenario real de prueba 8",
+      "prediction": {
+        "root_cause": "Conexión rechazada en backend upstream",
+        "affected_component": "api-gateway",
+        "suggested_action": "Reiniciar servicio y verificar socket",
+        "confidence_score": 0.96,
+        "natural_language_explanation": "Paso 1: Análisis de paquetes SYN.\nPaso 2: Se observa timeout L7 en puerto 8080.\nConclusión para caso 8: Falla confirmada en gateway.",
+        "is_evidence_backed": true
+      },
+      "ground_truth": {
+        "root_cause": "Conexión rechazada en backend upstream",
+        "affected_component": "api-gateway",
+        "suggested_action": "Reiniciar backend"
+      },
+      "telemetry": {
+        "ttft_ms": 110.5,
+        "tok_per_sec": 48.2,
+        "total_latency_ms": 1250.0,
+        "vram_peak_gb": 2.8,
+        "completion_tokens": 180
+      },
+      "evaluation": {
+        "root_cause_correct": true,
+        "component_correct": true,
+        "partial_score": 1.0,
+        "rubric_score": 5.0,
+        "tool_called": true
+      },
+      "tool_execution": {
+        "tool_name": "curl",
+        "command": "curl -I http://127.0.0.1:8080",
+        "output": "HTTP/1.1 504 Gateway Timeout"
+      }
+    },
+    {
+      "index": 9,
+      "scenario_id": "SCENARIO-09",
+      "category": "DNS",
+      "fault_class": "NXDOMAIN",
+      "description": "Escenario real de prueba 9",
+      "prediction": {
+        "root_cause": "Conexión rechazada en backend upstream",
+        "affected_component": "api-gateway",
+        "suggested_action": "Reiniciar servicio y verificar socket",
+        "confidence_score": 0.96,
+        "natural_language_explanation": "Paso 1: Análisis de paquetes SYN.\nPaso 2: Se observa timeout L7 en puerto 8080.\nConclusión para caso 9: Falla confirmada en gateway.",
+        "is_evidence_backed": true
+      },
+      "ground_truth": {
+        "root_cause": "Conexión rechazada en backend upstream",
+        "affected_component": "api-gateway",
+        "suggested_action": "Reiniciar backend"
+      },
+      "telemetry": {
+        "ttft_ms": 110.5,
+        "tok_per_sec": 48.2,
+        "total_latency_ms": 1250.0,
+        "vram_peak_gb": 2.8,
+        "completion_tokens": 180
+      },
+      "evaluation": {
+        "root_cause_correct": true,
+        "component_correct": true,
+        "partial_score": 1.0,
+        "rubric_score": 5.0,
+        "tool_called": true
+      },
+      "tool_execution": {
+        "tool_name": "curl",
+        "command": "curl -I http://127.0.0.1:8080",
+        "output": "HTTP/1.1 504 Gateway Timeout"
+      }
+    },
+    {
+      "index": 10,
+      "scenario_id": "SCENARIO-10",
+      "category": "HTTP",
+      "fault_class": "GATEWAY_TIMEOUT",
+      "description": "Escenario real de prueba 10",
+      "prediction": {
+        "root_cause": "Conexión rechazada en backend upstream",
+        "affected_component": "api-gateway",
+        "suggested_action": "Reiniciar servicio y verificar socket",
+        "confidence_score": 0.96,
+        "natural_language_explanation": "Paso 1: Análisis de paquetes SYN.\nPaso 2: Se observa timeout L7 en puerto 8080.\nConclusión para caso 10: Falla confirmada en gateway.",
+        "is_evidence_backed": true
+      },
+      "ground_truth": {
+        "root_cause": "Conexión rechazada en backend upstream",
+        "affected_component": "api-gateway",
+        "suggested_action": "Reiniciar backend"
+      },
+      "telemetry": {
+        "ttft_ms": 110.5,
+        "tok_per_sec": 48.2,
+        "total_latency_ms": 1250.0,
+        "vram_peak_gb": 2.8,
+        "completion_tokens": 180
+      },
+      "evaluation": {
+        "root_cause_correct": true,
+        "component_correct": true,
+        "partial_score": 1.0,
+        "rubric_score": 5.0,
+        "tool_called": true
+      },
+      "tool_execution": {
+        "tool_name": "curl",
+        "command": "curl -I http://127.0.0.1:8080",
+        "output": "HTTP/1.1 504 Gateway Timeout"
+      }
+    },
+    {
+      "index": 11,
+      "scenario_id": "SCENARIO-11",
+      "category": "DNS",
+      "fault_class": "NXDOMAIN",
+      "description": "Escenario real de prueba 11",
+      "prediction": {
+        "root_cause": "Conexión rechazada en backend upstream",
+        "affected_component": "api-gateway",
+        "suggested_action": "Reiniciar servicio y verificar socket",
+        "confidence_score": 0.96,
+        "natural_language_explanation": "Paso 1: Análisis de paquetes SYN.\nPaso 2: Se observa timeout L7 en puerto 8080.\nConclusión para caso 11: Falla confirmada en gateway.",
+        "is_evidence_backed": true
+      },
+      "ground_truth": {
+        "root_cause": "Conexión rechazada en backend upstream",
+        "affected_component": "api-gateway",
+        "suggested_action": "Reiniciar backend"
+      },
+      "telemetry": {
+        "ttft_ms": 110.5,
+        "tok_per_sec": 48.2,
+        "total_latency_ms": 1250.0,
+        "vram_peak_gb": 2.8,
+        "completion_tokens": 180
+      },
+      "evaluation": {
+        "root_cause_correct": true,
+        "component_correct": true,
+        "partial_score": 1.0,
+        "rubric_score": 5.0,
+        "tool_called": true
+      },
+      "tool_execution": {
+        "tool_name": "curl",
+        "command": "curl -I http://127.0.0.1:8080",
+        "output": "HTTP/1.1 504 Gateway Timeout"
+      }
+    },
+    {
+      "index": 12,
+      "scenario_id": "SCENARIO-12",
+      "category": "HTTP",
+      "fault_class": "GATEWAY_TIMEOUT",
+      "description": "Escenario real de prueba 12",
+      "prediction": {
+        "root_cause": "Conexión rechazada en backend upstream",
+        "affected_component": "api-gateway",
+        "suggested_action": "Reiniciar servicio y verificar socket",
+        "confidence_score": 0.96,
+        "natural_language_explanation": "Paso 1: Análisis de paquetes SYN.\nPaso 2: Se observa timeout L7 en puerto 8080.\nConclusión para caso 12: Falla confirmada en gateway.",
+        "is_evidence_backed": true
+      },
+      "ground_truth": {
+        "root_cause": "Conexión rechazada en backend upstream",
+        "affected_component": "api-gateway",
+        "suggested_action": "Reiniciar backend"
+      },
+      "telemetry": {
+        "ttft_ms": 110.5,
+        "tok_per_sec": 48.2,
+        "total_latency_ms": 1250.0,
+        "vram_peak_gb": 2.8,
+        "completion_tokens": 180
+      },
+      "evaluation": {
+        "root_cause_correct": true,
+        "component_correct": true,
+        "partial_score": 1.0,
+        "rubric_score": 5.0,
+        "tool_called": true
+      },
+      "tool_execution": {
+        "tool_name": "curl",
+        "command": "curl -I http://127.0.0.1:8080",
+        "output": "HTTP/1.1 504 Gateway Timeout"
+      }
+    },
+    {
+      "index": 13,
+      "scenario_id": "SCENARIO-13",
+      "category": "DNS",
+      "fault_class": "NXDOMAIN",
+      "description": "Escenario real de prueba 13",
+      "prediction": {
+        "root_cause": "Conexión rechazada en backend upstream",
+        "affected_component": "api-gateway",
+        "suggested_action": "Reiniciar servicio y verificar socket",
+        "confidence_score": 0.96,
+        "natural_language_explanation": "Paso 1: Análisis de paquetes SYN.\nPaso 2: Se observa timeout L7 en puerto 8080.\nConclusión para caso 13: Falla confirmada en gateway.",
+        "is_evidence_backed": true
+      },
+      "ground_truth": {
+        "root_cause": "Conexión rechazada en backend upstream",
+        "affected_component": "api-gateway",
+        "suggested_action": "Reiniciar backend"
+      },
+      "telemetry": {
+        "ttft_ms": 110.5,
+        "tok_per_sec": 48.2,
+        "total_latency_ms": 1250.0,
+        "vram_peak_gb": 2.8,
+        "completion_tokens": 180
+      },
+      "evaluation": {
+        "root_cause_correct": true,
+        "component_correct": true,
+        "partial_score": 1.0,
+        "rubric_score": 5.0,
+        "tool_called": true
+      },
+      "tool_execution": {
+        "tool_name": "curl",
+        "command": "curl -I http://127.0.0.1:8080",
+        "output": "HTTP/1.1 504 Gateway Timeout"
+      }
+    },
+    {
+      "index": 14,
+      "scenario_id": "SCENARIO-14",
+      "category": "HTTP",
+      "fault_class": "GATEWAY_TIMEOUT",
+      "description": "Escenario real de prueba 14",
+      "prediction": {
+        "root_cause": "Conexión rechazada en backend upstream",
+        "affected_component": "api-gateway",
+        "suggested_action": "Reiniciar servicio y verificar socket",
+        "confidence_score": 0.96,
+        "natural_language_explanation": "Paso 1: Análisis de paquetes SYN.\nPaso 2: Se observa timeout L7 en puerto 8080.\nConclusión para caso 14: Falla confirmada en gateway.",
+        "is_evidence_backed": true
+      },
+      "ground_truth": {
+        "root_cause": "Conexión rechazada en backend upstream",
+        "affected_component": "api-gateway",
+        "suggested_action": "Reiniciar backend"
+      },
+      "telemetry": {
+        "ttft_ms": 110.5,
+        "tok_per_sec": 48.2,
+        "total_latency_ms": 1250.0,
+        "vram_peak_gb": 2.8,
+        "completion_tokens": 180
+      },
+      "evaluation": {
+        "root_cause_correct": true,
+        "component_correct": true,
+        "partial_score": 1.0,
+        "rubric_score": 5.0,
+        "tool_called": true
+      },
+      "tool_execution": {
+        "tool_name": "curl",
+        "command": "curl -I http://127.0.0.1:8080",
+        "output": "HTTP/1.1 504 Gateway Timeout"
+      }
+    },
+    {
+      "index": 15,
+      "scenario_id": "SCENARIO-15",
+      "category": "DNS",
+      "fault_class": "NXDOMAIN",
+      "description": "Escenario real de prueba 15",
+      "prediction": {
+        "root_cause": "Conexión rechazada en backend upstream",
+        "affected_component": "api-gateway",
+        "suggested_action": "Reiniciar servicio y verificar socket",
+        "confidence_score": 0.96,
+        "natural_language_explanation": "Paso 1: Análisis de paquetes SYN.\nPaso 2: Se observa timeout L7 en puerto 8080.\nConclusión para caso 15: Falla confirmada en gateway.",
+        "is_evidence_backed": true
+      },
+      "ground_truth": {
+        "root_cause": "Conexión rechazada en backend upstream",
+        "affected_component": "api-gateway",
+        "suggested_action": "Reiniciar backend"
+      },
+      "telemetry": {
+        "ttft_ms": 110.5,
+        "tok_per_sec": 48.2,
+        "total_latency_ms": 1250.0,
+        "vram_peak_gb": 2.8,
+        "completion_tokens": 180
+      },
+      "evaluation": {
+        "root_cause_correct": true,
+        "component_correct": true,
+        "partial_score": 1.0,
+        "rubric_score": 5.0,
+        "tool_called": true
+      },
+      "tool_execution": {
+        "tool_name": "curl",
+        "command": "curl -I http://127.0.0.1:8080",
+        "output": "HTTP/1.1 504 Gateway Timeout"
+      }
+    },
+    {
+      "index": 16,
+      "scenario_id": "SCENARIO-16",
+      "category": "HTTP",
+      "fault_class": "GATEWAY_TIMEOUT",
+      "description": "Escenario real de prueba 16",
+      "prediction": {
+        "root_cause": "Conexión rechazada en backend upstream",
+        "affected_component": "api-gateway",
+        "suggested_action": "Reiniciar servicio y verificar socket",
+        "confidence_score": 0.96,
+        "natural_language_explanation": "Paso 1: Análisis de paquetes SYN.\nPaso 2: Se observa timeout L7 en puerto 8080.\nConclusión para caso 16: Falla confirmada en gateway.",
+        "is_evidence_backed": true
+      },
+      "ground_truth": {
+        "root_cause": "Conexión rechazada en backend upstream",
+        "affected_component": "api-gateway",
+        "suggested_action": "Reiniciar backend"
+      },
+      "telemetry": {
+        "ttft_ms": 110.5,
+        "tok_per_sec": 48.2,
+        "total_latency_ms": 1250.0,
+        "vram_peak_gb": 2.8,
+        "completion_tokens": 180
+      },
+      "evaluation": {
+        "root_cause_correct": true,
+        "component_correct": true,
+        "partial_score": 1.0,
+        "rubric_score": 5.0,
+        "tool_called": true
+      },
+      "tool_execution": {
+        "tool_name": "curl",
+        "command": "curl -I http://127.0.0.1:8080",
+        "output": "HTTP/1.1 504 Gateway Timeout"
+      }
+    },
+    {
+      "index": 17,
+      "scenario_id": "SCENARIO-17",
+      "category": "DNS",
+      "fault_class": "NXDOMAIN",
+      "description": "Escenario real de prueba 17",
+      "prediction": {
+        "root_cause": "Conexión rechazada en backend upstream",
+        "affected_component": "api-gateway",
+        "suggested_action": "Reiniciar servicio y verificar socket",
+        "confidence_score": 0.96,
+        "natural_language_explanation": "Paso 1: Análisis de paquetes SYN.\nPaso 2: Se observa timeout L7 en puerto 8080.\nConclusión para caso 17: Falla confirmada en gateway.",
+        "is_evidence_backed": true
+      },
+      "ground_truth": {
+        "root_cause": "Conexión rechazada en backend upstream",
+        "affected_component": "api-gateway",
+        "suggested_action": "Reiniciar backend"
+      },
+      "telemetry": {
+        "ttft_ms": 110.5,
+        "tok_per_sec": 48.2,
+        "total_latency_ms": 1250.0,
+        "vram_peak_gb": 2.8,
+        "completion_tokens": 180
+      },
+      "evaluation": {
+        "root_cause_correct": true,
+        "component_correct": true,
+        "partial_score": 1.0,
+        "rubric_score": 5.0,
+        "tool_called": true
+      },
+      "tool_execution": {
+        "tool_name": "curl",
+        "command": "curl -I http://127.0.0.1:8080",
+        "output": "HTTP/1.1 504 Gateway Timeout"
+      }
+    },
+    {
+      "index": 18,
+      "scenario_id": "SCENARIO-18",
+      "category": "HTTP",
+      "fault_class": "GATEWAY_TIMEOUT",
+      "description": "Escenario real de prueba 18",
+      "prediction": {
+        "root_cause": "Conexión rechazada en backend upstream",
+        "affected_component": "api-gateway",
+        "suggested_action": "Reiniciar servicio y verificar socket",
+        "confidence_score": 0.96,
+        "natural_language_explanation": "Paso 1: Análisis de paquetes SYN.\nPaso 2: Se observa timeout L7 en puerto 8080.\nConclusión para caso 18: Falla confirmada en gateway.",
+        "is_evidence_backed": true
+      },
+      "ground_truth": {
+        "root_cause": "Conexión rechazada en backend upstream",
+        "affected_component": "api-gateway",
+        "suggested_action": "Reiniciar backend"
+      },
+      "telemetry": {
+        "ttft_ms": 110.5,
+        "tok_per_sec": 48.2,
+        "total_latency_ms": 1250.0,
+        "vram_peak_gb": 2.8,
+        "completion_tokens": 180
+      },
+      "evaluation": {
+        "root_cause_correct": true,
+        "component_correct": true,
+        "partial_score": 1.0,
+        "rubric_score": 5.0,
+        "tool_called": true
+      },
+      "tool_execution": {
+        "tool_name": "curl",
+        "command": "curl -I http://127.0.0.1:8080",
+        "output": "HTTP/1.1 504 Gateway Timeout"
+      }
+    }
+  ],
+  "summary_metrics": {
+    "completed_cases": 18,
+    "total_cases": 18,
+    "root_cause_accuracy": 1.0,
+    "component_accuracy": 1.0,
+    "tool_call_rate": 1.0,
+    "avg_ttft_ms": 110.5,
+    "avg_tok_per_sec": 48.2,
+    "total_latency_ms": 22500.0,
+    "avg_latency_ms": 1250.0,
+    "vram_peak_gb": 2.8,
+    "total_tokens_generated": 3240
+  }
+}

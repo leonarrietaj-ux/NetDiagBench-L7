@@ -1,0 +1,32 @@
+{
+  "scenario_id": "HTTP-429-01",
+  "model_id": "glm-4-9b-chat",
+  "root_cause": "La alta tasa de error y la latencia observada se deben a una sobrecarga en el módulo de limitación de tráfico (rate limiter) del API Gateway, específicamente en la configuración de `limit_req_zone`.",
+  "affected_component": "nginx-rate-limiter",
+  "suggested_action": "Incrementar el parámetro `burst` o ajustar la tasa en `nginx.conf`, luego recargar la instancia de Nginx para aplicar los cambios. Ejecutar: `sudo nginx -s reload`. Verificar también si hay configuraciones adicionales que puedan estar limitando innecesariamente las solicitudes.",
+  "natural_language_explanation": "La telemetría muestra una tasa de error del 92.75%, con latencias p50 y p95 significativamente altas, lo cual sugiere un problema en el procesamiento de solicitudes. Los registros de Nginx indican warnings sobre plantillas HTTP/1.1 sin contenido específico, lo que coincide con la respuesta HTTP/429 obtenida con `curl`, indicando una sobrecarga en el rate limiter. La especificación RFC 9110 define el código 429 como 'Too Many Requests', implementado típicamente por módulos como `ngx_http_limit_req_module` utilizando algoritmo leaky bucket. El SOP para Nginx recomienda verificar la configuración de `limit_req_zone`, ajustar los parámetros `rate` y `burst`, y recargar el servicio para aplicar los cambios.",
+  "supporting_evidence": [
+    "curl -I -s http://127.0.0.1:80/api/v1/search?q=telecom -> HTTP/1.1 429 Too Many Requests Server: nginx/1.24.0 Date: Fri, 25 Sep 2026 10:00:02 GMT Content-Type: text/html Content-Length: 180 Retry-After: 30 Connection: keep-alive <html><head><title>429 Too Many Requests</title></head><body><center><h1>429 Too Many Requests</h1></center><hr><center>nginx</center></body></html>"
+  ],
+  "is_evidence_backed": true,
+  "tool_blocked_penalty": false,
+  "confidence_score": 1.0,
+  "execution_mode": "sintetico_determinista",
+  "engine_mode": "live_ollama",
+  "factual_accuracy_c6": 2,
+  "c6_automated_evidence_check": 2,
+  "c6_human_score": null,
+  "evidence_status": "backed",
+  "sustentation_status": "sustentado",
+  "model_diagnosis_text": "\n```json\n{\n  \"causa_raiz\": \"La alta tasa de error y la latencia observada se deben a una sobrecarga en el módulo de limitación de tráfico (rate limiter) del API Gateway, específicamente en la configuración de `limit_req_zone`.\",\n  \"componente\": \"nginx-rate-limiter\",\n  \"mitigacion\": \"Incrementar el parámetro `burst` o ajustar la tasa en `nginx.conf`, luego recargar la instancia de Nginx para aplicar los cambios. Ejecutar: `sudo nginx -s reload`. Verificar también si hay configuraciones adicionales que puedan estar limitando innecesariamente las solicitudes.\",\n  \"fundamentacion_tecnica\": \"La telemetría muestra una tasa de error del 92.75%, con latencias p50 y p95 significativamente altas, lo cual sugiere un problema en el procesamiento de solicitudes. Los registros de Nginx indican warnings sobre plantillas HTTP/1.1 sin contenido específico, lo que coincide con la respuesta HTTP/429 obtenida con `curl`, indicando una sobrecarga en el rate limiter. La especificación RFC 9110 define el código 429 como 'Too Many Requests', implementado típicamente por módulos como `ngx_http_limit_req_module` utilizando algoritmo leaky bucket. El SOP para Nginx recomienda verificar la configuración de `limit_req_zone`, ajustar los parámetros `rate` y `burst`, y recargar el servicio para aplicar los cambios.\"\n}\n```",
+  "git_commit_hash": "952a628e13ba8bbbe60a5c5c65a34d05becb764a",
+  "git_dirty": true,
+  "container_image_digest": "",
+  "docker_version": "",
+  "reasoning_text": "",
+  "parse_status": "ok",
+  "context_truncated": false,
+  "reasoning_tokens": 0,
+  "ttft_final_ms": 61256.83,
+  "rescore_commit": ""
+}

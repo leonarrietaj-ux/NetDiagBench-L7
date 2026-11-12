@@ -1,0 +1,16 @@
+scenario_id: "HTTP-502-01"
+category: "API_GATEWAY"
+fault_class: "HTTP_502_BAD_GATEWAY"
+description: "Nginx Gateway devuelve 502 Bad Gateway debido a que el servicio backend (upstream) no está escuchando o fue detenido"
+injection_script: "scenarios/injectors/http_failures.py"
+ground_truth:
+  root_cause: "El servicio upstream (backend FastAPI en puerto 8080) se encuentra caído o rechazando conexiones TCP (Connection Refused), provocando un fallo de proxy inverso en Nginx."
+  affected_component: "upstream-backend-api"
+  suggested_action: "Reiniciar el proceso del servicio backend y validar la escucha activa en el socket TCP 127.0.0.1:8080."
+  minimum_required_evidence:
+    - "curl -I -s http://127.0.0.1:80/api/v1/users -> HTTP/1.1 502 Bad Gateway"
+    - "nginx error.log: '[error] connect() failed (111: Connection refused) while connecting to upstream, client: 127.0.0.1, upstream: http://127.0.0.1:8080/api/v1/users'"
+metadata:
+  target_url: "http://127.0.0.1:80/api/v1/users"
+  expected_status_code: 502
+  upstream_host: "127.0.0.1:8080"

@@ -1,0 +1,16 @@
+scenario_id: "DNS-REF-01"
+category: "DNS"
+fault_class: "DNS_REFUSED"
+description: "Servidor autoritativo BIND9 rechaza la consulta DNS con RCODE 5 (REFUSED) por violación de lista de control de acceso (ACL allow-query)"
+injection_script: "scenarios/injectors/dns_failures.py"
+ground_truth:
+  root_cause: "Directiva allow-query o match-clients en named.conf restringe consultas para la dirección IP del cliente, devolviendo RCODE 5 (REFUSED)."
+  affected_component: "bind9-authoritative"
+  suggested_action: "Modificar la ACL en /etc/bind/named.conf.options para autorizar la subred del cliente solicitante y aplicar con rndc reload."
+  minimum_required_evidence:
+    - "dig @127.0.0.1 -p 5353 restricted.corp.internal A -> status: REFUSED"
+    - "bind9 query log: 'query failed (REFUSED) for restricted.corp.internal/IN/A: query refused by ACL'"
+metadata:
+  target_fqdn: "restricted.corp.internal"
+  query_type: "A"
+  expected_rcode: "REFUSED"

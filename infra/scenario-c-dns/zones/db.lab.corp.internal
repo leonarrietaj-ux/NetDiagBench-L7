@@ -1,0 +1,16 @@
+$TTL 60
+@   IN  SOA ns1.lab.corp.internal. admin.lab.corp.internal. (
+        2026103001  ; Serial
+        3600        ; Refresh
+        1800        ; Retry
+        604800      ; Expire
+        60 )        ; Minimum TTL
+
+@       IN  NS  ns1.lab.corp.internal.
+ns1     IN  A   127.0.0.1
+
+; Host válido
+api     IN  A   10.0.0.15
+
+; Subzona con delegación rota a servidor inválido (provoca SERVFAIL en consultas)
+broken  IN  NS  ns-unreachable.invalid.

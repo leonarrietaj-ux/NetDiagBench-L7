@@ -1,0 +1,15 @@
+scenario_id: "HTTP-ORIGIN-01"
+category: "API_GATEWAY"
+fault_class: "ORIGIN_DOWN"
+description: "Servidor de origen primario inalcanzable provocando corte total del servicio web en el balanceador"
+injection_script: "scenarios/injectors/http_failures.py"
+ground_truth:
+  root_cause: "El grupo de servidores de origen está completamente fuera de servicio (socket inalcanzable / caída del host), dejando a Nginx sin upstream saludable para enrutar el tráfico."
+  affected_component: "upstream-cluster"
+  suggested_action: "Verificar la disponibilidad física y de red de los hosts de backend y restaurar el servicio en el puerto asignado."
+  minimum_required_evidence:
+    - "curl -I -s http://127.0.0.1:80/api/v1/health -> HTTP/1.1 502 Bad Gateway"
+    - "nginx error.log: 'no live upstreams while connecting to upstream'"
+metadata:
+  target_url: "http://127.0.0.1:80/api/v1/health"
+  expected_status_code: 502

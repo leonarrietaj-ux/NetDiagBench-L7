@@ -1,0 +1,59 @@
+# Entornos virtuales y dependencias
+.venv/
+venv/
+env/
+ENV/
+build/
+dist/
+*.egg-info/
+
+# Bytecode y cachés de Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Claves criptográficas privadas y certificados no públicos
+*.key
+*.pem
+!scripts/generate_test_certs.py
+
+# Modelos y blobs de pesos GGUF
+models/
+*.gguf
+*.bin
+
+# Secretos y variables de entorno locales
+.env
+.env.*
+!.env.example
+
+# Logs y telemetría transitoria
+*.log
+emissions.csv
+codecarbon.log
+
+# Datos privados o no anonimizados de evaluación humana
+data/human_eval/SESION_KIT_CASO2/
+data/human_eval/test_sesion_*/
+data/human_eval/matriz_asignacion.xlsx
+data/human_eval/CURRENT_SESSION.txt
+data/human_eval/clave_RESTRINGIDA.json
+data/human_eval/KEY_OPENED_AUDIT.json
+data/human_eval/respuestas_*.csv
+
+# Datos de corridas locales temporales
+data/runs/
+data/pilot_runs/
+
+# IDEs y SO
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db

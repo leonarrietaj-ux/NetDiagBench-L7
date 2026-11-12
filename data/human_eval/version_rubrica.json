@@ -1,0 +1,78 @@
+{
+  "rubric_name": "Rúbrica de Validación Humana NetDiagBench-L7",
+  "version": "3.0.0",
+  "approval_act": "Acta Técnica A1.3",
+  "date_approved": "2026-11-01",
+  "scale_type": "Ordinal 0-2 (C1-C6) y Dicotómica Sí/No (S)",
+  "criteria": {
+    "C1": {
+      "name": "Causa Raíz",
+      "definition": "Identificación precisa y no ambigua del mecanismo causal primario de la falla según la taxonomía oficial RFC.",
+      "scale": {
+        "0": "Incorrecta",
+        "1": "Parcial o síntoma",
+        "2": "Correcta"
+      },
+      "weight_pct": 30.0
+    },
+    "C2": {
+      "name": "Coherencia Técnica",
+      "definition": "Consistencia lógica interna del razonamiento técnico frente a los eventos de telemetría y normas aplicables.",
+      "scale": {
+        "0": "Incoherente",
+        "1": "Aceptable con saltos",
+        "2": "Rigurosa"
+      },
+      "weight_pct": 15.0
+    },
+    "C3": {
+      "name": "Fundamentación Normativa",
+      "definition": "Cita explícita y congruente de especificaciones técnicas IETF RFC o manuales canónicos de arquitectura.",
+      "scale": {
+        "0": "Sin citas o errónea",
+        "1": "Cita genérica",
+        "2": "Cita pertinente y exacta"
+      },
+      "weight_pct": 10.0
+    },
+    "C4": {
+      "name": "Componente Afectado",
+      "definition": "Aislamiento formal del elemento degradado en la topología de red.",
+      "scale": {
+        "0": "Componente erróneo",
+        "1": "Capa correcta componente vecino",
+        "2": "Componente exacto"
+      },
+      "weight_pct": 15.0
+    },
+    "C5": {
+      "name": "Mitigación",
+      "definition": "Acción técnica de remediación o SOP propuesta para restaurar el servicio.",
+      "scale": {
+        "0": "Inviable o peligrosa",
+        "1": "Poco específica",
+        "2": "Efectiva y conforme a SOP"
+      },
+      "weight_pct": 10.0
+    },
+    "C6": {
+      "name": "Exactitud Factual",
+      "definition": "Correspondencia factual verificable entre las evidencias empíricas invocadas y las respuestas obtenidas de las herramientas.",
+      "scale": {
+        "0": "Alucinación / herramienta bloqueada",
+        "1": "Parcialmente sustentada",
+        "2": "Evidencia plena y verídica"
+      },
+      "weight_pct": 20.0
+    },
+    "S": {
+      "name": "Diagnóstico Sustentado",
+      "definition": "Variable binaria de suficiencia probatoria: Sí si cuenta con evidencia empírica válida que fundamenta la conclusión.",
+      "scale": {
+        "0": "No sustentado",
+        "1": "Sustentado"
+      },
+      "weight_pct": null
+    }
+  }
+}

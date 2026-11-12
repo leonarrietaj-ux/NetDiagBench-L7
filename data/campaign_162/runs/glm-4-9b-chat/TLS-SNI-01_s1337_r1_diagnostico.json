@@ -1,0 +1,32 @@
+{
+  "scenario_id": "TLS-SNI-01",
+  "model_id": "glm-4-9b-chat",
+  "root_cause": "Un desajuste entre el nombre de host solicitado por el cliente y los Subject Alternative Names (SAN) del certificado servidor.",
+  "affected_component": "nginx-tls-termination",
+  "suggested_action": "Verificar la configuración del certificado SSL para asegurarse de que el nombre de host SNI coincida con uno de los SANs del certificado. Si es necesario, emitir un nuevo certificado multi-dominio o actualizar la configuración del servidor Nginx.",
+  "natural_language_explanation": "La telemetría observada muestra una tasa de error alta en el proceso de autenticación TLS debido a desconecciones durante el handshake. Los registros de error indican 'certificate hostname mismatch', lo que coincide con el código de verificación return code 62, según la especificación RFC 8446. Este código indica un desajuste entre el nombre de host solicitado y los SANs del certificado. La herramienta openssl confirmó este desajuste, lo que justifica la causa raíz identificada. Para solucionar esto, es necesario revisar y ajustar la configuración del certificado o emitir uno nuevo si es necesario.",
+  "supporting_evidence": [
+    "openssl s_client -> CONNECTED(00000003) depth=0 C = CO, ST = Norte de Santander, O = UniPamplona, CN = default.corp.internal verify error:num=62:Hostname mismatch --- Certificate chain 0 s:CN = default.corp.internal --- Verify return code: 62 (Hostname mismatch)"
+  ],
+  "is_evidence_backed": true,
+  "tool_blocked_penalty": false,
+  "confidence_score": 1.0,
+  "execution_mode": "sintetico_determinista",
+  "engine_mode": "live_ollama",
+  "factual_accuracy_c6": 2,
+  "c6_automated_evidence_check": 2,
+  "c6_human_score": null,
+  "evidence_status": "backed",
+  "sustentation_status": "sustentado",
+  "model_diagnosis_text": "\n```json\n{\n  \"causa_raiz\": \"La causa raíz del incidente es un desajuste entre el nombre de host solicitado por el cliente y los Subject Alternative Names (SAN) del certificado servidor.\",\n  \"componente\": \"nginx-tls-termination\",\n  \"mitigacion\": \"Verificar la configuración del certificado SSL para asegurarse de que el nombre de host SNI coincida con uno de los SANs del certificado. Si es necesario, emitir un nuevo certificado multi-dominio o actualizar la configuración del servidor Nginx.\",\n  \"fundamentacion_tecnica\": \"La telemetría observada muestra una tasa de error alta en el proceso de autenticación TLS debido a desconecciones durante el handshake. Los registros de error indican 'certificate hostname mismatch', lo que coincide con el código de verificación return code 62, según la especificación RFC 8446. Este código indica un desajuste entre el nombre de host solicitado y los SANs del certificado. La herramienta openssl confirmó este desajuste, lo que justifica la causa raíz identificada. Para solucionar esto, es necesario revisar y ajustar la configuración del certificado o emitir uno nuevo si es necesario.\"\n}\n```",
+  "git_commit_hash": "952a628e13ba8bbbe60a5c5c65a34d05becb764a",
+  "git_dirty": true,
+  "container_image_digest": "",
+  "docker_version": "",
+  "reasoning_text": "",
+  "parse_status": "ok",
+  "context_truncated": false,
+  "reasoning_tokens": 0,
+  "ttft_final_ms": 53316.45,
+  "rescore_commit": ""
+}

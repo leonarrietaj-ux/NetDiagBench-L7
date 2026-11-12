@@ -1,0 +1,15 @@
+scenario_id: "TLS-CHN-01"
+category: "TLS"
+fault_class: "TLS_CHAIN_INVALID"
+description: "Fallo en la cadena de certificados TLS por omision del certificado intermedio de la entidad emisora (CA) en el servidor Nginx"
+injection_script: "scenarios/injectors/http_failures.py"
+ground_truth:
+  root_cause: "Cadena de certificados TLS incompleta en el servidor web (falta el certificado intermedio de la CA emisora en ssl_certificate), provocando fallo de verificacion en el cliente."
+  affected_component: "nginx-tls-termination"
+  suggested_action: "Concatenar el certificado de servidor con el bundle de certificados intermedios de la CA en el archivo referenciado por ssl_certificate y recargar Nginx."
+  minimum_required_evidence:
+    - "openssl s_client -connect 127.0.0.1:443 -servername secure.corp.internal -> verify error:num=20:unable to get local issuer certificate"
+    - "nginx error.log: 'SSL_do_handshake() failed (SSL: error:0A000086:SSL routines::certificate verify failed)'"
+metadata:
+  target_url: "https://127.0.0.1:443/api/v1/secure"
+  expected_tls_alert: "unknown_ca"

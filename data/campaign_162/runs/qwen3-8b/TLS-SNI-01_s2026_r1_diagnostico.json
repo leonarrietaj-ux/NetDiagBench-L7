@@ -1,0 +1,32 @@
+{
+  "scenario_id": "TLS-SNI-01",
+  "model_id": "qwen3-8b",
+  "root_cause": "Anomalía en la coincidencia de nombres entre el FQDN solicitado por el cliente (SNI) y los Subject Alternative Names (SAN) del certificado TLS configurado.",
+  "affected_component": "nginx-tls-termination",
+  "suggested_action": "Añadir el FQDN 'api-unregistered.corp.internal' al bloque `server_name` en la configuración de Nginx o emitir un certificado multi-dominio con SAN correspondiente. Recargar Nginx mediante `nginx -s reload` después de actualizar la configuración.",
+  "natural_language_explanation": "La telemetría muestra errores recurrentes de 'hostname mismatch' durante el handshake TLS, confirmados por la herramienta openssl que identifica un certificado con CN='default.corp.internal' sin coincidencia con el SNI solicitado. Según RFC8446, cuando el FQDN en SNI no coincide con los SAN/CN del certificado, se genera error num=62 (Hostname mismatch). La configuración de Nginx como terminador TLS es responsable de validar y asociar el SNI al certificado correcto. Los logs indican que no existe un bloque `server_name` para 'api-unregistered.corp.internal', lo cual invalida la coincidencia requerida por el protocolo TLS 1.3. La solución implica ajustes en la configuración de terminación TLS de Nginx, ya que el motor criptográfico (nginx-tls-crypto-engine) solo procesa certificados validados previamente por la capa de terminación.",
+  "supporting_evidence": [
+    "openssl s_client -> CONNECTED(00000003) depth=0 C = CO, ST = Norte de Santander, O = UniPamplona, CN = default.corp.internal verify error:num=62:Hostname mismatch --- Certificate chain 0 s:CN = default.corp.internal --- Verify return code: 62 (Hostname mismatch)"
+  ],
+  "is_evidence_backed": true,
+  "tool_blocked_penalty": false,
+  "confidence_score": 1.0,
+  "execution_mode": "sintetico_determinista",
+  "engine_mode": "live_ollama",
+  "factual_accuracy_c6": 2,
+  "c6_automated_evidence_check": 2,
+  "c6_human_score": null,
+  "evidence_status": "backed",
+  "sustentation_status": "sustentado",
+  "model_diagnosis_text": "Okay, let me try to figure this out. The user provided a network incident report related to TLS issues. The main problem seems to be certificate hostname mismatches. From the telemetry data, there are multiple error logs indicating that the client's SNI (Server Name Indication) doesn't match any SSL certificates configured on the server. Specifically, the errors mention \"certificate hostname mismatch\" and \"no matching SSL certificate for SNI host: api-unregistered.corp.internal\". \n\nLooking at the RFCs and SOPs provided, the key points are that when a client connects using TLS, it sends an SNI extension with the requested domain. The server must have a certificate that includes this domain in its Subject Alternative Names (SANs) or in the Common Name (CN). If there's a mismatch, the server responds with a hostname mismatch error, which is what's happening here.\n\nThe user also ran the openssl command to check the connection. The output shows that the server presented a certificate with CN=default.corp.internal, but the client was trying to connect to api-unregistered.corp.internal. Since this domain isn't listed in the SANs or CN of the certificate, the TLS handshake fails with error 62 (Hostname mismatch).\n\nNow, determining the component affected: The issue is on the server side during the TLS termination process. Nginx is handling the SSL/TLS termination, so the problem lies in how it's configured to handle SNI requests. The crypto engine might be involved if there's an issue with the certificate processing, but the logs point more towards a configuration error in Nginx's SSL setup.\n\nThe mitigation steps from the SOP suggest checking the server_name blocks in Nginx and ensuring the certificate includes the required SANs. Also, using openssl to inspect the certificate's details would help confirm if the domain is missing. The user should add the FQDN to the server configuration or obtain a new certificate with the correct SANs.\n\nIn terms of technical foundation, RFC 8446 explains that when there's a mismatch between the SNI and the certificate's SAN/CN, the server must return an error. The telemetry data aligns with this, showing repeated handshake failures due to hostname mismatches. The openssl tool's output confirms that the presented certificate doesn't cover the requested domain, leading to the errors observed.\n{\n  \"causa_raiz\": \"Anomalía en la coincidencia de nombres entre el FQDN solicitado por el cliente (SNI) y los Subject Alternative Names (SAN) del certificado TLS configurado.\",\n  \"componente\": \"nginx-tls-termination\",\n  \"mitigacion\": \"Añadir el FQDN 'api-unregistered.corp.internal' al bloque `server_name` en la configuración de Nginx o emitir un certificado multi-dominio con SAN correspondiente. Recargar Nginx mediante `nginx -s reload` después de actualizar la configuración.\",\n  \"fundamentacion_tecnica\": \"La telemetría muestra errores recurrentes de 'hostname mismatch' durante el handshake TLS, confirmados por la herramienta openssl que identifica un certificado con CN='default.corp.internal' sin coincidencia con el SNI solicitado. Según RFC8446, cuando el FQDN en SNI no coincide con los SAN/CN del certificado, se genera error num=62 (Hostname mismatch). La configuración de Nginx como terminador TLS es responsable de validar y asociar el SNI al certificado correcto. Los logs indican que no existe un bloque `server_name` para 'api-unregistered.corp.internal', lo cual invalida la coincidencia requerida por el protocolo TLS 1.3. La solución implica ajustes en la configuración de terminación TLS de Nginx, ya que el motor criptográfico (nginx-tls-crypto-engine) solo procesa certificados validados previamente por la capa de terminación.\"\n}",
+  "git_commit_hash": "952a628e13ba8bbbe60a5c5c65a34d05becb764a",
+  "git_dirty": true,
+  "container_image_digest": "",
+  "docker_version": "",
+  "reasoning_text": "",
+  "parse_status": "ok",
+  "context_truncated": false,
+  "reasoning_tokens": 0,
+  "ttft_final_ms": 46499.83,
+  "rescore_commit": ""
+}

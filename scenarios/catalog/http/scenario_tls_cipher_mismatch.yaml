@@ -1,0 +1,17 @@
+scenario_id: "TLS-CIPH-01"
+category: "TLS"
+fault_class: "TLS_CIPHER_MISMATCH"
+description: "Fallo de apretón de manos (SSL Handshake Failure): cliente y servidor no comparten suites de cifrado criptográfico compatibles según las políticas de seguridad de Nginx"
+injection_script: "scenarios/injectors/http_failures.py"
+ground_truth:
+  root_cause: "Incompatibilidad de suites de cifrado (Cipher Suite Mismatch): el servidor restringe exclusivamente a TLS 1.3/AEAD y rechaza las suites legadas ofrecidas por el cliente (código 40 handshake_failure)."
+  affected_component: "nginx-tls-crypto-engine"
+  suggested_action: "Actualizar la librería TLS del cliente para soportar suites modernas (TLS_AES_256_GCM_SHA384) o incorporar suites de transición en ssl_ciphers si la compatibilidad legada es requerida."
+  minimum_required_evidence:
+    - "openssl s_client -connect 127.0.0.1:443 -cipher AES128-SHA -> alert handshake failure (code 40)"
+    - "nginx error.log: '[error] SSL_do_handshake() failed (SSL: error:0A000410:SSL routines::sslv3 alert handshake failure) while SSL handshaking'"
+metadata:
+  target_fqdn: "secure.corp.internal"
+  port: 443
+  client_cipher: "AES128-SHA"
+  expected_alert: "handshake_failure"

@@ -1,0 +1,153 @@
+{
+  "fecha_actualizacion": "2026-10-31T14:57:28.141485+00:00",
+  "capa1_escenarios": {
+    "total_escenarios": 18,
+    "ids": [
+      "DNS-DEL-01",
+      "DNS-NXD-01",
+      "DNS-REF-01",
+      "DNS-SRV-01",
+      "DNS-TRUNC-01",
+      "HTTP-POOL-01",
+      "HTTP-403-01",
+      "HTTP-429-01",
+      "HTTP-500-01",
+      "HTTP-502-01",
+      "HTTP-503-01",
+      "HTTP-504-01",
+      "NET-LAT-01",
+      "HTTP-ORIGIN-01",
+      "TLS-CHN-01",
+      "TLS-CIPH-01",
+      "TLS-EXP-01",
+      "TLS-SNI-01"
+    ],
+    "escenarios_invalidos": []
+  },
+  "capa2_pipeline": {
+    "status": "OK",
+    "parsed_logs_count": 15
+  },
+  "capa3_rag": {
+    "status": "OK",
+    "chunks_recuperados": 2,
+    "memoria_mb": 0.05
+  },
+  "capa4_modelos": {
+    "total_modelos": 3,
+    "modelos_registrados": [
+      "qwen3-8b",
+      "glm-4-9b-chat",
+      "phi-4-mini-instruct"
+    ]
+  },
+  "capa5_orquestador": {
+    "status": "OK",
+    "root_cause_detectada": "Delegación coja (lame delegation) por registros NS desincronizados en la zona padre.",
+    "ttft_ms": 135.82
+  },
+  "capa6_interfaz": {
+    "suite_store": "OK"
+  },
+  "capa7_dataset_y_estadistica": {
+    "total_filas": 162,
+    "columnas": [
+      "scenario_id",
+      "model_id",
+      "seed",
+      "repetition_index",
+      "category",
+      "fault_class",
+      "is_root_cause_correct",
+      "is_component_correct",
+      "partial_match_score",
+      "evidence_backed",
+      "ttft_ms",
+      "tokens_per_sec",
+      "total_time_ms",
+      "tool_steps_count",
+      "cpu_percent_avg",
+      "peak_ram_mb",
+      "peak_vram_gb",
+      "energy_kwh",
+      "co2_emissions_kg",
+      "rubric_score",
+      "host_hardware_fingerprint",
+      "created_at",
+      "modelo_version",
+      "ollama_version",
+      "semilla",
+      "timestamp",
+      "execution_mode"
+    ],
+    "valores_nulos": {
+      "scenario_id": 0,
+      "model_id": 0,
+      "seed": 0,
+      "repetition_index": 0,
+      "category": 0,
+      "fault_class": 0,
+      "is_root_cause_correct": 0,
+      "is_component_correct": 0,
+      "partial_match_score": 0,
+      "evidence_backed": 0,
+      "ttft_ms": 0,
+      "tokens_per_sec": 0,
+      "total_time_ms": 0,
+      "tool_steps_count": 0,
+      "cpu_percent_avg": 0,
+      "peak_ram_mb": 0,
+      "peak_vram_gb": 0,
+      "energy_kwh": 0,
+      "co2_emissions_kg": 0,
+      "rubric_score": 0,
+      "host_hardware_fingerprint": 0,
+      "created_at": 0,
+      "modelo_version": 0,
+      "ollama_version": 0,
+      "semilla": 0,
+      "timestamp": 0,
+      "execution_mode": 0
+    },
+    "ranking_modelos": [
+      "qwen3-8b",
+      "phi-4-mini-instruct",
+      "glm-4-9b-chat"
+    ],
+    "cohens_kappa": {
+      "kappa": 0.3921,
+      "po": 0.716,
+      "pe": 0.5329,
+      "se": 0.0758,
+      "ci_95": [
+        0.2434,
+        0.5407
+      ],
+      "interpretation": "Concordancia aceptable (Fair)",
+      "contingency_matrix": {
+        "a": 82,
+        "b": 35,
+        "c": 11,
+        "d": 34,
+        "n": 162,
+        "marginal_row_true": 117,
+        "marginal_row_false": 45,
+        "marginal_col_true": 93,
+        "marginal_col_false": 69
+      }
+    },
+    "kruskal_p_values": {
+      "ttft_ms": 0.0,
+      "tokens_per_sec": 0.0,
+      "total_time_ms": 0.0,
+      "energy_kwh": 0.0,
+      "rubric_score": 8.2e-05,
+      "partial_match_score": 0.000482
+    }
+  },
+  "exportadores": {
+    "pdf": "OK",
+    "excel": "OK"
+  },
+  "errores_detectados": []
+}

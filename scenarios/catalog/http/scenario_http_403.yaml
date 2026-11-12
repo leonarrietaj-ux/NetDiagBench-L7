@@ -1,0 +1,15 @@
+scenario_id: "HTTP-403-01"
+category: "API_GATEWAY"
+fault_class: "HTTP_403_FORBIDDEN"
+description: "Acceso denegado (HTTP 403 Forbidden) en el API Gateway debido a política de denegación de IP (deny all) o filtro de seguridad WAF en ruta administrativa"
+injection_script: "scenarios/injectors/http_failures.py"
+ground_truth:
+  root_cause: "Directiva 'deny all' en bloque location /admin/ o regla de lista negra de IP en el API Gateway bloqueando la dirección de origen del operador (HTTP 403 Forbidden)."
+  affected_component: "nginx-api-gateway"
+  suggested_action: "Modificar la directiva 'allow <ip>; deny all;' en /etc/nginx/conf.d/admin.conf para autorizar la IP de origen del operador y recargar Nginx."
+  minimum_required_evidence:
+    - "curl -I -s http://127.0.0.1:80/admin/system/status -> HTTP/1.1 403 Forbidden"
+    - "nginx error.log: '[error] access forbidden by rule, client: 127.0.0.1, server: api.corp.internal, request: GET /admin/system/status HTTP/1.1'"
+metadata:
+  target_url: "http://127.0.0.1:80/admin/system/status"
+  expected_status_code: 403

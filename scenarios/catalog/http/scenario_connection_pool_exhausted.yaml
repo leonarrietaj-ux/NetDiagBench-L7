@@ -1,0 +1,15 @@
+scenario_id: "HTTP-POOL-01"
+category: "API_GATEWAY"
+fault_class: "CONNECTION_POOL_EXHAUSTED"
+description: "Agotamiento del pool de conexiones hacia la base de datos o microservicio upstream en el proxy inverso Nginx"
+injection_script: "scenarios/injectors/http_failures.py"
+ground_truth:
+  root_cause: "Agotamiento del pool de conexiones persistentes (keepalive pool exhausted) hacia el backend upstream, rechazando peticiones entrantes con HTTP 503 o cerrando sockets."
+  affected_component: "upstream-backend-api"
+  suggested_action: "Incrementar el parametro keepalive y max_conns en el bloque upstream de Nginx o ajustar el limite de conexiones del backend."
+  minimum_required_evidence:
+    - "curl -I -s http://127.0.0.1:80/api/v1/users -> HTTP/1.1 503 Service Unavailable"
+    - "nginx error.log: 'connection pool exhausted or limit exceeded while connecting to upstream'"
+metadata:
+  target_url: "http://127.0.0.1:80/api/v1/users"
+  expected_status_code: 503

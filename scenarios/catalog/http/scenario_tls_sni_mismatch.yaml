@@ -1,0 +1,16 @@
+scenario_id: "TLS-SNI-01"
+category: "TLS"
+fault_class: "TLS_SNI_MISMATCH"
+description: "Fallo en la extensión SNI (Server Name Indication): el nombre de host solicitado no coincide con los nombres de dominio cubiertos por el certificado SSL presentado"
+injection_script: "scenarios/injectors/http_failures.py"
+ground_truth:
+  root_cause: "Discrepancia de SNI: el certificado presentado por Nginx corresponde al servidor por defecto y no incluye el FQDN solicitado en los Subject Alternative Names (SAN), causando error num=62 Hostname mismatch."
+  affected_component: "nginx-tls-termination"
+  suggested_action: "Configurar un bloque server dedicado con el certificado correspondiente o emitir un certificado wildcard/SAN que incluya el FQDN solicitado."
+  minimum_required_evidence:
+    - "openssl s_client -connect 127.0.0.1:443 -servername api-unregistered.corp.internal -> verify error:num=62:Hostname mismatch"
+    - "nginx error.log: '[warn] no matching SSL certificate for SNI host: api-unregistered.corp.internal, serving default certificate'"
+metadata:
+  target_fqdn: "api-unregistered.corp.internal"
+  port: 443
+  expected_verify_error: "num=62"

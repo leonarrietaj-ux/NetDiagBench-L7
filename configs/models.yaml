@@ -1,0 +1,41 @@
+# Terna de Modelos Seleccionados (Num. 5.3, Tabla 5.1)
+models:
+  - id: "qwen3-8b"
+    name: "Qwen3-8B"
+    provider: "Alibaba"
+    parameters_raw: "8.2B"
+    parameters_without_embeddings: "6.95B"
+    license: "Apache 2.0"
+    quantization: "Q4_K_M"
+    format: "GGUF"
+    context_window_tokens: 32768
+    function_calling_support: "native"
+    ollama_tag: "qwen3:8b-q4_K_M"
+    approx_vram_gb: 5.5
+    reason_for_inclusion: "Modo de razonamiento conmutable y soporte nativo de herramientas para orquestación."
+
+  - id: "glm-4-9b-chat"
+    name: "GLM-4-9B-Chat"
+    provider: "Zhipu AI (Z.ai)"
+    parameters_raw: "9.0B"
+    license: "GLM-4 License"
+    quantization: "Q4_K_M"
+    format: "GGUF"
+    context_window_tokens: 131072
+    function_calling_support: "berkeley_81pct"
+    ollama_tag: "glm4:9b-chat-q4_K_M"
+    approx_vram_gb: 5.9
+    reason_for_inclusion: "Mayor rendimiento en invocación de funciones y familia arquitectónica independiente."
+
+  - id: "phi-4-mini-instruct"
+    name: "Phi-4-mini-instruct"
+    provider: "Microsoft"
+    parameters_raw: "3.8B"
+    license: "MIT"
+    quantization: "Q4_K_M"
+    format: "GGUF"
+    context_window_tokens: 131072
+    function_calling_support: "json_schema_tool_format"
+    ollama_tag: "phi4-mini:instruct-q4_K_M"
+    approx_vram_gb: 2.8
+    reason_for_inclusion: "Extremo inferior del eje de parámetros con licencia permisiva y alta eficiencia en edge."

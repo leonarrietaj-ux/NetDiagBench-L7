@@ -1,0 +1,32 @@
+{
+  "scenario_id": "NET-LAT-01",
+  "model_id": "glm-4-9b-chat",
+  "root_cause": "Un timeout en la conexión entre el gateway Nginx y el backend, debido a una latencia excesiva o a problemas de disponibilidad del backend.",
+  "affected_component": "nginx-api-gateway",
+  "suggested_action": "Verificar la configuración del proxy_read_timeout en Nginx.\n2. Ejecutar `curl -I -s http://127.0.0.1:80/api/v1/reports` para capturar encabezados HTTP y confirmar el estado de la respuesta.\n3. Revisar los logs de error de Nginx buscando registros como 'upstream timed out' o 'slow network response'.\n4. Si es necesario, incrementar temporalmente el valor de proxy_read_timeout en Nginx y recargar la configuración con `nginx -s reload`.",
+  "natural_language_explanation": "La telemetría observada muestra una tasa de error del 92.68% y latencias superiores a los 2000 ms, lo cual es consistente con un timeout en las conexiones L7. Los registros de Nginx indican timeouts y anomalies de RTT, lo que sugiere problemas en la comunicación entre el gateway y el backend. La especificación RFC 9110 define el código 504 Gateway Time-out como una respuesta del intermediario cuando no recibe una respuesta a tiempo del servidor ascendente. Esto se contrasta con los resultados obtenidos de `curl`, que muestra un HTTP 504 Gateway Time-out, confirmando la causalidad en el gateway Nginx.",
+  "supporting_evidence": [
+    "curl -I -s http://127.0.0.1:80/api/v1/reports -> HTTP/1.1 504 Gateway Time-out Server: nginx/1.24.0 Date: Fri, 25 Sep 2026 10:01:02 GMT Content-Type: text/html Content-Length: 167 Connection: keep-alive <html><head><title>504 Gateway Time-out</title></head><body><center><h1>504 Gateway Time-out</h1></center><hr><center>nginx</center></body></html>"
+  ],
+  "is_evidence_backed": false,
+  "tool_blocked_penalty": false,
+  "confidence_score": 0.75,
+  "execution_mode": "sintetico_determinista",
+  "engine_mode": "live_ollama",
+  "factual_accuracy_c6": 1,
+  "c6_automated_evidence_check": 1,
+  "c6_human_score": null,
+  "evidence_status": "partial",
+  "sustentation_status": "no_sustentado",
+  "model_diagnosis_text": "\n```json\n{\n  \"causa_raiz\": \"La causa raíz del incidente es un timeout en la conexión entre el gateway Nginx y el backend, debido a una latencia excesiva o a problemas de disponibilidad del backend.\",\n  \"componente\": \"nginx-api-gateway\",\n  \"mitigacion\": \"1. Verificar la configuración del proxy_read_timeout en Nginx.\\n2. Ejecutar `curl -I -s http://127.0.0.1:80/api/v1/reports` para capturar encabezados HTTP y confirmar el estado de la respuesta.\\n3. Revisar los logs de error de Nginx buscando registros como 'upstream timed out' o 'slow network response'.\\n4. Si es necesario, incrementar temporalmente el valor de proxy_read_timeout en Nginx y recargar la configuración con `nginx -s reload`.\",\n  \"fundamentacion_tecnica\": \"La telemetría observada muestra una tasa de error del 92.68% y latencias superiores a los 2000 ms, lo cual es consistente con un timeout en las conexiones L7. Los registros de Nginx indican timeouts y anomalies de RTT, lo que sugiere problemas en la comunicación entre el gateway y el backend. La especificación RFC 9110 define el código 504 Gateway Time-out como una respuesta del intermediario cuando no recibe una respuesta a tiempo del servidor ascendente. Esto se contrasta con los resultados obtenidos de `curl`, que muestra un HTTP 504 Gateway Time-out, confirmando la causalidad en el gateway Nginx.\"\n}\n```",
+  "git_commit_hash": "952a628e13ba8bbbe60a5c5c65a34d05becb764a",
+  "git_dirty": true,
+  "container_image_digest": "",
+  "docker_version": "",
+  "reasoning_text": "",
+  "parse_status": "ok",
+  "context_truncated": false,
+  "reasoning_tokens": 0,
+  "ttft_final_ms": 62344.07,
+  "rescore_commit": ""
+}

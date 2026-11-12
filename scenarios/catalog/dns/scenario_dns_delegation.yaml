@@ -1,0 +1,16 @@
+scenario_id: "DNS-DEL-01"
+category: "DNS"
+fault_class: "DELEGATION_ERROR"
+description: "Error de delegación en zona DNS (Lame Delegation) debido a registros NS desactualizados o inexistentes"
+injection_script: "scenarios/injectors/dns_failures.py"
+ground_truth:
+  root_cause: "Delegación coja (lame delegation): los servidores NS delegados en la zona padre no tienen autoridad sobre la zona hija solicitada o están desincronizados."
+  affected_component: "bind9-zone-delegation"
+  suggested_action: "Sincronizar los registros NS y pegamento (glue records) entre la zona padre y los servidores autoritativos delegados."
+  minimum_required_evidence:
+    - "dig @127.0.0.1 -p 5353 sub.corp.internal NS -> status: SERVFAIL or REFUSED"
+    - "bind9 log: 'lame server resolving sub.corp.internal'"
+metadata:
+  target_fqdn: "sub.corp.internal"
+  query_type: "NS"
+  expected_rcode: "SERVFAIL"

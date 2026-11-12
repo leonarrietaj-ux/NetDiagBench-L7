@@ -1,0 +1,42 @@
+# NetDiagBench-L7 Base Requirements
+# Generado para ejecución reproducible según especificación de proyecto
+
+# Capa 1 y 2: Formatos, plantillas y preprocesamiento de logs
+pydantic>=2.7.0
+pyyaml>=6.0.1
+jinja2>=3.1.4
+drain3>=0.9.11
+
+# Capa 3: RAG Léxico Acotado BM25 (<= 0.05 MB RAM)
+langchain>=0.3.0
+langchain-community>=0.3.0
+
+# Capa 4: Inferencia Local (Ollama / llama.cpp / HTTP client)
+ollama>=0.4.0
+httpx>=0.27.0
+
+# Capa 5: Orquestación Agéntica y Herramientas Read-Only
+langgraph>=0.2.20
+dnspython>=2.6.1
+cryptography>=43.0.0
+
+# Capa 6: Interfaces CLI y Dashboard Web
+typer[all]>=0.12.5
+rich>=13.7.1
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.6
+sse-starlette>=2.1.3
+
+# Capa 7: Evaluación, Telemetría, Métricas y Exportación
+psutil>=6.0.0
+scipy>=1.13.0
+numpy>=1.26.4
+pandas>=2.2.2
+openpyxl>=3.1.5
+reportlab>=5.0.0
+
+# Testing y Calidad de Código
+pytest>=8.2.0
+pytest-asyncio>=0.24.0
+ruff>=0.5.0
+mypy>=1.10.0

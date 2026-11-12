@@ -1,0 +1,16 @@
+scenario_id: "DNS-SRV-01"
+category: "DNS"
+fault_class: "SERVFAIL"
+description: "Servidor resolutor BIND9 devuelve SERVFAIL debido a agotamiento de tiempo de espera (timeout) con el servidor autoritativo de zona remota"
+injection_script: "scenarios/injectors/dns_failures.py"
+ground_truth:
+  root_cause: "El servidor autoritativo remoto no responde a las consultas recursivas (timeout / puerto UDP 53 filtrado), provocando que BIND9 emita RCODE 2 (SERVFAIL)."
+  affected_component: "bind9-recursive-resolver"
+  suggested_action: "Verificar la conectividad de red hacia los servidores de nombres autoritativos de la zona y descartar bloqueo en cortafuegos perimetral."
+  minimum_required_evidence:
+    - "dig @127.0.0.1 -p 5353 partner.external.org A -> status: SERVFAIL"
+    - "bind9 log: 'connection timed out resolving partner.external.org/A/IN'"
+metadata:
+  target_fqdn: "partner.external.org"
+  query_type: "A"
+  expected_rcode: "SERVFAIL"

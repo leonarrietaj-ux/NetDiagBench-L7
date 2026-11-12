@@ -1,0 +1,15 @@
+scenario_id: "HTTP-429-01"
+category: "API_GATEWAY"
+fault_class: "HTTP_429_RATE_LIMITED"
+description: "Agotamiento de cuota de solicitudes por segundo (HTTP 429 Too Many Requests) en Nginx API Gateway debido al algoritmo leaky-bucket / limit_req_zone"
+injection_script: "scenarios/injectors/http_failures.py"
+ground_truth:
+  root_cause: "Tasa de peticiones por segundo excede el umbral estipulado en limit_req_zone (rate=10r/s) devolviendo HTTP 429 Too Many Requests."
+  affected_component: "nginx-rate-limiter"
+  suggested_action: "Incrementar el parámetro burst o aumentar la tasa de peticiones en la directiva limit_req de Nginx para clientes autorizados."
+  minimum_required_evidence:
+    - "curl -I -s http://127.0.0.1:80/api/v1/search?q=telecom -> HTTP/1.1 429 Too Many Requests"
+    - "nginx error.log: '[error] limiting requests, excess: 5.230 by zone \"req_limit_per_ip\", client: 127.0.0.1'"
+metadata:
+  target_url: "http://127.0.0.1:80/api/v1/search?q=telecom"
+  expected_status_code: 429

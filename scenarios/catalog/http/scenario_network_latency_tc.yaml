@@ -1,0 +1,16 @@
+scenario_id: "NET-LAT-01"
+category: "HTTP_WEB"
+fault_class: "NETWORK_LATENCY_TC"
+description: "Degradacion severa del enlace de red por retardo anomalo y fluctuacion inyectada mediante Linux Traffic Control (tc netem)"
+injection_script: "scenarios/injectors/http_failures.py"
+ground_truth:
+  root_cause: "Latencia de red y perdida de paquetes excesiva en la interfaz de red (tc netem delay 2000ms jitter 500ms), provocando degradacion critica del RTT y timeouts de aplicacion."
+  affected_component: "network-infrastructure"
+  suggested_action: "Eliminar las reglas de colas disciplinarias qdisc netem en la interfaz del host con tc qdisc del y verificar la latencia basal ICMP/TCP."
+  minimum_required_evidence:
+    - "ping -c 4 127.0.0.1 -> rtt avg > 2000ms"
+    - "nginx error.log: 'upstream timed out while connecting or reading response header'"
+metadata:
+  target_url: "http://127.0.0.1:80/api/v1/reports"
+  delay_ms: 2000
+  jitter_ms: 500

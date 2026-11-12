@@ -1,0 +1,15 @@
+scenario_id: "HTTP-500-01"
+category: "HTTP_WEB"
+fault_class: "HTTP_500_INTERNAL"
+description: "Servidor Web o Backend devuelve HTTP 500 debido a una excepción de sintaxis o fallo en tiempo de ejecución no controlado"
+injection_script: "scenarios/injectors/http_failures.py"
+ground_truth:
+  root_cause: "Excepción no controlada en el código del backend (KeyError o RuntimeError al procesar el payload de la petición), generando respuesta 500 Internal Server Error."
+  affected_component: "backend-application-code"
+  suggested_action: "Depurar el manejador de la ruta en la aplicación y encapsular el bloque con manejo adecuado de excepciones."
+  minimum_required_evidence:
+    - "curl -I -s http://127.0.0.1:80/api/v1/checkout -> HTTP/1.1 500 Internal Server Error"
+    - "backend application log: 'Traceback (most recent call last): ... KeyError: user_id'"
+metadata:
+  target_url: "http://127.0.0.1:80/api/v1/checkout"
+  expected_status_code: 500

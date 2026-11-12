@@ -1,0 +1,80 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# NetDiagBench-L7: Topología Containerlab — Web/HTTP/TLS (Nginx + Backend)
+# Escenarios: HTTP-502-01, HTTP-504-01, HTTP-500-01, TLS-EXP-01, HTTP-ORIGIN-01
+#
+# Requisitos del host:
+#   - Docker CE ≥ 24.0
+#   - containerlab ≥ 0.55.0
+#   - imágenes: nginx:1.27-alpine, python:3.12-slim
+# ─────────────────────────────────────────────────────────────────────────────
+name: netdiagbench-web
+
+topology:
+  kinds:
+    linux:
+      image: alpine:3.20
+
+  nodes:
+    # ── Cliente HTTP (curl/httpie) ───────────────────────────────────────
+    http-client:
+      kind: linux
+      exec:
+        - apk add --no-cache curl openssl
+      labels:
+        role: client
+        benchapp-layer: L1-lab
+
+    # ── Proxy Reverso Nginx (TLS termination + load balancer) ────────────
+    nginx-proxy:
+      kind: linux
+      image: nginx:1.27-alpine
+      binds:
+        - ./configs/nginx/nginx.conf:/etc/nginx/nginx.conf
+        - ./configs/nginx/certs:/etc/nginx/certs
+        - ./configs/nginx/conf.d:/etc/nginx/conf.d
+      ports:
+        - "8443:443"
+        - "8080:80"
+      labels:
+        role: reverse-proxy
+        benchapp-layer: L1-lab
+
+    # ── Backend API Principal (FastAPI/Gunicorn) ─────────────────────────
+    backend-api-1:
+      kind: linux
+      image: python:3.12-slim
+      exec:
+        - pip install fastapi uvicorn
+      binds:
+        - ./configs/backend/app.py:/app/main.py
+      labels:
+        role: backend
+        benchapp-layer: L1-lab
+
+    # ── Backend API Réplica (para upstream cluster) ──────────────────────
+    backend-api-2:
+      kind: linux
+      image: python:3.12-slim
+      exec:
+        - pip install fastapi uvicorn
+      binds:
+        - ./configs/backend/app.py:/app/main.py
+      labels:
+        role: backend
+        benchapp-layer: L1-lab
+
+    # ── Servidor de Base de Datos (simula latencia) ──────────────────────
+    database:
+      kind: linux
+      image: alpine:3.20
+      exec:
+        - apk add --no-cache socat
+      labels:
+        role: database
+        benchapp-layer: L1-lab
+
+  links:
+    - endpoints: ["http-client:eth1", "nginx-proxy:eth1"]
+    - endpoints: ["nginx-proxy:eth2", "backend-api-1:eth1"]
+    - endpoints: ["nginx-proxy:eth3", "backend-api-2:eth1"]
+    - endpoints: ["backend-api-1:eth2", "database:eth1"]

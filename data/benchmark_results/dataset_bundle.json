@@ -1,0 +1,348 @@
+{
+  "academic_context": {
+    "institution": "Universidad de Pamplona",
+    "faculty": "Facultad de Ingenierías y Arquitectura",
+    "program": "Ingeniería de Telecomunicaciones",
+    "project_title": "Implementación de un benchmark reproducible para el diagnóstico de fallas en servicios de capa de aplicación sobre IP con modelos de lenguaje ligeros de ejecución local",
+    "author": "Juan David León Arrieta",
+    "director": "Mg. Richard Eliseo Mendoza Gáfaro",
+    "year": 2026
+  },
+  "benchmark_protocol": {
+    "version": "1.0.0",
+    "models_count": 3,
+    "models": [
+      "qwen3-8b",
+      "glm-4-9b-chat",
+      "phi-4-mini-instruct"
+    ],
+    "scenarios_count": 18,
+    "seeds": [
+      42,
+      1337,
+      2026
+    ],
+    "total_runs": 162,
+    "evaluator_concepts_sha256": "bc0b1f55b085"
+  },
+  "hardware_detected": {
+    "gpu_model": "AMD Radeon(TM) 610M",
+    "vram_total_gb": 2.0,
+    "ram_total_gb": 13.83,
+    "cpu_model": "AMD64 Family 23 Model 160 Stepping 0, AuthenticAMD",
+    "os_version": "Windows 11 (10.0.26300)",
+    "driver_version": "32.0.21030.13004"
+  },
+  "aggregated_results": {
+    "root_cause_accuracy_all_models": 0.7531,
+    "evidence_backing_rate_all_models": 0.2346,
+    "f1_macro_all_models": 0.7744,
+    "partial_f1_score_all_models": 0.5037,
+    "rubric_score_all_models": 3.9167,
+    "per_model_summary": {
+      "glm-4-9b-chat": {
+        "parameters_b": 9.0,
+        "runs_count": 54,
+        "accuracy_pct": 74.1,
+        "component_accuracy_pct": 53.7,
+        "partial_f1": 0.607,
+        "evidence_rate_pct": 42.6,
+        "ttft_ms_mean": 288148.8,
+        "ttft_ms_ci95": [
+          276966.695,
+          300522.3133
+        ],
+        "tokens_per_sec_mean": 2.9,
+        "tokens_per_sec_ci95": [
+          2.8807,
+          2.937
+        ],
+        "latency_p50_ms": 501916.8,
+        "latency_p95_ms": 706684.8,
+        "peak_vram_gb": null,
+        "rubric_score": 4.13,
+        "total_energy_kwh": 1.131579,
+        "recommended_tier": "Mejor compromiso global (NOC)"
+      },
+      "phi-4-mini-instruct": {
+        "parameters_b": 3.8,
+        "runs_count": 54,
+        "accuracy_pct": 64.8,
+        "component_accuracy_pct": 46.3,
+        "partial_f1": 0.36,
+        "evidence_rate_pct": 0.0,
+        "ttft_ms_mean": 133724.2,
+        "ttft_ms_ci95": [
+          129587.0069,
+          137789.8807
+        ],
+        "tokens_per_sec_mean": 3.3,
+        "tokens_per_sec_ci95": [
+          3.2437,
+          3.3424
+        ],
+        "latency_p50_ms": 213264.3,
+        "latency_p95_ms": 248464.1,
+        "peak_vram_gb": null,
+        "rubric_score": 3.55,
+        "total_energy_kwh": 0.459677,
+        "recommended_tier": "Borde / Triaje Rapido (Edge Triage)"
+      },
+      "qwen3-8b": {
+        "parameters_b": 8.2,
+        "runs_count": 54,
+        "accuracy_pct": 87.0,
+        "component_accuracy_pct": 59.3,
+        "partial_f1": 0.543,
+        "evidence_rate_pct": 27.8,
+        "ttft_ms_mean": 253500.1,
+        "ttft_ms_ci95": [
+          243482.0143,
+          264297.1289
+        ],
+        "tokens_per_sec_mean": 1.8,
+        "tokens_per_sec_ci95": [
+          1.7207,
+          1.782
+        ],
+        "latency_p50_ms": 761328.4,
+        "latency_p95_ms": 1681855.0,
+        "peak_vram_gb": null,
+        "rubric_score": 4.07,
+        "total_energy_kwh": 2.033261,
+        "recommended_tier": "Razonamiento CoT / Recursos Acotados"
+      }
+    },
+    "statistical_correlations_scipy": {
+      "ttft_ms": {
+        "spearman_rho": 0.8119,
+        "spearman_p": 0.0,
+        "pearson_r": 0.8801,
+        "pearson_p": 0.0,
+        "significant_005": true
+      },
+      "tokens_per_sec": {
+        "spearman_rho": -0.3963,
+        "spearman_p": 0.0,
+        "pearson_r": -0.569,
+        "pearson_p": 0.0,
+        "significant_005": true
+      },
+      "total_time_ms": {
+        "spearman_rho": 0.5039,
+        "spearman_p": 0.0,
+        "pearson_r": 0.5886,
+        "pearson_p": 0.0,
+        "significant_005": true
+      },
+      "energy_kwh": {
+        "spearman_rho": 0.5044,
+        "spearman_p": 0.0,
+        "pearson_r": 0.5874,
+        "pearson_p": 0.0,
+        "significant_005": true
+      },
+      "rubric_score": {
+        "spearman_rho": 0.2864,
+        "spearman_p": 0.000221,
+        "pearson_r": 0.3113,
+        "pearson_p": 5.5e-05,
+        "significant_005": true
+      },
+      "partial_match_score": {
+        "spearman_rho": 0.2934,
+        "spearman_p": 0.000151,
+        "pearson_r": 0.2961,
+        "pearson_p": 0.00013,
+        "significant_005": true
+      }
+    },
+    "kruskal_wallis_non_parametric": {
+      "ttft_ms": {
+        "H_statistic": 114.4049,
+        "p_value": 0.0,
+        "significant_005": true
+      },
+      "tokens_per_sec": {
+        "H_statistic": 132.6446,
+        "p_value": 0.0,
+        "significant_005": true
+      },
+      "total_time_ms": {
+        "H_statistic": 133.9315,
+        "p_value": 0.0,
+        "significant_005": true
+      },
+      "energy_kwh": {
+        "H_statistic": 133.8047,
+        "p_value": 0.0,
+        "significant_005": true
+      },
+      "rubric_score": {
+        "H_statistic": 15.3527,
+        "p_value": 0.000464,
+        "significant_005": true
+      },
+      "partial_match_score": {
+        "H_statistic": 15.2939,
+        "p_value": 0.000478,
+        "significant_005": true
+      }
+    },
+    "effect_sizes_cohens_d": {
+      "ttft_ms": {
+        "glm-4-9b-chat vs phi-4-mini-instruct": {
+          "cohens_d": 4.6611,
+          "interpretation": "Efecto grande (Large)"
+        },
+        "glm-4-9b-chat vs qwen3-8b": {
+          "cohens_d": 0.8214,
+          "interpretation": "Efecto grande (Large)"
+        },
+        "phi-4-mini-instruct vs qwen3-8b": {
+          "cohens_d": -3.9367,
+          "interpretation": "Efecto grande (Large)"
+        }
+      },
+      "tokens_per_sec": {
+        "glm-4-9b-chat vs phi-4-mini-instruct": {
+          "cohens_d": -2.4651,
+          "interpretation": "Efecto grande (Large)"
+        },
+        "glm-4-9b-chat vs qwen3-8b": {
+          "cohens_d": 10.5403,
+          "interpretation": "Efecto grande (Large)"
+        },
+        "phi-4-mini-instruct vs qwen3-8b": {
+          "cohens_d": 9.6435,
+          "interpretation": "Efecto grande (Large)"
+        }
+      },
+      "total_time_ms": {
+        "glm-4-9b-chat vs phi-4-mini-instruct": {
+          "cohens_d": 3.9943,
+          "interpretation": "Efecto grande (Large)"
+        },
+        "glm-4-9b-chat vs qwen3-8b": {
+          "cohens_d": -1.5455,
+          "interpretation": "Efecto grande (Large)"
+        },
+        "phi-4-mini-instruct vs qwen3-8b": {
+          "cohens_d": -2.7993,
+          "interpretation": "Efecto grande (Large)"
+        }
+      }
+    }
+  },
+  "dataset_schema": {
+    "format": "CSV (RFC 4180)",
+    "encoding": "UTF-8",
+    "row_count": 162,
+    "column_count": 42,
+    "columns": {
+      "scenario_id": "Identificador del escenario de falla L7",
+      "model_id": "Modelo de lenguaje local evaluado",
+      "seed": "Semilla pseudoaleatoria de reproducibilidad",
+      "repetition_index": "Índice de repetición experimental",
+      "category": "Familia de servicio de red (DNS, HTTP_WEB, API_GATEWAY, TLS)",
+      "fault_class": "Taxonomía oficial IETF de la falla L7",
+      "is_root_cause_correct": "Booleano de evaluación formal de causa raíz",
+      "is_component_correct": "Booleano de aislamiento del componente afectado",
+      "partial_match_score": "Puntaje continuo de similitud léxica y componente (0.0..1.0)",
+      "evidence_backed": "Booleano de sustento en evidencia técnica empírica",
+      "ttft_ms": "Tiempo al primer token (Time to First Token) en milisegundos",
+      "tokens_per_sec": "Velocidad de generación de tokens por segundo",
+      "total_time_ms": "Tiempo total transcurrido en la inferencia y diagnóstico",
+      "tool_steps_count": "Número de llamadas a herramientas de red de solo lectura ejecutadas",
+      "cpu_percent_avg": "Porcentaje promedio de utilización de CPU del proceso",
+      "peak_ram_mb": "Memoria RAM residente máxima alcanzada por el proceso en MB",
+      "peak_vram_gb": "Memoria VRAM declarada o consumida por el modelo en GB",
+      "energy_kwh": "Consumo de energía eléctrica estimado por modelo dinámico en kWh",
+      "co2_emissions_kg": "Emisiones de carbono estimadas asociadas a la corrida en kg CO2",
+      "rubric_score": "Calificación formal en rúbrica explicativa técnica (0.0 a 5.0)",
+      "host_hardware_fingerprint": "Huella criptográfica del hardware host de ejecución",
+      "created_at": "Marca temporal UTC de registro de la corrida",
+      "modelo_version": "Identificador completo con cuantización GGUF Q4_K_M",
+      "model_family": "Familia arquitectónica y linaje del modelo",
+      "model_group": "Grupo de evaluación: oficial (terna) o adicional",
+      "evaluator_version": "Resumen criptográfico SHA-256 de evaluator_concepts.yaml",
+      "ollama_version": "Versión del runtime Ollama o motor de inferencia",
+      "semilla": "Alias entero de la semilla pseudoaleatoria",
+      "timestamp": "Marca temporal ISO-8601 de ejecución de la prueba",
+      "execution_mode": "Modalidad de ejecución: emulado o sintetico_determinista",
+      "model_diagnosis_text": "Texto completo emitido por el modelo en su respuesta",
+      "root_cause": "Texto exacto de la causa raíz identificada",
+      "git_commit_hash": "Hash commit SHA de git en la corrida",
+      "git_dirty": "Booleano que indica modificaciones no commiteadas",
+      "container_image_digest": "Resumen criptográfico de la imagen de contenedor Docker",
+      "docker_version": "Versión del motor Docker empleado en corridas emuladas",
+      "reasoning_text": "Cadena de razonamiento CoT extraída",
+      "parse_status": "Estado de parseo sintáctico de la causa raíz",
+      "context_truncated": "Booleano que indica recorte de contexto por límite de tokens",
+      "reasoning_tokens": "Conteo de tokens dedicados al razonamiento",
+      "ttft_final_ms": "Tiempo al primer token de la respuesta diagnóstica final",
+      "rescore_commit": "Identificador de la recalificación normativa",
+      "engine_mode": "Motor de inferencia empleado: live_ollama o deterministic_simulator",
+      "factual_accuracy_c6": "Exactitud factual C6: 2 (plena), 1 (parcial), 0 (nula)",
+      "ttft_s": "Time to first token normalizado en segundos",
+      "tokens_per_kwh": "Eficiencia energética en tokens por kilovatio-hora",
+      "energy_measurement_type": "Modalidad de medición energética: estimada",
+      "ram_gb": "RAM de trabajo del proceso en gigabytes",
+      "gpu_model_detected": "Modelo real de GPU detectado físicamente",
+      "vram_total_gb": "VRAM física total en gigabytes",
+      "vram_measurement_method": "Método de medición de VRAM empleado",
+      "vram_measurement_valid": "Booleano que certifica validez física directa de medición de VRAM",
+      "vram_declared_gb": "VRAM declarada en el perfil del modelo",
+      "ram_total_gb": "RAM física total del host en gigabytes",
+      "ram_available_gb": "RAM física disponible al inicio de la corrida en gigabytes",
+      "process_max_ram_gb": "Memoria RAM pico alcanzada por el proceso en gigabytes",
+      "cpu_model": "Modelo de CPU del host detectado",
+      "os_version": "Sistema operativo y versión del kernel del host",
+      "driver_version": "Versión del driver gráfico del host",
+      "cuda_version": "Versión de CUDA instalada o N/A",
+      "puntaje_precision": "Puntaje ponderado de precisión diagnóstica (40%)",
+      "puntaje_rubrica": "Puntaje ponderado de rúbrica explicativa (20%)",
+      "puntaje_velocidad": "Puntaje ponderado de velocidad de decodificación (20%)",
+      "puntaje_vram": "Puntaje ponderado de eficiencia de VRAM (20%, null si no medible)",
+      "puntaje_compuesto": "Puntaje compuesto multicriterio normalizado 40/20/20/20",
+      "elegibilidad": "Elegibilidad técnica según umbral mínimo de exactitud (>= 70%) a nivel modelo",
+      "motivo_exclusion": "Motivo explícito de exclusión técnica de selección",
+      "c6_automated_evidence_check": "Métrica / atributo c6_automated_evidence_check del benchmark experimental",
+      "c6_human_score": "Métrica / atributo c6_human_score del benchmark experimental",
+      "evidence_status": "Métrica / atributo evidence_status del benchmark experimental",
+      "sustentation_status": "Métrica / atributo sustentation_status del benchmark experimental",
+      "vram_peak_gb": "Métrica / atributo vram_peak_gb del benchmark experimental",
+      "vram_estimated_gb": "Métrica / atributo vram_estimated_gb del benchmark experimental",
+      "vram_shared_gb": "Métrica / atributo vram_shared_gb del benchmark experimental",
+      "vram_measurement_status": "Métrica / atributo vram_measurement_status del benchmark experimental",
+      "ram_peak_gb": "Métrica / atributo ram_peak_gb del benchmark experimental",
+      "ram_measurement_method": "Métrica / atributo ram_measurement_method del benchmark experimental",
+      "hardware_classification": "Métrica / atributo hardware_classification del benchmark experimental",
+      "inference_backend": "Métrica / atributo inference_backend del benchmark experimental",
+      "rubric_score_recovered": "Métrica / atributo rubric_score_recovered del benchmark experimental",
+      "is_root_cause_correct_strict": "Métrica / atributo is_root_cause_correct_strict del benchmark experimental",
+      "is_root_cause_correct_full_text": "Métrica / atributo is_root_cause_correct_full_text del benchmark experimental",
+      "fault_class_predicted_strict": "Métrica / atributo fault_class_predicted_strict del benchmark experimental",
+      "fault_class_predicted": "Métrica / atributo fault_class_predicted del benchmark experimental",
+      "fault_class_match_strict": "Métrica / atributo fault_class_match_strict del benchmark experimental",
+      "fault_class_match": "Métrica / atributo fault_class_match del benchmark experimental",
+      "audit_classification": "Métrica / atributo audit_classification del benchmark experimental",
+      "audit_rescore_verdict": "Métrica / atributo audit_rescore_verdict del benchmark experimental",
+      "has_prompt_placeholder_echo": "Métrica / atributo has_prompt_placeholder_echo del benchmark experimental",
+      "human_eval_case_id": "Métrica / atributo human_eval_case_id del benchmark experimental",
+      "human_eval_c1": "Métrica / atributo human_eval_c1 del benchmark experimental",
+      "human_eval_c2": "Métrica / atributo human_eval_c2 del benchmark experimental",
+      "human_eval_c3": "Métrica / atributo human_eval_c3 del benchmark experimental",
+      "human_eval_c4": "Métrica / atributo human_eval_c4 del benchmark experimental",
+      "human_eval_c5": "Métrica / atributo human_eval_c5 del benchmark experimental",
+      "human_eval_c6": "Métrica / atributo human_eval_c6 del benchmark experimental",
+      "human_eval_s": "Métrica / atributo human_eval_s del benchmark experimental",
+      "human_score_source": "Métrica / atributo human_score_source del benchmark experimental"
+    }
+  },
+  "file_integrity_fingerprints_sha256": {
+    "data/benchmark_results/resultados.csv": "369AAD9DEC89A5B17CF87F376E5059974F8F7ED49A8F531FD5BE8C6EE2F6F6D5",
+    "data/benchmark_results/resultados_recalculados.csv": "626B6E72E6465120080D34DCF15FAB95E75D0075826AB0EBB875716015DBFCB4"
+  },
+  "total_registros": 162
+}

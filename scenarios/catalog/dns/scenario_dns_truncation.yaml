@@ -1,0 +1,16 @@
+scenario_id: "DNS-TRUNC-01"
+category: "DNS"
+fault_class: "DNS_TRUNCATED_EDNS"
+description: "Respuesta DNS excede el búfer estándar UDP (512 bytes) activando bandera TC=1 y fallando por bloqueo o descarte de reintentos en TCP puerto 53"
+injection_script: "scenarios/injectors/dns_failures.py"
+ground_truth:
+  root_cause: "Respuesta con bandera TC=1 por desbordamiento de búfer UDP (512 bytes) sin soporte de EDNS0 o con puerto 53 TCP bloqueado en firewall."
+  affected_component: "bind9-resolver-firewall"
+  suggested_action: "Habilitar soporte EDNS0 con tamaño de búfer de 1232 bytes o habilitar tráfico TCP saliente en puerto 53 en la tabla de filtrado del firewall."
+  minimum_required_evidence:
+    - "dig @127.0.0.1 -p 5353 large-recordset.corp.internal ANY +bufsize=512 +notcp -> flags: qr tc rd"
+    - "bind9 query log: 'large response truncated to 512 bytes, client retrying over TCP'"
+metadata:
+  target_fqdn: "large-recordset.corp.internal"
+  query_type: "ANY"
+  expected_flags: "tc"

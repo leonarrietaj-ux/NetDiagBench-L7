@@ -1,0 +1,49 @@
+# NetDiagBench-L7 — Infraestructura Emulada de Triple Origen (L1-Lab)
+# Escenarios Físicos Ligeros para Tool Calling (dig, curl, openssl)
+# Consumo total de memoria: < 150 MB RAM
+
+services:
+  # ── Escenario A: Nginx HTTPS con Certificado SSL/TLS Expirado ─────────────
+  scenario-a-tls:
+    image: nginx:alpine
+    container_name: netdiag-tls-expired
+    ports:
+      - "8443:443"
+    volumes:
+      - ./scenario-a-tls/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./scenario-a-tls/certs:/etc/nginx/certs:ro
+    deploy:
+      resources:
+        limits:
+          memory: 48M
+    restart: unless-stopped
+
+  # ── Escenario B: Nginx Gateway con HTTP 502 (Backend Inalcanzable) ─────────
+  scenario-b-502:
+    image: nginx:alpine
+    container_name: netdiag-http-502
+    ports:
+      - "8080:80"
+    volumes:
+      - ./scenario-b-502/nginx.conf:/etc/nginx/nginx.conf:ro
+    deploy:
+      resources:
+        limits:
+          memory: 48M
+    restart: unless-stopped
+
+  # ── Escenario C: BIND9 DNS Autoritativo (NXDOMAIN / SERVFAIL) ─────────────
+  scenario-c-dns:
+    image: internetsystemsconsortium/bind9:9.18
+    container_name: netdiag-dns-bind9
+    ports:
+      - "5353:53/udp"
+      - "5353:53/tcp"
+    volumes:
+      - ./scenario-c-dns/named.conf:/etc/bind/named.conf:ro
+      - ./scenario-c-dns/zones:/etc/bind/zones:ro
+    deploy:
+      resources:
+        limits:
+          memory: 64M
+    restart: unless-stopped

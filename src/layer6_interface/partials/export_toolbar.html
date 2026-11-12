@@ -1,0 +1,314 @@
+<!-- ================= COMPONENTE GLOBAL: BARRA DE EXPORTACIÓN STANDALONE ================= -->
+<div id="standaloneExportToolbar" class="standalone-export-toolbar w-full px-4 py-2.5 rounded-xl border border-slate-700/70 bg-[#0e1b2e] shadow-md flex items-center justify-between gap-3" data-view="{{ view_key }}">
+    <style>
+        .standalone-export-toolbar {
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 14px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .standalone-export-toolbar * {
+            box-sizing: border-box;
+        }
+        .standalone-export-toolbar .toolbar-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            min-width: 0;
+            flex: 1 1 auto;
+        }
+        .standalone-export-toolbar .toolbar-right {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-shrink: 0 !important;
+            margin-left: auto;
+        }
+        .standalone-export-toolbar .toolbar-btn-group {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+        }
+        .standalone-export-toolbar .view-header-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(218, 218, 218, 0.3);
+            color: #f8fafc;
+            width: 32px !important;
+            height: 32px !important;
+            min-width: 32px !important;
+            min-height: 32px !important;
+            max-width: 32px !important;
+            max-height: 32px !important;
+            padding: 0 !important;
+            border-radius: 8px !important;
+            font-size: 0.88rem !important;
+            cursor: pointer !important;
+            transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, color 0.15s ease;
+            text-decoration: none;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            line-height: 1 !important;
+            white-space: nowrap !important;
+            flex-shrink: 0 !important;
+            transform: none !important;
+            position: relative !important;
+            box-sizing: border-box !important;
+        }
+        .standalone-export-toolbar .view-header-btn svg {
+            width: 16px !important;
+            height: 16px !important;
+            min-width: 16px !important;
+            min-height: 16px !important;
+            max-width: 16px !important;
+            max-height: 16px !important;
+            stroke-width: 2 !important;
+            display: block !important;
+            margin: auto !important;
+            flex-shrink: 0 !important;
+            box-sizing: border-box !important;
+        }
+        .standalone-export-toolbar .view-header-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            border-color: #ffffff;
+            transform: none !important;
+        }
+        .standalone-export-toolbar .toolbar-action-tooltip {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(6px);
+            background: #0f172a;
+            border: 1px solid #334155;
+            color: #f1f5f9;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 6px;
+            white-space: nowrap;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.15s ease, transform 0.15s ease;
+            z-index: 120;
+        }
+        .standalone-export-toolbar .toolbar-btn-group:hover .toolbar-action-tooltip {
+            opacity: 1;
+            transform: translateX(-50%) translateY(4px);
+        }
+        .standalone-export-toolbar .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+        .standalone-export-toolbar .btn-export-excel-header {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.22) 0%, rgba(5, 150, 105, 0.32) 100%) !important;
+            border: 1px solid rgba(16, 185, 129, 0.55) !important;
+            color: #6ee7b7 !important;
+            font-weight: 700 !important;
+            transform: none !important;
+        }
+        .standalone-export-toolbar .btn-export-excel-header:hover {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.4) 0%, rgba(5, 150, 105, 0.55) 100%) !important;
+            border-color: #10b981 !important;
+            color: #ffffff !important;
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.35) !important;
+            transform: none !important;
+        }
+        .standalone-export-toolbar .btn-export-pdf-header {
+            background: linear-gradient(135deg, rgba(173, 51, 51, 0.28) 0%, rgba(128, 24, 24, 0.38) 100%) !important;
+            border: 1px solid rgba(248, 113, 113, 0.5) !important;
+            color: #fca5a5 !important;
+            font-weight: 700 !important;
+            transform: none !important;
+        }
+        .standalone-export-toolbar .btn-export-pdf-header:hover {
+            background: linear-gradient(135deg, rgba(173, 51, 51, 0.5) 0%, rgba(128, 24, 24, 0.65) 100%) !important;
+            border-color: #ef4444 !important;
+            color: #ffffff !important;
+            box-shadow: 0 0 10px rgba(173, 51, 51, 0.4) !important;
+            transform: none !important;
+        }
+        /* Integración limpia y fija en cabecera de observabilidad */
+        header#visorStandaloneHeader #standaloneExportToolbar {
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            padding: 0 !important;
+            margin-bottom: 0 !important;
+            border-radius: 0 !important;
+            position: static !important; /* El sticky ya lo tiene header#visorStandaloneHeader */
+        }
+        /* Ocultamiento condicional cuando se renderiza dentro de un iframe o en modo embebido */
+        body.is-embedded .standalone-export-toolbar,
+        html.is-embedded .standalone-export-toolbar,
+        .is-embedded .standalone-export-toolbar,
+        .standalone-export-toolbar.is-hidden {
+            display: none !important;
+            visibility: hidden !important;
+            height: 0 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            border: 0 !important;
+            overflow: hidden !important;
+        }
+        /* Ocultar botón de Excel en vistas donde no aplica (correlación y consolidado) */
+        .standalone-export-toolbar[data-view="correlacion"] #groupStandaloneBtnExcel,
+        .standalone-export-toolbar[data-view="correlacion"] #standaloneBtnExcel,
+        .standalone-export-toolbar[data-view="consolidado"] #groupStandaloneBtnExcel,
+        .standalone-export-toolbar[data-view="consolidado"] #standaloneBtnExcel {
+            display: none !important;
+        }
+
+        /* Adaptabilidad Modo Claro */
+        [data-theme="light"] .standalone-export-toolbar {
+            background: #ffffff !important;
+            border-color: #cbd5e1 !important;
+            box-shadow: 0 2px 8px rgba(0, 51, 102, 0.08) !important;
+        }
+        [data-theme="light"] .standalone-export-toolbar #standaloneToolbarTitle {
+            color: #003366 !important;
+        }
+        [data-theme="light"] .standalone-export-toolbar .view-header-btn {
+            background: #f8fafc !important;
+            border-color: #cbd5e1 !important;
+            color: #003366 !important;
+            font-weight: 600 !important;
+            transform: none !important;
+        }
+        [data-theme="light"] .standalone-export-toolbar .view-header-btn:hover {
+            background: #e2e8f0 !important;
+            color: #ad3333 !important;
+            border-color: #ad3333 !important;
+            transform: none !important;
+        }
+        [data-theme="light"] .standalone-export-toolbar .btn-export-excel-header {
+            background: #ecfdf5 !important;
+            border-color: #10b981 !important;
+            color: #065f46 !important;
+        }
+        [data-theme="light"] .standalone-export-toolbar .btn-export-excel-header:hover {
+            background: #d1fae5 !important;
+            border-color: #059669 !important;
+            color: #047857 !important;
+        }
+        [data-theme="light"] .standalone-export-toolbar .btn-export-pdf-header {
+            background: #fff1f2 !important;
+            border-color: #ad3333 !important;
+            color: #991b1b !important;
+        }
+        [data-theme="light"] .standalone-export-toolbar .btn-export-pdf-header:hover {
+            background: #ffe4e6 !important;
+            border-color: #ad3333 !important;
+            color: #ad3333 !important;
+        }
+        [data-theme="light"] .standalone-export-toolbar .toolbar-action-tooltip {
+            background: #ffffff !important;
+            border-color: #cbd5e1 !important;
+            color: #003366 !important;
+            box-shadow: 0 4px 12px rgba(0, 51, 102, 0.15) !important;
+        }
+        @media (max-width: 768px) {
+            .standalone-export-toolbar {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 10px !important;
+            }
+            .standalone-export-toolbar .toolbar-right {
+                margin-left: 0 !important;
+                width: 100%;
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+
+    <!-- Bloque Izquierdo: Estado y Título de la Vista -->
+    <div class="toolbar-left">
+        <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #10b981; box-shadow: 0 0 6px #10b981; flex-shrink: 0;"></span>
+        <span id="standaloneToolbarTitle" style="font-size: 0.94rem; font-weight: 700; color: #f1f5f9; letter-spacing: -0.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ view_title }}</span>
+    </div>
+
+    <!-- Bloque Derecho: Botones de Exportación Alineados y Estáticos -->
+    <div class="toolbar-right">
+        <!-- Botón Descargar Excel (.xlsx) -->
+        <div class="toolbar-btn-group" id="groupStandaloneBtnExcel">
+            <a id="standaloneBtnExcel"
+               href="/api/export/excel{{ query_param }}"
+               class="view-header-btn btn-export-excel-header">
+                <svg width="16" height="16" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 14h18m-9-4v8m-7 4h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                <span class="sr-only">Descargar Excel</span>
+            </a>
+            <div class="toolbar-action-tooltip">Descargar Excel (.xlsx)</div>
+        </div>
+
+        <!-- Botón Descargar PDF Contextual -->
+        <div class="toolbar-btn-group" id="groupStandaloneBtnPdf">
+            <a id="standaloneBtnPdf"
+               href="{{ pdf_url }}{{ query_param }}"
+               data-base-href="{{ pdf_url }}"
+               class="view-header-btn btn-export-pdf-header">
+                <svg width="16" height="16" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                <span id="standaloneBtnPdfText" class="sr-only">{{ pdf_label }}</span>
+            </a>
+            <div class="toolbar-action-tooltip" id="standalonePdfTooltip">{{ pdf_label }}</div>
+        </div>
+
+        <!-- Botón Descargar JSON Consolidado -->
+        <div class="toolbar-btn-group" id="groupStandaloneBtnJson">
+            <a id="standaloneBtnJson"
+               href="/api/export/json{{ query_param }}"
+               class="view-header-btn btn-export-excel-header">
+                <svg width="16" height="16" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                <span class="sr-only">Descargar JSON</span>
+            </a>
+            <div class="toolbar-action-tooltip">Descargar JSON</div>
+        </div>
+
+        <!-- Botón Imprimir / PDF del Navegador -->
+        <div class="toolbar-btn-group" id="groupStandaloneBtnPrint">
+            <button type="button"
+                    id="standaloneBtnPrint"
+                    onclick="window.print()"
+                    class="view-header-btn">
+                <svg width="16" height="16" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+                <span class="sr-only">Imprimir</span>
+            </button>
+            <div class="toolbar-action-tooltip">Imprimir / PDF</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // Detección automática inmediata de entorno embebido (iframe o ?embed=true) vs standalone
+        try {
+            const params = new URLSearchParams(window.location.search);
+            const isEmbed = params.get('embed') === 'true' || (window.self !== window.top);
+            if (isEmbed) {
+                document.documentElement.classList.add('is-embedded');
+                if (document.body) document.body.classList.add('is-embedded');
+                const tb = document.getElementById('standaloneExportToolbar');
+                if (tb) {
+                    tb.classList.add('is-hidden');
+                    tb.style.setProperty('display', 'none', 'important');
+                    tb.remove();
+                }
+            }
+        } catch(e) {}
+    })();
+</script>

@@ -1,0 +1,50 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# NetDiagBench-L7: Topología Containerlab — DNS (BIND9)
+# Escenarios: DNS-NXD-01, DNS-SRV-01, DNS-DEL-01
+#
+# Requisitos del host:
+#   - Docker CE ≥ 24.0
+#   - containerlab ≥ 0.55.0
+#   - imagen: internetsystemsconsortium/bind9:9.19
+# ─────────────────────────────────────────────────────────────────────────────
+name: netdiagbench-dns
+
+topology:
+  kinds:
+    linux:
+      image: internetsystemsconsortium/bind9:9.19
+
+  nodes:
+    # ── Cliente que genera consultas DNS ──────────────────────────────────
+    dns-client:
+      kind: linux
+      image: alpine:3.20
+      exec:
+        - apk add --no-cache bind-tools
+      labels:
+        role: client
+        benchapp-layer: L1-lab
+
+    # ── Resolver recursivo (el SUT para SERVFAIL) ────────────────────────
+    bind9-recursive:
+      kind: linux
+      binds:
+        - ./configs/bind9/recursive/named.conf:/etc/bind/named.conf
+        - ./configs/bind9/recursive/zones:/etc/bind/zones
+      labels:
+        role: recursive-resolver
+        benchapp-layer: L1-lab
+
+    # ── Servidor autoritativo (el SUT para NXDOMAIN y DELEGATION) ────────
+    bind9-authoritative:
+      kind: linux
+      binds:
+        - ./configs/bind9/authoritative/named.conf:/etc/bind/named.conf
+        - ./configs/bind9/authoritative/zones:/etc/bind/zones
+      labels:
+        role: authoritative
+        benchapp-layer: L1-lab
+
+  links:
+    - endpoints: ["dns-client:eth1", "bind9-recursive:eth1"]
+    - endpoints: ["bind9-recursive:eth2", "bind9-authoritative:eth1"]

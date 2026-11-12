@@ -1,0 +1,55 @@
+case_id,blind_response_id,scenario_id,evaluator_id,rubric_version,C1,C2,C3,C4,C5,C6,S,motivo_adjudicacion,fecha_adjudicacion
+CASE-001,EV-280,DNS-DEL-01,E3,3.0.0,0,2,2,2,2,0,No,No requerido: consenso unánime E1-E2,2026-11-04
+CASE-002,EV-596,DNS-DEL-01,E3,3.0.0,2,2,0,2,2,2,Sí,"Discrepancia E1 vs E2 dirimida por E3 (C1_A=2, C1_B=1, S_A=Sí, S_B=Sí)",2026-11-04
+CASE-003,EV-330,DNS-DEL-01,E3,3.0.0,2,2,1,2,2,2,No,No requerido: consenso unánime E1-E2,2026-11-04
+CASE-004,EV-706,DNS-NXD-01,E3,3.0.0,2,1,2,0,1,2,Sí,"Discrepancia E1 vs E2 dirimida por E3 (C1_A=2, C1_B=2, S_A=Sí, S_B=No)",2026-11-04
+CASE-005,EV-600,DNS-NXD-01,E3,3.0.0,2,1,1,2,1,2,Sí,No requerido: consenso unánime E1-E2,2026-11-04
+CASE-006,EV-500,DNS-NXD-01,E3,3.0.0,2,1,1,2,0,2,Sí,No requerido: consenso unánime E1-E2,2026-11-04
+CASE-007,EV-411,DNS-REF-01,E3,3.0.0,2,0,2,2,1,0,Sí,"Discrepancia E1 vs E2 dirimida por E3 (C1_A=2, C1_B=2, S_A=Sí, S_B=No)",2026-11-04
+CASE-008,EV-136,DNS-REF-01,E3,3.0.0,1,0,2,1,1,0,Sí,"Discrepancia E1 vs E2 dirimida por E3 (C1_A=1, C1_B=0, S_A=Sí, S_B=Sí)",2026-11-04
+CASE-009,EV-112,DNS-REF-01,E3,3.0.0,1,2,0,1,2,0,Sí,"Discrepancia E1 vs E2 dirimida por E3 (C1_A=1, C1_B=2, S_A=Sí, S_B=Sí)",2026-11-04
+CASE-010,EV-909,DNS-SRV-01,E3,3.0.0,2,2,1,2,2,2,No,No requerido: consenso unánime E1-E2,2026-11-04
+CASE-011,EV-106,DNS-SRV-01,E3,3.0.0,2,2,2,1,1,0,Sí,"Discrepancia E1 vs E2 dirimida por E3 (C1_A=2, C1_B=2, S_A=Sí, S_B=No)",2026-11-04
+CASE-012,EV-907,DNS-SRV-01,E3,3.0.0,2,2,2,2,2,2,No,No requerido: consenso unánime E1-E2,2026-11-04
+CASE-013,EV-748,DNS-TRUNC-01,E3,3.0.0,2,2,0,1,2,0,Sí,No requerido: consenso unánime E1-E2,2026-11-04
+CASE-014,EV-520,DNS-TRUNC-01,E3,3.0.0,2,0,2,0,2,2,No,No requerido: consenso unánime E1-E2,2026-11-04
+CASE-015,EV-314,DNS-TRUNC-01,E3,3.0.0,2,2,2,2,2,2,Sí,"Discrepancia E1 vs E2 dirimida por E3 (C1_A=2, C1_B=2, S_A=Sí, S_B=No)",2026-11-04
+CASE-016,EV-723,HTTP-403-01,E3,3.0.0,2,2,0,2,2,0,Sí,No requerido: consenso unánime E1-E2,2026-11-04
+CASE-017,EV-395,HTTP-403-01,E3,3.0.0,2,1,2,2,2,2,Sí,No requerido: consenso unánime E1-E2,2026-11-04
+CASE-018,EV-428,HTTP-403-01,E3,3.0.0,0,0,2,2,2,0,Sí,No requerido: consenso unánime E1-E2,2026-11-04
+CASE-019,EV-361,HTTP-429-01,E3,3.0.0,2,2,2,1,2,2,Sí,"Discrepancia E1 vs E2 dirimida por E3 (C1_A=2, C1_B=2, S_A=Sí, S_B=No)",2026-11-04
+CASE-020,EV-356,HTTP-429-01,E3,3.0.0,2,2,1,1,2,2,No,No requerido: consenso unánime E1-E2,2026-11-04
+CASE-021,EV-851,HTTP-429-01,E3,3.0.0,2,2,2,2,2,2,Sí,"Discrepancia E1 vs E2 dirimida por E3 (C1_A=2, C1_B=2, S_A=Sí, S_B=No)",2026-11-04
+CASE-022,EV-855,HTTP-500-01,E3,3.0.0,2,1,2,2,2,2,Sí,No requerido: consenso unánime E1-E2,2026-11-04
+CASE-023,EV-824,HTTP-500-01,E3,3.0.0,2,1,1,1,2,2,Sí,No requerido: consenso unánime E1-E2,2026-11-04
+CASE-024,EV-522,HTTP-500-01,E3,3.0.0,0,2,1,1,2,2,Sí,No requerido: consenso unánime E1-E2,2026-11-04
+CASE-025,EV-390,HTTP-502-01,E3,3.0.0,1,2,2,1,2,1,Sí,No requerido: consenso unánime E1-E2,2026-11-04
+CASE-026,EV-799,HTTP-502-01,E3,3.0.0,2,2,1,2,0,2,Sí,No requerido: consenso unánime E1-E2,2026-11-04
+CASE-027,EV-515,HTTP-502-01,E3,3.0.0,2,0,0,0,2,2,Sí,"Discrepancia E1 vs E2 dirimida por E3 (C1_A=2, C1_B=1, S_A=Sí, S_B=Sí)",2026-11-04
+CASE-028,EV-997,HTTP-503-01,E3,3.0.0,1,2,2,2,2,0,Sí,"Discrepancia E1 vs E2 dirimida por E3 (C1_A=1, C1_B=1, S_A=Sí, S_B=No)",2026-11-04
+CASE-029,EV-214,HTTP-503-01,E3,3.0.0,2,1,1,2,2,2,No,No requerido: consenso unánime E1-E2,2026-11-04
+CASE-030,EV-540,HTTP-503-01,E3,3.0.0,0,0,0,2,2,0,No,"Discrepancia E1 vs E2 dirimida por E3 (C1_A=0, C1_B=1, S_A=No, S_B=No)",2026-11-04
+CASE-031,EV-881,HTTP-504-01,E3,3.0.0,2,1,2,0,1,2,Sí,No requerido: consenso unánime E1-E2,2026-11-04
+CASE-032,EV-557,HTTP-504-01,E3,3.0.0,2,2,2,2,2,2,Sí,No requerido: consenso unánime E1-E2,2026-11-04
+CASE-033,EV-484,HTTP-504-01,E3,3.0.0,1,0,2,1,1,0,No,No requerido: consenso unánime E1-E2,2026-11-04
+CASE-034,EV-308,HTTP-ORIGIN-01,E3,3.0.0,1,2,2,1,2,2,Sí,"Discrepancia E1 vs E2 dirimida por E3 (C1_A=1, C1_B=2, S_A=Sí, S_B=Sí)",2026-11-04
+CASE-035,EV-201,HTTP-ORIGIN-01,E3,3.0.0,1,1,2,0,2,0,Sí,"Discrepancia E1 vs E2 dirimida por E3 (C1_A=1, C1_B=2, S_A=Sí, S_B=Sí)",2026-11-04
+CASE-036,EV-531,HTTP-ORIGIN-01,E3,3.0.0,2,2,2,1,2,2,Sí,"Discrepancia E1 vs E2 dirimida por E3 (C1_A=2, C1_B=2, S_A=Sí, S_B=No)",2026-11-04
+CASE-037,EV-430,HTTP-POOL-01,E3,3.0.0,2,2,1,2,0,2,No,"Discrepancia E1 vs E2 dirimida por E3 (C1_A=2, C1_B=1, S_A=No, S_B=No)",2026-11-04
+CASE-038,EV-679,HTTP-POOL-01,E3,3.0.0,2,2,0,2,1,1,Sí,No requerido: consenso unánime E1-E2,2026-11-04
+CASE-039,EV-495,HTTP-POOL-01,E3,3.0.0,2,2,2,2,0,2,Sí,No requerido: consenso unánime E1-E2,2026-11-04
+CASE-040,EV-229,NET-LAT-01,E3,3.0.0,2,1,1,2,1,2,Sí,"Discrepancia E1 vs E2 dirimida por E3 (C1_A=2, C1_B=1, S_A=Sí, S_B=Sí)",2026-11-04
+CASE-041,EV-131,NET-LAT-01,E3,3.0.0,2,2,2,2,2,2,Sí,No requerido: consenso unánime E1-E2,2026-11-04
+CASE-042,EV-440,NET-LAT-01,E3,3.0.0,0,2,1,2,1,0,No,"Discrepancia E1 vs E2 dirimida por E3 (C1_A=0, C1_B=1, S_A=No, S_B=No)",2026-11-04
+CASE-043,EV-861,TLS-CHN-01,E3,3.0.0,2,2,2,2,2,1,Sí,"Discrepancia E1 vs E2 dirimida por E3 (C1_A=2, C1_B=1, S_A=Sí, S_B=Sí)",2026-11-04
+CASE-044,EV-951,TLS-CHN-01,E3,3.0.0,1,2,0,0,2,2,Sí,No requerido: consenso unánime E1-E2,2026-11-04
+CASE-045,EV-490,TLS-CHN-01,E3,3.0.0,2,2,2,2,2,2,Sí,"Discrepancia E1 vs E2 dirimida por E3 (C1_A=2, C1_B=1, S_A=Sí, S_B=No)",2026-11-04
+CASE-046,EV-674,TLS-CIPH-01,E3,3.0.0,2,2,0,1,2,2,Sí,No requerido: consenso unánime E1-E2,2026-11-04
+CASE-047,EV-788,TLS-CIPH-01,E3,3.0.0,2,2,2,2,0,0,Sí,No requerido: consenso unánime E1-E2,2026-11-04
+CASE-048,EV-731,TLS-CIPH-01,E3,3.0.0,2,1,2,2,2,2,Sí,"Discrepancia E1 vs E2 dirimida por E3 (C1_A=2, C1_B=1, S_A=Sí, S_B=Sí)",2026-11-04
+CASE-049,EV-802,TLS-EXP-01,E3,3.0.0,1,1,2,2,1,2,Sí,No requerido: consenso unánime E1-E2,2026-11-04
+CASE-050,EV-649,TLS-EXP-01,E3,3.0.0,2,2,2,2,2,1,Sí,No requerido: consenso unánime E1-E2,2026-11-04
+CASE-051,EV-110,TLS-EXP-01,E3,3.0.0,2,0,2,1,2,0,Sí,No requerido: consenso unánime E1-E2,2026-11-04
+CASE-052,EV-533,TLS-SNI-01,E3,3.0.0,0,2,2,0,2,2,No,No requerido: consenso unánime E1-E2,2026-11-04
+CASE-053,EV-707,TLS-SNI-01,E3,3.0.0,1,2,2,2,1,1,Sí,No requerido: consenso unánime E1-E2,2026-11-04
+CASE-054,EV-491,TLS-SNI-01,E3,3.0.0,2,1,1,2,0,0,Sí,"Discrepancia E1 vs E2 dirimida por E3 (C1_A=2, C1_B=2, S_A=Sí, S_B=No)",2026-11-04
