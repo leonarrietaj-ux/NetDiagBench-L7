@@ -57,3 +57,10 @@ data/pilot_runs/
 *.swo
 .DS_Store
 Thumbs.db
+
+# Informes de auditoría y notas internas privadas
+release_audit/
+*AUDITORIA*
+*auditoria*
+docs/*AUDITORIA*
+docs/*auditoria*

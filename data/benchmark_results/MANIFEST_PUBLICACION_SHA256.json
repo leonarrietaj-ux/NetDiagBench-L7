@@ -2,7 +2,7 @@
   "project": "NetDiagBench-L7",
   "version": "1.0.1",
   "release_type": "scientific_public_release",
-  "generated_at": "2026-11-12T19:58:00.524164+00:00",
+  "generated_at": "2026-11-12T20:19:13.300341+00:00",
   "repository": "https://github.com/leonarrietaj-ux/NetDiagBench-L7.git",
   "experimental_summary": {
     "total_runs": 162,
@@ -137,10 +137,6 @@
       "docs/INFORME_ESTADISTICO_FINAL.md": {
         "sha256": "6E8D20370AF719F64074F2AA34649D18B98D2EE09F1489A4E7EDA13FC26188A7",
         "size_bytes": 6091
-      },
-      "docs/INFORME_AUDITORIA_CORRECTIVA_PUBLICACION_v1.0.1.md": {
-        "sha256": "B57C623CF754B3DCAA068030EB57431F1815BEBD5B29020DC3C102515A44255E",
-        "size_bytes": 22139
       }
     },
     "metadatos_del_proyecto": {
@@ -153,8 +149,8 @@
         "size_bytes": 940
       },
       ".gitignore": {
-        "sha256": "8B24082D2DBD96ACB162973EF2EB1485F98EE3909470D34507609BA8DDAD87A8",
-        "size_bytes": 1005
+        "sha256": "734A5BBA770C4A855A1081451FBC076F118C8E4A7531797D98CBDC34B80F5D04",
+        "size_bytes": 1137
       },
       "LICENSE": {
         "sha256": "B3729F8029408BA7E49E4064FEABA919D56764AFC4A320EF534FD9321604ACF4",

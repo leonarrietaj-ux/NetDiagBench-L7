@@ -59,7 +59,6 @@ def main():
             "docs/INFORME_PARTE_4.md",
             "docs/INFORME_SEGURIDAD.md",
             "docs/INFORME_ESTADISTICO_FINAL.md",
-            "docs/INFORME_AUDITORIA_CORRECTIVA_PUBLICACION_v1.0.1.md",
         ],
         "metadatos_del_proyecto": [
             "pyproject.toml",
