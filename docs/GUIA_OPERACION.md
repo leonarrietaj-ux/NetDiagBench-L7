@@ -1,9 +1,7 @@
-# NetDiagBench-L7 • Manual de Usuario y Guía Operativa
-**Proyecto de Grado — Universidad de Pamplona**  
-**Facultad de Ingenierías y Arquitectura — Departamento E.E.S.T.**  
-**Autor:** Juan David León Arrieta (`juan.leon22@unipamplona.edu.co`)  
-**Director:** Mg. Richard Eliseo Mendoza Gáfaro (`richard.mendoza@unipamplona.edu.co`)  
-**Versión:** 1.0.0 | **Fecha:** Noviembre 2026 | **Entorno:** Local-First Web Dashboard
+# NetDiagBench-L7 • Guía de Operación del Sistema
+
+**Proyecto:** NetDiagBench-L7: Benchmark Agéntico de Diagnóstico de Redes Layer 7 sobre IP  
+**Versión:** 1.0.2 | **Fecha:** Noviembre 2026 | **Entorno:** Local-First Web Dashboard & CLI  
 
 ---
 
@@ -20,7 +18,7 @@
 1. **Visor de Diagnóstico (Tecla 1):** Permite configurar escenario, modelo y semilla para ejecutar el diagnóstico interactivo en streaming con observabilidad en tiempo real y traza CoT paso a paso.
 2. **Informe Comparativo OE4 (Tecla 2):** Matriz multidimensional con perfiles de modelo (NOC vs Recursos Acotados vs Triaje Rápido), scores compuestos y descomposiciones de latencia y telemetría de hardware.
 3. **Análisis Correlacional SciPy (Tecla 3):** Pruebas de hipótesis no paramétricas Kruskal-Wallis, prueba de Friedman pareada en 54 bloques, correlación de Spearman, intervalos de confianza Bootstrap percentil al 95% y tamaños de efecto.
-4. **Informe Consolidado HTML (Tecla 4):** Vista documental interactiva para consulta unificada de todos los entregables académicos.
+4. **Informe Consolidado HTML (Tecla 4):** Vista documental interactiva para consulta unificada de las especificaciones y reportes del benchmark.
 5. **Suite de Observabilidad (Tecla 5):** Ejecución desatendida y secuencial de los 18 escenarios catalogados (100% en memoria RAM vía LangGraph MemorySaver).
 6. **Validación Humana y Calibración Inter-Evaluador (Capa 8):** Módulo de auditoría ciega, exportación de kits de evaluación, captura de rúbricas (C1 a C6 y Suficiencia S) y cálculo de concordancia inter-evaluador (Kappa Cohen, ICC 2,1, Alfa Krippendorff).
 

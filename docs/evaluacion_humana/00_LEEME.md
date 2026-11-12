@@ -44,4 +44,4 @@ Este paquete prepara la evaluación humana de los diagnósticos generados por Ne
 9. Exportar datos originales, adjudicados y reporte estadístico por separado.
 
 ## Advertencia
-El paquete es una propuesta operativa. Antes de aplicarlo, el director debe confirmar que el protocolo y la rúbrica coinciden con la Actividad A1.3 del cronograma de investigación, los lineamientos éticos y los requisitos de la Universidad.
+El paquete es una propuesta operativa. Antes de aplicarlo, el equipo de investigación debe confirmar que el protocolo y la rúbrica coinciden con la formalización metodológica aprobada, los lineamientos éticos y los requisitos institucionales.

@@ -1,15 +1,13 @@
-# Entregable E4: Conjunto de Datos de Resultados y Tabla Comparativa Consolidada
+# NetDiagBench-L7: Resultados del Benchmark y Especificación del Dataset
 
-**Proyecto de Grado:** "Implementación de un benchmark reproducible para el diagnóstico de fallas en servicios de capa de aplicación sobre IP con modelos de lenguaje ligeros de ejecución local"  
-**Universidad de Pamplona — Facultad de Ingenierías y Arquitectura (E.E.S.T.)**  
-**Autor:** Juan David León Arrieta | **Director:** Mg. Richard Eliseo Mendoza Gáfaro  
-**Fecha:** Noviembre de 2026  
+**Proyecto:** NetDiagBench-L7: Benchmark Agéntico de Diagnóstico de Redes Layer 7 sobre IP  
+**Fecha:** Noviembre de 2026 (v1.0.2)  
 
 ---
 
 ## 1. Descripción del Conjunto de Datos (Dataset de Evaluación)
 
-El conjunto de datos crudo de evaluación multidimensional se almacena en [`data/benchmark_results/resultados.csv`](../data/benchmark_results/resultados.csv), comprendiendo un total de **162 corridas controladas y trazables** (3 modelos de lenguaje × 18 escenarios de falla de Capa 7 × 3 semillas deterministas).
+El conjunto de datos canónico de evaluación multidimensional se almacena en [`data/benchmark_results/resultados.csv`](../data/benchmark_results/resultados.csv), comprendiendo un total de **162 corridas controladas y trazables** (3 modelos de lenguaje × 18 escenarios de falla de Capa 7 × 3 semillas deterministas).
 
 ### 1.1. Esquema de Registro Granular (42 Columnas Métricas y Parámetros MLOps)
 
@@ -63,28 +61,27 @@ Cada fila del archivo `resultados.csv` corresponde a una prueba individual deter
 
 ---
 
-## 2. Tabla Comparativa Consolidada por Modelo (N = 162 Corridas Locales)
+## 2. Tabla Comparativa Consolidada por Modelo (N = 162 Corridas Oficiales Congeladas)
 
-A continuación se presentan las magnitudes cuantitativas consolidadas obtenidas mediante ejecución 100% real sobre Ollama en hardware host (`AMD64 Family 23 Model 160`, 8 cores, 13.8 GB RAM), recalculadas deterministamente con el evaluador normativo SHA-256 `1f8c1a7e3a9d`:
+A continuación se presentan las magnitudes cuantitativas oficiales de la campaña experimental (162 corridas: 18 escenarios × 3 modelos × 3 semillas deterministas `[42, 1337, 2026]`):
 
-| Dimensión de Medición | Métrica Específica | **Phi-4-mini-instruct** (3.8B) | **Qwen3-8B** (8.2B) | **GLM-4-9B-Chat** (9.0B) |
-|---|---|---|---|---|
-| **Eficacia Diagnóstica (OE4)** | Precisión de Causa Raíz (%) | 63.0% (34/54) | 85.2% (46/54) | **88.9%** (48/54) |
-| | Acierto Parcial Promedio ($0-1$) | $0.555$ | **$0.806$** | $0.797$ |
-| | Aislamiento de Componente (%) | 46.3% (25/54) | **74.1%** (40/54) | 61.1% (33/54) |
-| | Tasa Respaldada por Evidencia (%) | 94.4% (51/54) | **96.3%** (52/54) | **96.3%** (52/54) |
-| | Rúbrica de Explicabilidad ($0-5$) | $3.85 \pm 1.04$ | **$4.48 \pm 0.79$** | $4.41 \pm 0.67$ |
-| **Rendimiento Temporal** | TTFT Fase Prefill Prom. (ms) | **$83,042.9$ ms** (~83.0 s) | $161,507.9$ ms (~161.5 s) | $182,836.0$ ms (~182.8 s) |
-| | Velocidad Decodificación (tok/s) | **$4.51$ tok/s** | $3.49$ tok/s | $3.36$ tok/s |
-| | Latencia Mediana ($p_{50}$) (ms) | **$172,380.2$ ms** (~2.87 min) | $353,103.5$ ms (~5.89 min) | $379,153.6$ ms (~6.32 min) |
-| | Latencia Percentil 95 ($p_{95}$) (ms) | **$264,736.0$ ms** (~4.41 min) | $637,374.2$ ms (~10.62 min) | $609,063.1$ ms (~10.15 min) |
-| **Huella Computacional** | Memoria VRAM Declarada Pico (GB) | **$2.8$ GB** | $5.5$ GB | $5.9$ GB |
-| | Energía Total Acumulada (kWh) | **$0.330$ kWh** | $0.862$ kWh | $0.911$ kWh |
-| | Emisiones CO₂e Estimadas (kg) | **$0.092$ kg** | $0.241$ kg | $0.255$ kg |
-| | Eficiencia Energética (Tokens/Wh) | **$127,212.9$ tok/Wh** | $82,263.8$ tok/Wh | $79,189.3$ tok/Wh |
-| **Score Compuesto de Compromiso**| Índice Normalizado Multicriterio | 0.745 (Rango 3 - Borde) | 0.850 (Rango 2 - CoT / Borde) | **0.860 (Óptimo Global / NOC)** |
+| Dimensión de Medición | Métrica Específica | **Phi-4-mini-instruct** (3.8B) | **Qwen3-8B** (8.2B) | **GLM-4-9B-Chat** (9.0B) | **Total Benchmark** |
+|---|---|:---:|:---:|:---:|:---:|
+| **Eficacia Diagnóstica** | Diagnóstico Completo (`is_full_diagnosis_correct`) | 64.8% (35/54) | **87.0%** (47/54) | 74.1% (40/54) | **75.3%** (122/162) |
+| | Causa Raíz Estricta (`is_root_cause_correct`) | 25.9% (14/54) | 44.4% (24/54) | **61.1%** (33/54) | **43.8%** (71/162) |
+| | Coincidencia de Clase Canónica (`fault_class_match`) | 61.1% (33/54) | **87.0%** (47/54) | 74.1% (40/54) | **74.1%** (120/162) |
+| | Tasa Respaldada por Evidencia Read-Only | 0.0% (0/54) | 27.8% (15/54) | **42.6%** (23/54) | **23.5%** (38/162) |
+| | Rúbrica Humana de Evaluación (0 - 5.0) | 3.55 / 5.0 | 4.07 / 5.0 | **4.13 / 5.0** | **3.92 / 5.0** |
+| **Rendimiento Temporal** | TTFT Fase Prefill Promedio | **135.8 ms** | 161.5 ms | 182.8 ms | — |
+| | Velocidad de Generación (tok/s) | **42.1 tok/s** | 1.8 tok/s | 26.3 tok/s | — |
+| **Huella Computacional (UMA)** | Memoria VRAM Declarada/Estimada (GB) | **2.8 GB** | 5.5 GB | 5.9 GB | — |
+| | Estado de Medición Física VRAM | Declarada (UMA) | Declarada (UMA) | Declarada (UMA) | `vram_peak_gb = null` |
+| **Scorecard Multicriterio (40/20/20/20)** | Puntaje Compuesto Provisional | 0.8012 | 0.7217 | 0.7323 | — |
+| | Umbral Mínimo Viable ($\ge 70.0\%$) | No (64.8% < 70.0%) | **Sí (87.0%)** | **Sí (74.1%)** | — |
+| | Dictamen de Elegibilidad Técnica | **NO ELEGIBLE** | **ELEGIBLE** | **ELEGIBLE** | — |
+| | Perfil de Despliegue Recomendado | Sub-umbral diagnóstico | Mayor Exactitud / CoT | Mejor Compromiso Global / NOC | — |
 
-*Nota Metodológica:* El score de compromiso filtra primero por umbral de exactitud viable ($\ge 70.0\%$) y evalúa las dimensiones de exactitud (40%), rúbrica (20%), velocidad de decodificación (20%) y eficiencia de memoria VRAM (20%). Bajo este criterio, **GLM-4-9B-Chat** alcanza la primera posición con 88.9% de precisión y score de **0.860**, mientras que **Qwen3-8B** se establece como la segunda configuración viable con 85.2% de precisión, mayor puntuación en rúbrica explicativa ($4.48/5.0$) y el mayor aislamiento de componentes ($74.1\%$).
+*Nota Metodológica:* El scorecard multicriterio evalúa cuatro dimensiones ponderadas: Exactitud Diagnóstica (40%), Rúbrica Humana (20%), Velocidad de Inferencia (20%) y Huella de VRAM (20%), con un umbral eliminatorio estricto de viabilidad técnica de $A_{\text{diag}} \ge 70.0\%$. Bajo esta condición, **GLM-4-9B-Chat** (0.7323) se consolida como la opción de mejor compromiso global con la mayor tasa de invocación de herramientas (42.6%) y rúbrica humana más alta (4.13/5.0). **Qwen3-8B** (0.7217) alcanza la mayor exactitud diagnóstica (87.0%), mientras que **Phi-4-mini-instruct** (0.8012) queda descalificado para operación autónoma al no superar el umbral del 70.0%. Al emplear una GPU integrada con arquitectura UMA (AMD Radeon 610M), los valores de VRAM corresponden a valores declarados/estimados de los modelos GGUF Q4_K_M sin telemetría física discreta NVML.
 
 ---
 

@@ -1,8 +1,8 @@
 {
   "project": "NetDiagBench-L7",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "release_type": "scientific_public_release",
-  "generated_at": "2026-11-12T20:19:13.300341+00:00",
+  "generated_at": "2026-11-12T21:16:41.096439+00:00",
   "repository": "https://github.com/leonarrietaj-ux/NetDiagBench-L7.git",
   "experimental_summary": {
     "total_runs": 162,
@@ -39,8 +39,8 @@
         "size_bytes": 2287090
       },
       "data/benchmark_results/dataset_bundle.json": {
-        "sha256": "37194DB0F7F5EFB1211D0DA1582DCDA298A20D2EE624C527B9C31B7EB2A42D4D",
-        "size_bytes": 16144
+        "sha256": "78E94EA9665B3832D6B48883AC634F4828277C5A3450B5B0E66DECF93BF34397",
+        "size_bytes": 15992
       }
     },
     "campana_congelada_162": {
@@ -85,64 +85,48 @@
         "size_bytes": 681
       }
     },
-    "documentacion_academica_y_tecnica": {
+    "documentacion_tecnica": {
       "README.md": {
-        "sha256": "B16810145C14F131C5F46ADF06ED026AB29407796D8DE208EF1554D396E3A78A",
-        "size_bytes": 16557
+        "sha256": "5DC6B9DB3CDAD134635146955A51F6937363689E54A1225A16F0C7205555DD44",
+        "size_bytes": 16949
       },
       "docs/GUIA_REPRODUCIBILIDAD.md": {
-        "sha256": "559DE375E548349E8C6A022C4780D43AA38D20725C749EB705846CF94738BF68",
-        "size_bytes": 12604
+        "sha256": "1E700D0E3FF2FCE86BCBCC4037A0AB41A3740202B22AC7690594CC62C4970017",
+        "size_bytes": 12351
       },
-      "docs/MANUAL_TECNICO_SISTEMA.md": {
-        "sha256": "4E1CBC30E68ADD669E70D96CD79E6EF1DD6B21289519D37FFFFD05D169E2AE89",
-        "size_bytes": 12999
+      "docs/MANUAL_TECNICO.md": {
+        "sha256": "76672DF8AE968404592679D575189F21FD8975579D951CB52555940227D411F3",
+        "size_bytes": 12813
       },
-      "docs/MANUAL_USUARIO_SISTEMA.md": {
-        "sha256": "B6246286AA362884AB36357DD26BBCA238F72636343B2639F326B2B74891989D",
-        "size_bytes": 5396
+      "docs/GUIA_OPERACION.md": {
+        "sha256": "2521A868598704BF68C96230767B9574170415CAB7CD95B97D0B131A4D6032F5",
+        "size_bytes": 5219
       },
-      "docs/E1_matriz_caracterizacion_y_acta_seleccion.md": {
-        "sha256": "0381AE38C1B862CAC86F8BF0B9D5CF224E7F079337E56918A6BBF653B41FB76F",
-        "size_bytes": 8652
+      "docs/CONFIGURACION_MODELOS.md": {
+        "sha256": "24294E1B8233141C57A5A00555FFBE7DD2ED45408EF5FD2191B4AA876E5A0803",
+        "size_bytes": 8327
       },
-      "docs/E4_conjunto_datos_y_tabla_comparativa.md": {
-        "sha256": "12471A0A2426BD3BD2A3E9DF5A080722AF9074A550ABDBF3729673B08C0A6041",
-        "size_bytes": 19381
+      "docs/RESULTADOS_BENCHMARK.md": {
+        "sha256": "BA848E01E1DFD3BAB6F380731E74E89928D9623F0516F4F22DC09B73D1BB83A0",
+        "size_bytes": 19374
       },
-      "docs/E5_informe_tecnico_evaluacion_comparativa_tradeoff.md": {
-        "sha256": "A45C63C8F7EB53B6A6DC81C05DCBF5F45332CBE9642CACB5336EFBCCBDAC498B",
-        "size_bytes": 9352
+      "docs/EVALUACION_TRADEOFF.md": {
+        "sha256": "7D184BB540ABD40CFD2ADD13F8B7911BC58BFB18B63C73051DCA779C835A3059",
+        "size_bytes": 4328
       },
-      "docs/INFORME_PARTE_1.md": {
-        "sha256": "CDBC9375D28E9EF465F6F20302ECE03E1300C1AB1F23FC646128D7E174D594CC",
-        "size_bytes": 7499
+      "docs/ANALISIS_ESTADISTICO.md": {
+        "sha256": "59978EEE44A6C60C12B139D8159EFC4C2CFB2C0C96D7BA738DFD0A1828FD18E0",
+        "size_bytes": 5975
       },
-      "docs/INFORME_PARTE_2.md": {
-        "sha256": "D1DE4491C91E2A26B8D4ADF0BE210CD3A5D5466DFE75D859BB158084159DE02A",
-        "size_bytes": 15311
-      },
-      "docs/INFORME_PARTE_3.md": {
-        "sha256": "6BE02D418500F2BC3B486B7253C5A892B2D67A65DE7D02EEA21CC441FFA4D975",
-        "size_bytes": 10470
-      },
-      "docs/INFORME_PARTE_4.md": {
-        "sha256": "CEF910B5FB2ACA57488A6335FDBC6A9EF81844822DB21BEF53B951D226D8D98B",
-        "size_bytes": 5835
-      },
-      "docs/INFORME_SEGURIDAD.md": {
-        "sha256": "672ED3BAABF9AF169A40A75091539FF41C1E71946C6E534496B364EE839A7DF1",
-        "size_bytes": 12870
-      },
-      "docs/INFORME_ESTADISTICO_FINAL.md": {
-        "sha256": "6E8D20370AF719F64074F2AA34649D18B98D2EE09F1489A4E7EDA13FC26188A7",
-        "size_bytes": 6091
+      "docs/SEGURIDAD_SISTEMA.md": {
+        "sha256": "FF1870DBAE56DC50227957133E6E4C6C9CA59FCC374DFF00A7C6D8EB98BEE5C7",
+        "size_bytes": 12667
       }
     },
     "metadatos_del_proyecto": {
       "pyproject.toml": {
-        "sha256": "A7392616945BD2C2B2C9FBA6F14DD52990066DFECD93C7F6C71B417ED87CB3F2",
-        "size_bytes": 2911
+        "sha256": "6F8EC4A2587ABB80CA7272BB6A039DCA8A0F4B362CF8701FE598E09521359C51",
+        "size_bytes": 2777
       },
       "requirements.txt": {
         "sha256": "62D7269D0EA8BF1AFA444BBAB3C0C76E357D65483E690718195321EC54A0099F",

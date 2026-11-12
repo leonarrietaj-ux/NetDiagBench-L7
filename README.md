@@ -4,14 +4,11 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Execution: 100% Local](https://img.shields.io/badge/Inference-100%25%20Local%20(Ollama)-purple.svg)](#)
 [![Docker Support](https://img.shields.io/badge/Docker-Compose%20Ready-blue.svg)](#)
-[![Security Hardened](https://img.shields.io/badge/Security-Defense--in--Depth-darkgreen.svg)](docs/INFORME_SEGURIDAD.md)
-[![Academic Thesis](https://img.shields.io/badge/Thesis-Universidad%20de%20Pamplona-red.svg)](docs/GUIA_REPRODUCIBILIDAD.md)
+[![Security Hardened](https://img.shields.io/badge/Security-Defense--in--Depth-darkgreen.svg)](docs/SEGURIDAD_SISTEMA.md)
+[![Reproducibility](https://img.shields.io/badge/Reproducibility-100%25%20Verified-blue.svg)](docs/GUIA_REPRODUCIBILIDAD.md)
 
-> **Trabajo de Grado - Universidad de Pamplona**  
-> **Facultad de Ingenierías y Arquitectura | Departamento de Eléctrica, Electrónica, Sistemas y Telecomunicaciones (E.E.S.T.)**  
-> **Autor:** Juan David León Arrieta (`juan.leon22@unipamplona.edu.co`)  
-> **Director:** Mg. Richard Eliseo Mendoza Gáfaro  
-> **Documento de Tesis:** *Benchmark reproducible para el diagnóstico de fallas en servicios de capa de aplicación sobre IP con modelos de lenguaje ligeros de ejecución local*
+> **NetDiagBench-L7: Benchmark Agéntico de Diagnóstico de Redes Layer 7 sobre IP**  
+> Un marco experimental reproducible para el diagnóstico asistido de fallas en servicios de capa de aplicación sobre redes IP con modelos de lenguaje ligeros de ejecución 100% local.
 
 ---
 
@@ -83,7 +80,7 @@ graph TD
 
 ## 3. Terna Oficial de Modelos SLM Evaluados
 
-De acuerdo con la caracterización inicial de 12 modelos (Entregable E1), se seleccionó una terna representativa en el rango de parámetros $\le 9\text{B}$:
+De acuerdo con la caracterización inicial de modelos (especificada en [`docs/CONFIGURACION_MODELOS.md`](docs/CONFIGURACION_MODELOS.md)), se seleccionó una terna representativa en el rango de parámetros $\le 9\text{B}$:
 
 | Modelo | Tag Ollama Oficial | Parámetros | Licencia | Cuantización Efectiva | Digest SHA-256 Verificado |
 |---|---|:---:|:---:|:---:|---|
@@ -249,7 +246,7 @@ El marco incorpora una arquitectura de seguridad por capas (*Defense-in-Depth*):
 3. **Cabeceras HTTP OWASP:** Implementación en middleware de CSP estricto, `X-Frame-Options: SAMEORIGIN`, `X-Content-Type-Options: nosniff` y `Permissions-Policy`.
 4. **Sanitización Estricta:** Mitigación de inyecciones de comandos en llamadas a subprocesos mediante expresiones regulares de control.
 
-Consulte el informe completo en [docs/INFORME_SEGURIDAD.md](docs/INFORME_SEGURIDAD.md).
+Consulte la especificación completa en [docs/SEGURIDAD_SISTEMA.md](docs/SEGURIDAD_SISTEMA.md).
 
 ---
 
@@ -263,12 +260,16 @@ NetDiagBench-L7/
 │   ├── benchmark_results/         # Conjunto de datos consolidado oficial
 │   ├── campaign_162/              # 162 corridas oficiales con trazas y hashes
 │   └── human_eval/                # Evaluaciones humanas adjudicadas anonimizadas
-├── docs/                          # Documentación académica, manuales y guías técnicas
-│   ├── GUIA_REPRODUCIBILIDAD.md
-│   ├── MANUAL_TECNICO_SISTEMA.md
-│   ├── MANUAL_USUARIO_SISTEMA.md
-│   ├── INFORME_ESTADISTICO_FINAL.md
-│   └── INFORME_SEGURIDAD.md
+├── docs/                          # Documentación técnica, manuales y especificaciones
+│   ├── GUIA_REPRODUCIBILIDAD.md   # Guía completa de reproducción paso a paso
+│   ├── MANUAL_TECNICO.md          # Arquitectura de 8 capas y contratos de datos
+│   ├── GUIA_OPERACION.md          # Guía operativa de CLI y panel web
+│   ├── CONFIGURACION_MODELOS.md   # Caracterización y especificación de modelos SLM
+│   ├── RESULTADOS_BENCHMARK.md    # Especificación de dataset y tabla de resultados
+│   ├── EVALUACION_TRADEOFF.md     # Evaluación de compromiso y trade-off
+│   ├── ANALISIS_ESTADISTICO.md    # Contrastes de hipótesis no paramétricas (Friedman, Wilcoxon)
+│   ├── SEGURIDAD_SISTEMA.md       # Arquitectura defensiva, anti-SSRF y sanitización
+│   └── evaluacion_humana/         # Protocolos e instrumentos de evaluación humana
 ├── infra/                         # Topologías Docker para pruebas emuladas
 ├── knowledge/                     # RFCs y corpus normativo para RAG léxico
 ├── scenarios/                     # Catálogo de 18 escenarios de fallas Layer 7
@@ -293,8 +294,7 @@ Este proyecto se distribuye bajo la licencia **MIT**. Consulte el archivo [LICEN
 Si utiliza este benchmark o sus conjuntos de datos en investigaciones académicas, cite este trabajo utilizando el formato [CITATION.cff](CITATION.cff):
 
 ```bibtex
-@misc{leon2026netdiagbench,
-  author = {León Arrieta, Juan David and Mendoza Gáfaro, Richard Eliseo},
+@misc{netdiagbench2026,
   title = {NetDiagBench-L7: Benchmark Reproducible para Diagnóstico de Fallas en Servicios de Capa de Aplicación sobre IP con SLMs Locales},
   year = {2026},
   publisher = {GitHub},

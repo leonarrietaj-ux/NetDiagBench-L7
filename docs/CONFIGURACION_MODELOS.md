@@ -1,10 +1,7 @@
-# Entregable E1: Matriz de Caracterización y Acta de Selección Justificada de Modelos
+# NetDiagBench-L7: Configuración y Caracterización de Modelos
 
-**Proyecto de Grado:** "Implementación de un benchmark reproducible para el diagnóstico de fallas en servicios de capa de aplicación sobre IP con modelos de lenguaje ligeros de ejecución local"  
-**Programa:** Ingeniería de Telecomunicaciones / E.E.S.T. — Universidad de Pamplona  
-**Autor:** Juan David León Arrieta  
-**Director:** Mg. Richard Eliseo Mendoza Gáfaro  
-**Fecha:** Septiembre de 2026  
+**Proyecto:** NetDiagBench-L7: Benchmark Agéntico de Diagnóstico de Redes Layer 7 sobre IP  
+**Fecha:** Septiembre de 2026 / Noviembre de 2026 (v1.0.2)  
 
 ---
 
@@ -65,9 +62,9 @@ Se aplicó una rúbrica con cinco dimensiones ponderadas:
 
 ---
 
-## 4. Acta de Adopción Formal de la Terna de Modelos (Tarea 1.3.2)
+## 4. Selección Justificada de la Terna de Modelos
 
-En Pamplona, Norte de Santander, a los 25 días del mes de septiembre de 2026, se suscribe la presente acta técnica de selección:
+A continuación se formaliza la justificación técnica de la selección adoptada para el benchmark:
 
 1. **Ratificación de la Terna:**  
    Se declara formalmente adoptada la terna compuesta por:

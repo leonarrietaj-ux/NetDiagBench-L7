@@ -1,10 +1,10 @@
-# INFORME ESTADÍSTICO FINAL DE LA CAMPAÑA DE 162 CORRIDAS OFICIALES
-## NetDiagBench-L7: Evaluación Experimental, Subsanación Metodológica y Scorecard Normativo
+# NetDiagBench-L7: Análisis Estadístico Inferencial
 
-**Fecha de Emisión:** 2026-11-08T22:02:10.928949+00:00  
-**Dataset Oficial:** `data/campaign_162/recalificacion_auditada.csv` (162 corridas lógicas congeladas).  
-**Diseño Experimental:** 3 modelos × 18 escenarios (3 emulados Docker + 15 sintéticos) × 3 repeticiones por semilla (`[42, 1337, 2026]`).  
-**Unidad de Muestreo Independiente:** 18 escenarios (conglomerados con semillas agrupadas intra-escenario).  
+**Proyecto:** NetDiagBench-L7: Benchmark Agéntico de Diagnóstico de Redes Layer 7 sobre IP  
+**Dataset Oficial:** `data/benchmark_results/resultados.csv` (162 corridas oficiales congeladas)  
+**Diseño Experimental:** 3 modelos × 18 escenarios (3 emulados Docker + 15 sintéticos) × 3 semillas deterministas (`[42, 1337, 2026]`)  
+**Unidad de Muestreo:** 18 conglomerados de escenarios  
+**Versión:** 1.0.2  
 
 ---
 

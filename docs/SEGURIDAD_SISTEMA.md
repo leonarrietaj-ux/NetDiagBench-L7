@@ -1,11 +1,9 @@
-# INFORME TÉCNICO DE AUDITORÍA DE SEGURIDAD Y GUARDRAILS DEFENSIVOS
-**Proyecto:** NetDiagBench-L7: Benchmark Agéntico de Diagnóstico Layer 7 sobre IP  
-**Institución:** Universidad de Pamplona — Facultad de Ingenierías y Arquitectura (E.E.S.T.)  
-**Autor:** Juan David León Arrieta (`juan.leon22@unipamplona.edu.co`)  
-**Director:** Mg. Richard Eliseo Mendoza Gáfaro  
-**Fecha de Emisión:** 8 de noviembre de 2026  
-**Clasificación:** Documento Técnico de Seguridad / Auditoría Defensiva  
-**Estado:** **APROBADO — VULNERABILIDADES REMEDIADAS Y VERIFICADAS**
+# NetDiagBench-L7: Arquitectura de Seguridad y Guardrails Defensivos
+
+**Proyecto:** NetDiagBench-L7: Benchmark Agéntico de Diagnóstico de Redes Layer 7 sobre IP  
+**Clasificación:** Especificación Técnica de Seguridad y Mitigaciones Defensivas  
+**Versión:** 1.0.2 | **Fecha:** Noviembre de 2026  
+**Estado:** **VERIFICADO (100% de Pruebas de Seguridad Aprobadas)**  
 
 ---
 

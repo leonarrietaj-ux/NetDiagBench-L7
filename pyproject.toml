@@ -4,12 +4,11 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "netdiagbench-l7"
-version = "1.0.1"
+version = "1.0.2"
 description = "Benchmark reproducible para el diagnóstico de fallas en servicios de capa de aplicación sobre IP con modelos de lenguaje ligeros de ejecución local"
 readme = "README.md"
 authors = [
-    { name = "Juan David León Arrieta", email = "juan.leon22@unipamplona.edu.co" },
-    { name = "Richard Eliseo Mendoza Gáfaro", email = "richard.mendoza@unipamplona.edu.co" }
+    { name = "NetDiagBench-L7 Contributors" }
 ]
 license = { text = "MIT" }
 requires-python = ">=3.11"

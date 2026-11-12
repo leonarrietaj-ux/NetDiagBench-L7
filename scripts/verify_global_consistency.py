@@ -135,7 +135,7 @@ def verify_consistency() -> bool:
         "strict_root_cause_accuracy_all_models": 0.4383,
         "fault_class_accuracy_all_models": 0.7407,
         "evidence_backed_accuracy_all_models": 0.2346,
-        "root_cause_accuracy_all_models": 0.7531,
+        "root_cause_accuracy_all_models": 0.4383,
         "evidence_backing_rate_all_models": 0.2346,
     }
 

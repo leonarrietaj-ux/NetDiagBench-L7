@@ -45,20 +45,16 @@ def main():
             "configs/evaluator_concepts.yaml",
             "configs/hardware_reference.yaml",
         ],
-        "documentacion_academica_y_tecnica": [
+        "documentacion_tecnica": [
             "README.md",
             "docs/GUIA_REPRODUCIBILIDAD.md",
-            "docs/MANUAL_TECNICO_SISTEMA.md",
-            "docs/MANUAL_USUARIO_SISTEMA.md",
-            "docs/E1_matriz_caracterizacion_y_acta_seleccion.md",
-            "docs/E4_conjunto_datos_y_tabla_comparativa.md",
-            "docs/E5_informe_tecnico_evaluacion_comparativa_tradeoff.md",
-            "docs/INFORME_PARTE_1.md",
-            "docs/INFORME_PARTE_2.md",
-            "docs/INFORME_PARTE_3.md",
-            "docs/INFORME_PARTE_4.md",
-            "docs/INFORME_SEGURIDAD.md",
-            "docs/INFORME_ESTADISTICO_FINAL.md",
+            "docs/MANUAL_TECNICO.md",
+            "docs/GUIA_OPERACION.md",
+            "docs/CONFIGURACION_MODELOS.md",
+            "docs/RESULTADOS_BENCHMARK.md",
+            "docs/EVALUACION_TRADEOFF.md",
+            "docs/ANALISIS_ESTADISTICO.md",
+            "docs/SEGURIDAD_SISTEMA.md",
         ],
         "metadatos_del_proyecto": [
             "pyproject.toml",
@@ -70,7 +66,7 @@ def main():
 
     manifest_data = {
         "project": "NetDiagBench-L7",
-        "version": "1.0.1",
+        "version": "1.0.2",
         "release_type": "scientific_public_release",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "repository": "https://github.com/leonarrietaj-ux/NetDiagBench-L7.git",

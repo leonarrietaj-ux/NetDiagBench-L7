@@ -1,10 +1,9 @@
 # NetDiagBench-L7: Guía de Reproducibilidad y Manual de Operación
 
-**Proyecto de Grado:** "Implementación de un benchmark reproducible para el diagnóstico de fallas en servicios de capa de aplicación sobre IP con modelos de lenguaje ligeros de ejecución local"  
-**Universidad de Pamplona — Facultad de Ingenierías y Arquitectura**  
-**Autor:** Juan David León Arrieta | **Director:** Mg. Richard Eliseo Mendoza Gáfaro  
+**Proyecto:** NetDiagBench-L7: Benchmark Agéntico de Diagnóstico de Redes Layer 7 sobre IP  
+**Versión:** 1.0.2 | **Fecha:** Noviembre de 2026  
 
-Esta guía proporciona las instrucciones exhaustivas para que el jurado evaluador, directores o investigadores independientes puedan verificar y reproducir la totalidad de los experimentos, diagnósticos agénticos y matrices de evaluación del framework **NetDiagBench-L7**.
+Esta guía proporciona las instrucciones exhaustivas para que investigadores independientes puedan verificar y reproducir la totalidad de los experimentos, diagnósticos agénticos y matrices de evaluación del framework **NetDiagBench-L7**.
 
 ---
 
@@ -20,7 +19,7 @@ Esta guía proporciona las instrucciones exhaustivas para que el jurado evaluado
 
 ## 2. Instalación y Puesta en Marcha
 
-Desde la raíz del repositorio (`benchapp-ip`):
+Desde la raíz del repositorio (`NetDiagBench-L7`):
 
 ```powershell
 # 1. Crear el entorno virtual de Python
@@ -77,13 +76,13 @@ Para certificar la robustez del sistema frente a riesgos de seguridad (inyecció
 3. `test_read_only_tools_ssrf_blocking`: Bloqueo estricto anti-SSRF hacia metadatos de proveedores cloud (AWS IPv4/IPv6, Alibaba Cloud, GCP, Tencent Cloud, Kubernetes CoreDNS) y banderas mutativas (`-X POST`, `-d`, etc.).
 4. `test_diagnose_request_validation`: Validación estricta de límites y expresiones regulares en contratos Pydantic de la API.
 
-Para la auditoría exhaustiva, consulte [`docs/INFORME_SEGURIDAD.md`](docs/INFORME_SEGURIDAD.md).
+Para la especificación exhaustiva de seguridad, consulte [`docs/SEGURIDAD_SISTEMA.md`](docs/SEGURIDAD_SISTEMA.md).
 
 ---
 
 ## 4. Manual de la Interfaz de Línea de Comandos (`benchapp`)
 
-El comando `benchapp` expone subcomandos alineados con los objetivos específicos de la tesis:
+El comando `benchapp` expone subcomandos alineados con los objetivos del benchmark:
 
 ### 4.1. Listar el Catálogo de Escenarios L7
 ```powershell
@@ -95,7 +94,7 @@ Despliega la tabla con los 18 escenarios clasificados por categoría (`DNS`, `HT
 ```powershell
 .venv\Scripts\benchapp.exe list-models
 ```
-Detalla la terna adoptada en el acta E1: `GLM-4-9B-Chat`, `Qwen3-8B` y `Phi-4-mini-instruct`, con su esquema de cuantización `Q4_K_M`, tamaño de contexto y requisitos de VRAM.
+Detalla la terna adoptada: `GLM-4-9B-Chat`, `Qwen3-8B` y `Phi-4-mini-instruct`, con su esquema de cuantización `Q4_K_M`, tamaño de contexto y requisitos de VRAM.
 
 ### 4.3. Consulta Semántica al Motor RAG Acotado
 ```powershell

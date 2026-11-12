@@ -208,7 +208,7 @@ def _build_sheet_portada(ws, comp: dict[str, Any], corr: dict[str, Any]):
     ws["B3"] = "Universidad de Pamplona · Facultad de Ingenierías y Arquitectura · Ingeniería en Telecomunicaciones"
     ws["B3"].font = SUBTITLE_FONT
 
-    ws["B4"] = "Autor: Juan David León Arrieta | Director: Mg. Richard Eliseo Mendoza Gáfaro"
+    ws["B4"] = "NetDiagBench-L7: Benchmark Agéntico de Diagnóstico de Redes Layer 7 sobre IP"
     ws["B4"].font = SUBTITLE_FONT
 
     # Metadatos del experimento

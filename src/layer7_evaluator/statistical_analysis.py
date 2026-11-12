@@ -1425,7 +1425,7 @@ def build_aggregated_results(rows: list[dict[str, Any]]) -> dict[str, Any]:
 
     return {
         "full_diagnosis_accuracy_all_models": round(sum(1 for r in rows if (r.get("is_full_diagnosis_correct") or r.get("is_root_cause_correct_full_text") or r.get("is_root_cause_correct"))) / n, 4),
-        "root_cause_accuracy_all_models": round(sum(1 for r in rows if (r.get("is_full_diagnosis_correct") or r.get("is_root_cause_correct_full_text") or r.get("is_root_cause_correct"))) / n, 4),
+        "root_cause_accuracy_all_models": round(sum(1 for r in rows if (r.get("is_root_cause_correct_strict") if "is_root_cause_correct_strict" in r else r.get("is_root_cause_correct"))) / n, 4),
         "strict_root_cause_accuracy_all_models": round(sum(1 for r in rows if (r.get("is_root_cause_correct_strict") if "is_root_cause_correct_strict" in r else r.get("is_root_cause_correct"))) / n, 4),
         "fault_class_accuracy_all_models": round(sum(1 for r in rows if r.get("fault_class_match")) / n, 4),
         "evidence_backed_accuracy_all_models": round(sum(1 for r in rows if r.get("evidence_backed")) / n, 4),

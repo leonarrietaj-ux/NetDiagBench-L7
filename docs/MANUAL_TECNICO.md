@@ -1,9 +1,7 @@
 # NetDiagBench-L7 • Manual Técnico del Sistema
-**Proyecto de Grado — Universidad de Pamplona**  
-**Facultad de Ingenierías y Arquitectura — Departamento E.E.S.T.**  
-**Autor:** Juan David León Arrieta (`juan.leon22@unipamplona.edu.co`)  
-**Director:** Mg. Richard Eliseo Mendoza Gáfaro (`richard.mendoza@unipamplona.edu.co`)  
-**Versión:** 1.0.0 | **Fecha:** Noviembre 2026 | **Aislamiento:** 100% Local (8GB VRAM)
+
+**Proyecto:** NetDiagBench-L7: Benchmark Agéntico de Diagnóstico de Redes Layer 7 sobre IP  
+**Versión:** 1.0.2 | **Fecha:** Noviembre 2026 | **Aislamiento:** 100% Local (≤ 8 GB VRAM)  
 
 ---
 
