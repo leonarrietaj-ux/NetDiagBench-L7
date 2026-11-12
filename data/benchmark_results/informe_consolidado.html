@@ -534,7 +534,7 @@
                     </p>
                 </div>
                 <div style="text-align: right; font-size: 0.85rem; color: var(--text-dim);">
-                    Fecha: <strong>2026-11-08 18:14:41</strong><br>
+                    Fecha: <strong>2026-11-12 00:37:25</strong><br>
                     Corridas Auditadas: <strong>162</strong>
                 </div>
             </div>
@@ -548,20 +548,20 @@
             <h2>1. Resumen Ejecutivo de la Evaluación (OE4)</h2>
             <div class="meta-box">
                 <div class="meta-item">
-                    <div class="meta-val">75.3%</div>
-                    <div class="meta-lbl">Precisión Diagnóstica Global</div>
+                    <div class="meta-val">75.3% (122/162)</div>
+                    <div class="meta-lbl">Exactitud Diagnóstica Completa</div>
                 </div>
                 <div class="meta-item">
-                    <div class="meta-val">23.5%</div>
+                    <div class="meta-val">43.8% (71/162)</div>
+                    <div class="meta-lbl">Causa Raíz Estricta</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-val">23.5% (38/162)</div>
                     <div class="meta-lbl">Tasa con Evidencia Read-Only</div>
                 </div>
                 <div class="meta-item">
                     <div class="meta-val font-mono" style="font-family: monospace;">vb26a394b7fb3</div>
                     <div class="meta-lbl">Evaluador Normativo (SHA-256)</div>
-                </div>
-                <div class="meta-item">
-                    <div class="meta-val">162 / 162</div>
-                    <div class="meta-lbl">Corridas Auditadas Exitosas</div>
                 </div>
             </div>
         </section>
@@ -574,7 +574,8 @@
                     <tr>
                         <th>Modelo SLM</th>
                         <th>Parámetros</th>
-                        <th>Precisión Causa Raíz</th>
+                        <th>Diagnóstico Completo</th>
+                        <th>Causa Raíz Estricta</th>
                         <th>Puntaje de Coincidencia Parcial</th>
                         <th>TTFT (ms)</th>
                         <th>Velocidad (tok/s)</th>
@@ -590,6 +591,7 @@
                         <td><strong>glm-4-9b-chat</strong></td>
                         <td>9.0B</td>
                         <td style="color: var(--warning); font-weight: bold;">74.1% (40/54)</td>
+                        <td style="font-weight: 600;">61.1% (33/54)</td>
                         <td>0.6073</td>
                         <td>288148.8176 ms</td>
                         <td><strong>2.9102</strong> tok/s</td>
@@ -603,6 +605,7 @@
                         <td><strong>phi-4-mini-instruct</strong></td>
                         <td>3.8B</td>
                         <td style="color: var(--warning); font-weight: bold;">64.8% (35/54)</td>
+                        <td style="font-weight: 600;">25.9% (14/54)</td>
                         <td>0.3603</td>
                         <td>133724.1556 ms</td>
                         <td><strong>3.2931</strong> tok/s</td>
@@ -616,6 +619,7 @@
                         <td><strong>qwen3-8b</strong></td>
                         <td>8.2B</td>
                         <td style="color: var(--success); font-weight: bold;">87.0% (47/54)</td>
+                        <td style="font-weight: 600;">44.4% (24/54)</td>
                         <td>0.5435</td>
                         <td>253500.0587 ms</td>
                         <td><strong>1.7533</strong> tok/s</td>
@@ -873,12 +877,12 @@
             <div class="verdict-box">
                 <h3 style="color: var(--primary); margin-bottom: 8px;">Configuración de Mejor Compromiso Global: glm-4-9b-chat (Score: 0.732)</h3>
                 <p>
-                    Selección óptima calculada dinámicamente mediante la función de utilidad multicriterio ponderada (OE4: 40% precisión de causa raíz, 20% rúbrica cualitativa, 20% velocidad de decodificación y 20% eficiencia de VRAM). El modelo <strong>glm-4-9b-chat</strong> alcanza un <strong>74.1%</strong> de precisión diagnóstica con un consumo medio de None GB de VRAM (Declarada/Estimada), ratificándose como la configuración de mejor balance operativo.
+                    Selección óptima calculada dinámicamente mediante la función de utilidad multicriterio ponderada (OE4: 40% precisión de causa raíz, 20% rúbrica cualitativa, 20% velocidad de decodificación y 20% eficiencia de VRAM). El modelo <strong>glm-4-9b-chat</strong> alcanza un <strong>74.1%</strong> de precisión diagnóstica con un consumo medio de 5.9 GB de VRAM (Declarada/Estimada), ratificándose como la configuración de mejor balance operativo.
                 </p>
                 <div style="margin-top: 14px;">
                     <h4 style="color: #64748b; margin-bottom: 6px;">Ranking Multicriterio Dinámico Consolidado:</h4>
                     <ol style="margin-left: 20px; line-height: 1.8;">
-                        <li><strong>glm-4-9b-chat:</strong> Score de Eficiencia: <strong>0.732</strong> | Precisión: 74.1% | Tok/s: 2.9 | VRAM: None GB</li><li><strong>qwen3-8b:</strong> Score de Eficiencia: <strong>0.722</strong> | Precisión: 87.0% | Tok/s: 1.8 | VRAM: None GB</li><li><strong>phi-4-mini-instruct:</strong> Score de Eficiencia: <strong>0.801</strong> | Precisión: 64.8% | Tok/s: 3.3 | VRAM: None GB</li>
+                        <li><strong>glm-4-9b-chat:</strong> Score de Eficiencia: <strong>0.732</strong> | Precisión: 74.1% | Tok/s: 2.9 | VRAM: 5.9 GB</li><li><strong>qwen3-8b:</strong> Score de Eficiencia: <strong>0.722</strong> | Precisión: 87.0% | Tok/s: 1.8 | VRAM: 5.5 GB</li><li><strong>phi-4-mini-instruct:</strong> Score de Eficiencia: <strong>0.801</strong> | Precisión: 64.8% | Tok/s: 3.3 | VRAM: 2.8 GB</li>
                     </ol>
                 </div>
             </div>

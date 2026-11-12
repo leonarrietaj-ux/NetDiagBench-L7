@@ -56,13 +56,18 @@ def generate_html_benchmark_report(
     corrs = correlation_analysis.get("correlations", {})
     kruskal = correlation_analysis.get("kruskal_wallis", {})
 
-    total_correct = sum(
-        1 for r in rows if str(r.get("is_root_cause_correct", "")).lower() in ("true", "1")
+    total_full = sum(
+        1 for r in rows if bool(r.get("is_full_diagnosis_correct")) or str(r.get("is_root_cause_correct_full_text", "")).lower() in ("true", "1")
     )
-    global_acc = round(total_correct / len(rows) * 100.0, 1) if rows else 0.0
+    global_full_acc = round(total_full / len(rows) * 100.0, 1) if rows else 0.0
+
+    total_strict = sum(
+        1 for r in rows if bool(r.get("is_root_cause_correct_strict")) or str(r.get("is_root_cause_correct", "")).lower() in ("true", "1")
+    )
+    global_strict_acc = round(total_strict / len(rows) * 100.0, 1) if rows else 0.0
 
     total_evidence = sum(
-        1 for r in rows if str(r.get("evidence_backed", "")).lower() in ("true", "1")
+        1 for r in rows if bool(r.get("evidence_backed")) or str(r.get("evidence_backed", "")).lower() in ("true", "1")
     )
     global_evidence = round(total_evidence / len(rows) * 100.0, 1) if rows else 0.0
 
@@ -326,20 +331,20 @@ def generate_html_benchmark_report(
             <h2>1. Resumen Ejecutivo de la Evaluación (OE4)</h2>
             <div class="meta-box">
                 <div class="meta-item">
-                    <div class="meta-val">{global_acc}%</div>
-                    <div class="meta-lbl">Precisión Diagnóstica Global</div>
+                    <div class="meta-val">{global_full_acc}% ({total_full}/{len(rows)})</div>
+                    <div class="meta-lbl">Exactitud Diagnóstica Completa</div>
                 </div>
                 <div class="meta-item">
-                    <div class="meta-val">{global_evidence}%</div>
+                    <div class="meta-val">{global_strict_acc}% ({total_strict}/{len(rows)})</div>
+                    <div class="meta-lbl">Causa Raíz Estricta</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-val">{global_evidence}% ({total_evidence}/{len(rows)})</div>
                     <div class="meta-lbl">Tasa con Evidencia Read-Only</div>
                 </div>
                 <div class="meta-item">
                     <div class="meta-val font-mono" style="font-family: monospace;">v{eval_version}</div>
                     <div class="meta-lbl">Evaluador Normativo (SHA-256)</div>
-                </div>
-                <div class="meta-item">
-                    <div class="meta-val">{len(rows)} / {len(rows)}</div>
-                    <div class="meta-lbl">Corridas Auditadas Exitosas</div>
                 </div>
             </div>
         </section>
@@ -352,7 +357,8 @@ def generate_html_benchmark_report(
                     <tr>
                         <th>Modelo SLM</th>
                         <th>Parámetros</th>
-                        <th>Precisión Causa Raíz</th>
+                        <th>Diagnóstico Completo</th>
+                        <th>Causa Raíz Estricta</th>
                         <th>Puntaje de Coincidencia Parcial</th>
                         <th>TTFT (ms)</th>
                         <th>Velocidad (tok/s)</th>
@@ -371,15 +377,19 @@ def generate_html_benchmark_report(
         tok_s = m_desc.get("tokens_per_sec", {}).get("mean", 0.0)
         p50 = m_desc.get("total_time_ms", {}).get("p50", 0.0)
         vram = m_desc.get("peak_vram_gb", {}).get("mean", 0.0)
-        energy_kwh = sum(r["energy_kwh"] for r in by_model[mid])
+        energy_kwh = sum((r.get("energy_kwh") or 0.0) for r in by_model[mid])
         rub = m_desc.get("rubric_score", {}).get("mean", 5.0)
         part = m_desc.get("partial_match_score", {}).get("mean", 0.988)
 
-        correct_count = sum(
-            1 for r in by_model[mid] if str(r.get("is_root_cause_correct", "")).lower() in ("true", "1")
+        full_count = sum(
+            1 for r in by_model[mid] if bool(r.get("is_full_diagnosis_correct")) or str(r.get("is_root_cause_correct_full_text", "")).lower() in ("true", "1")
         )
-        model_acc = round(correct_count / len(by_model[mid]) * 100.0, 1) if by_model[mid] else 0.0
-        acc_color = "var(--success)" if model_acc >= 80.0 else ("var(--warning)" if model_acc >= 60.0 else "var(--danger)")
+        strict_count = sum(
+            1 for r in by_model[mid] if bool(r.get("is_root_cause_correct_strict")) or str(r.get("is_root_cause_correct", "")).lower() in ("true", "1")
+        )
+        model_full_acc = round(full_count / len(by_model[mid]) * 100.0, 1) if by_model[mid] else 0.0
+        model_strict_acc = round(strict_count / len(by_model[mid]) * 100.0, 1) if by_model[mid] else 0.0
+        acc_color = "var(--success)" if model_full_acc >= 80.0 else ("var(--warning)" if model_full_acc >= 60.0 else "var(--danger)")
 
         param_str = get_model_size_label(mid)
 
@@ -387,7 +397,8 @@ def generate_html_benchmark_report(
                     <tr>
                         <td><strong>{mid}</strong></td>
                         <td>{param_str}</td>
-                        <td style="color: {acc_color}; font-weight: bold;">{model_acc}% ({correct_count}/{len(by_model[mid])})</td>
+                        <td style="color: {acc_color}; font-weight: bold;">{model_full_acc}% ({full_count}/{len(by_model[mid])})</td>
+                        <td style="font-weight: 600;">{model_strict_acc}% ({strict_count}/{len(by_model[mid])})</td>
                         <td>{part}</td>
                         <td>{ttft} ms</td>
                         <td><strong>{tok_s}</strong> tok/s</td>

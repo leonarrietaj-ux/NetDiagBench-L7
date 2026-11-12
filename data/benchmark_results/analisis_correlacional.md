@@ -38,18 +38,18 @@ Se rechaza H0 si p < 0.05.
 
 | Modelo | Metrica | IC 95% Inferior | IC 95% Superior |
 |---|---|---|---|
-| **glm-4-9b-chat** | TTFT (ms) | 276966.695 | 300522.3133 |
-| **glm-4-9b-chat** | Tokens/s | 2.8807 | 2.937 |
-| **glm-4-9b-chat** | Latencia (ms) | 489556.283 | 547867.018 |
-| **glm-4-9b-chat** | Energia (kWh) | 0.0198 | 0.0222 |
-| **phi-4-mini-instruct** | TTFT (ms) | 129587.0069 | 137789.8807 |
-| **phi-4-mini-instruct** | Tokens/s | 3.2437 | 3.3424 |
-| **phi-4-mini-instruct** | Latencia (ms) | 203626.193 | 216479.8381 |
+| **glm-4-9b-chat** | TTFT (ms) | 276742.8644 | 299240.8004 |
+| **glm-4-9b-chat** | Tokens/s | 2.8839 | 2.938 |
+| **glm-4-9b-chat** | Latencia (ms) | 486855.9228 | 544906.4981 |
+| **glm-4-9b-chat** | Energia (kWh) | 0.0197 | 0.0221 |
+| **phi-4-mini-instruct** | TTFT (ms) | 129529.0069 | 137507.3656 |
+| **phi-4-mini-instruct** | Tokens/s | 3.2385 | 3.3426 |
+| **phi-4-mini-instruct** | Latencia (ms) | 203372.0052 | 216673.8213 |
 | **phi-4-mini-instruct** | Energia (kWh) | 0.0082 | 0.0088 |
-| **qwen3-8b** | TTFT (ms) | 243482.0143 | 264297.1289 |
-| **qwen3-8b** | Tokens/s | 1.7207 | 1.782 |
-| **qwen3-8b** | Latencia (ms) | 838900.1457 | 1032815.0991 |
-| **qwen3-8b** | Energia (kWh) | 0.034 | 0.0419 |
+| **qwen3-8b** | TTFT (ms) | 243315.5806 | 263356.8913 |
+| **qwen3-8b** | Tokens/s | 1.7196 | 1.7822 |
+| **qwen3-8b** | Latencia (ms) | 840660.5244 | 1025573.2961 |
+| **qwen3-8b** | Energia (kWh) | 0.0341 | 0.0416 |
 
 ## 4. Tamano del Efecto (d de Cohen) entre Pares de Modelos
 

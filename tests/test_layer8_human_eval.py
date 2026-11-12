@@ -932,7 +932,8 @@ def test_15_confusion_matrix_and_interitem_matrix_matching_scipy():
         pytest.skip("SESION_KIT_CASO2 privada excluida de la versión pública"), f"Directorio de sesión {s_dir} no encontrado"
 
     json_path = s_dir / "concordancia.json"
-    assert json_path.exists(), "concordancia.json no encontrado"
+    if not json_path.exists():
+        pytest.skip("concordancia.json no encontrado (datos privados)")
     with open(json_path, "r", encoding="utf-8") as f:
         data = json.load(f)
 
@@ -997,6 +998,8 @@ def test_16_automated_findings_cite_only_valid_numbers_and_codes():
     assert len(FINDING_RULES) >= 5, "FINDING_RULES debe definir reglas estructuradas"
 
     xlsx_path = PROJECT_ROOT / "data" / "human_eval" / "SESION_KIT_CASO2" / "Analisis_Concordancia_SESION_KIT_CASO2.xlsx"
+    if not xlsx_path.exists():
+        pytest.skip("Instrumentos privados SESION_KIT_CASO2 excluidos de la versión pública")
     wb = openpyxl.load_workbook(xlsx_path, data_only=True)
     corr_sheet = [s for s in wb.sheetnames if "Correlaci" in s and "Datos" not in s][0]
     ws_corr = wb[corr_sheet]
@@ -1043,6 +1046,8 @@ def test_17_kit_zip_integrity_regenerates_when_corrupted_to_two_bytes(tmp_path):
 
     s_dir = PROJECT_ROOT / "data" / "human_eval" / "SESION_KIT_CASO2"
     xlsx_a = s_dir / "Instrumento_Experto_A_SESION_KIT_CASO2.xlsx"
+    if not xlsx_a.exists():
+        pytest.skip("Instrumentos privados SESION_KIT_CASO2 excluidos de la versión pública")
     assert xlsx_a.exists()
 
     # Simular corrupción con 2 bytes
@@ -1089,6 +1094,9 @@ def test_18_get_correlation_returns_200_and_excel_has_correlation_sheets():
     from src.layer6_interface.web import app
     import openpyxl
 
+    s_dir = PROJECT_ROOT / "data" / "human_eval" / "SESION_KIT_CASO2"
+    if not s_dir.exists() or not (s_dir / "Analisis_Concordancia_SESION_KIT_CASO2.xlsx").exists():
+        pytest.skip("Instrumentos privados SESION_KIT_CASO2 excluidos de la versión pública")
     with TestClient(app) as client:
         res = client.get("/api/human-eval/correlation?sesion_id=SESION_KIT_CASO2")
         assert res.status_code == 200, f"Fallo en GET correlation: {res.text}"

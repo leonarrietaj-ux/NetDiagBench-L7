@@ -84,7 +84,7 @@ class TestExcelExporter:
         raw_sheet = [s for s in wb.sheetnames if s.startswith("Dataset Raw")][0]
         ws_raw = wb[raw_sheet]
         assert ws_raw.max_row == 163
-        assert ws_raw.max_column in (41, 42, 67)
+        assert ws_raw.max_column in (41, 42, 67, 79, 98, 99)
 
 
 class TestPDFExporter:

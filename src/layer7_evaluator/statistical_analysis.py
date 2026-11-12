@@ -372,9 +372,19 @@ def load_benchmark_csv(
                 if key in row:
                     val = str(row[key]).strip()
                     row[key] = float(val) if val and val.lower() not in ("none", "null", "nan") else None
-            for key in ["is_root_cause_correct", "is_component_correct", "evidence_backed"]:
-                if key in row:
-                    row[key] = row[key].strip().lower() in ("true", "1", "yes")
+            for key in [
+                "is_root_cause_correct",
+                "is_full_diagnosis_correct",
+                "is_root_cause_correct_strict",
+                "is_root_cause_correct_full_text",
+                "is_component_correct",
+                "fault_class_match",
+                "fault_class_match_strict",
+                "evidence_backed",
+                "c6_automated_evidence_check",
+            ]:
+                if key in row and row[key] is not None:
+                    row[key] = str(row[key]).strip().lower() in ("true", "1", "yes")
             rows.append(row)
     return rows
 
@@ -563,7 +573,10 @@ def compute_classification_metrics(
     unknown_count = sum(1 for yp in y_pred if yp == "UNKNOWN")
     if unknown_count > 0 and "UNKNOWN" not in labels_diagnostic:
         labels_diagnostic.append("UNKNOWN")
-    cm_diagnostic = confusion_matrix(y_true, y_pred, labels=labels_diagnostic).tolist()
+    try:
+        cm_diagnostic = confusion_matrix(y_true, y_pred, labels=labels_diagnostic).tolist()
+    except Exception:
+        cm_diagnostic = []
 
     error_report = {
         "total_predictions": len(rows),
@@ -1011,9 +1024,9 @@ def build_comparative_summary(
         mrows = by_model[mid]
         lat_sorted = sorted(r["total_time_ms"] for r in mrows)
         n = len(lat_sorted)
-        total_energy_kwh = sum(r["energy_kwh"] for r in mrows)
-        total_co2_kg = sum(r["co2_emissions_kg"] for r in mrows)
-        total_tokens = sum(r["tokens_per_sec"] * (r["total_time_ms"] / 1000.0) for r in mrows)
+        total_energy_kwh = sum((r.get("energy_kwh") or 0.0) for r in mrows)
+        total_co2_kg = sum((r.get("co2_emissions_kg") or 0.0) for r in mrows)
+        total_tokens = sum((r.get("tokens_per_sec") or 0.0) * ((r.get("total_time_ms") or 0.0) / 1000.0) for r in mrows)
         energy_uwh = round(total_energy_kwh * 1e6, 2)  # misma convencion que el harness
 
         vram_meas_valid = any(bool(r.get("vram_measurement_valid", False)) for r in mrows)
@@ -1038,20 +1051,20 @@ def build_comparative_summary(
             "accuracy_pct": _mean_bool([r.get("is_full_diagnosis_correct", r.get("is_root_cause_correct_full_text", r.get("is_root_cause_correct"))) for r in mrows]),
             "strict_root_cause_accuracy_pct": _mean_bool([r.get("is_root_cause_correct_strict", r.get("is_root_cause_correct")) for r in mrows]),
             "component_accuracy_pct": _mean_bool([r.get("is_component_correct") for r in mrows]),
-            "partial_f1": round(statistics.mean(r["partial_match_score"] for r in mrows), 3),
-            "evidence_rate_pct": _mean_bool([r["evidence_backed"] for r in mrows]),
-            "ttft_ms": round(statistics.mean(r["ttft_ms"] for r in mrows), 1),
-            "tokens_per_sec": round(statistics.mean(r["tokens_per_sec"] for r in mrows), 1),
-            "latency_mean_ms": round(statistics.mean(lat_sorted), 1),
-            "latency_p50_ms": round(lat_sorted[int(n * 0.50)], 1),
-            "latency_p95_ms": round(lat_sorted[min(int(n * 0.95), n - 1)], 1),
+            "partial_f1": round(statistics.mean((r.get("partial_match_score") or 0.0) for r in mrows), 3) if mrows else 0.0,
+            "evidence_rate_pct": _mean_bool([r.get("evidence_backed", False) for r in mrows]),
+            "ttft_ms": round(statistics.mean((r.get("ttft_ms") or 0.0) for r in mrows), 1) if mrows else 0.0,
+            "tokens_per_sec": round(statistics.mean((r.get("tokens_per_sec") or 0.0) for r in mrows), 1) if mrows else 0.0,
+            "latency_mean_ms": round(statistics.mean(lat_sorted), 1) if lat_sorted else 0.0,
+            "latency_p50_ms": round(lat_sorted[int(n * 0.50)], 1) if lat_sorted else 0.0,
+            "latency_p95_ms": round(lat_sorted[min(int(n * 0.95), n - 1)], 1) if lat_sorted else 0.0,
             "vram_gb": vram_peak if (vram_meas_valid and vram_peak is not None) else vram_decl,
             "vram_peak_gb": vram_peak,
             "vram_declared_gb": vram_decl,
             "vram_estimated_gb": vram_decl,
             "vram_measurement_valid": vram_meas_valid,
-            "ram_mb": round(statistics.mean(r["peak_ram_mb"] for r in mrows), 1),
-            "rubric": round(statistics.mean(r["rubric_score"] for r in mrows), 2),
+            "ram_mb": round(statistics.mean((r.get("peak_ram_mb") or 0.0) for r in mrows), 1) if mrows else 0.0,
+            "rubric": round(statistics.mean((r.get("rubric_score") or 0.0) for r in mrows), 2) if mrows else 0.0,
             "energy_kwh": round(total_energy_kwh, 6),
             "co2_kg": round(total_co2_kg, 6),
             "energy_uwh": energy_uwh,
@@ -1368,8 +1381,13 @@ def build_aggregated_results(rows: list[dict[str, Any]]) -> dict[str, Any]:
     """
     if not rows:
         return {
-            "root_cause_accuracy_all_models": round(sum(1 for r in rows if (r.get("is_full_diagnosis_correct") or r.get("is_root_cause_correct_full_text") or r.get("is_root_cause_correct"))) / n, 4),
+            "full_diagnosis_accuracy_all_models": 0.0,
+            "root_cause_accuracy_all_models": 0.0,
+            "strict_root_cause_accuracy_all_models": 0.0,
+            "fault_class_accuracy_all_models": 0.0,
+            "evidence_backed_accuracy_all_models": 0.0,
             "evidence_backing_rate_all_models": 0.0,
+            "f1_macro_all_models": 0.0,
             "partial_f1_score_all_models": 0.0,
             "rubric_score_all_models": 0.0,
             "per_model_summary": {},
@@ -1406,12 +1424,15 @@ def build_aggregated_results(rows: list[dict[str, Any]]) -> dict[str, Any]:
         }
 
     return {
+        "full_diagnosis_accuracy_all_models": round(sum(1 for r in rows if (r.get("is_full_diagnosis_correct") or r.get("is_root_cause_correct_full_text") or r.get("is_root_cause_correct"))) / n, 4),
         "root_cause_accuracy_all_models": round(sum(1 for r in rows if (r.get("is_full_diagnosis_correct") or r.get("is_root_cause_correct_full_text") or r.get("is_root_cause_correct"))) / n, 4),
-        "strict_root_cause_accuracy_all_models": round(sum(1 for r in rows if (r.get("is_root_cause_correct_strict") or r.get("is_root_cause_correct"))) / n, 4),
-        "evidence_backing_rate_all_models": round(sum(1 for r in rows if r["evidence_backed"]) / n, 4),
+        "strict_root_cause_accuracy_all_models": round(sum(1 for r in rows if (r.get("is_root_cause_correct_strict") if "is_root_cause_correct_strict" in r else r.get("is_root_cause_correct"))) / n, 4),
+        "fault_class_accuracy_all_models": round(sum(1 for r in rows if r.get("fault_class_match")) / n, 4),
+        "evidence_backed_accuracy_all_models": round(sum(1 for r in rows if r.get("evidence_backed")) / n, 4),
+        "evidence_backing_rate_all_models": round(sum(1 for r in rows if r.get("evidence_backed")) / n, 4),
         "f1_macro_all_models": round(corr.get("classification_overall", {}).get("f1_macro", 0.0), 4),
-        "partial_f1_score_all_models": round(statistics.mean(r["partial_match_score"] for r in rows), 4),
-        "rubric_score_all_models": round(statistics.mean(r["rubric_score"] for r in rows), 4),
+        "partial_f1_score_all_models": round(statistics.mean((r.get("partial_match_score") or 0.0) for r in rows), 4) if rows else 0.0,
+        "rubric_score_all_models": round(statistics.mean((r.get("rubric_score") or 0.0) for r in rows), 4) if rows else 0.0,
         "per_model_summary": per_model,
         "statistical_correlations_scipy": corr["correlations"],
         "kruskal_wallis_non_parametric": corr["kruskal_wallis"],

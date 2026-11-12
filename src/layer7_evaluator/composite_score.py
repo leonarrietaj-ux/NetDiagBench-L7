@@ -208,7 +208,7 @@ def calculate_model_composite_scores(
             obs_tecnica = ""
         else:
             # Medición real de VRAM no disponible (física)
-            estado_vrm = vram_origin if vram_origin in ("declared", "estimated") else "no_disponible"
+            estado_vrm = "no_disponible"
             if vrm_est_raw is not None and not math.isnan(float(vrm_est_raw)) and float(vrm_est_raw) > 0:
                 vrm_est = float(vrm_est_raw)
                 norm_vrm_est = min(max(min_vram_estimated / max(vrm_est, 0.1), 0.0), 1.0)

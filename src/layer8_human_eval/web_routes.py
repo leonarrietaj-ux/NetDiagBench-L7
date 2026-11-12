@@ -608,6 +608,48 @@ def load_session_auto_data(s_dir: Path, clave_entries: list[dict[str, Any]]) -> 
 
                 }
 
+    # Fallback cientifico: consultar data/benchmark_results/resultados.csv si no existen archivos de corrida individuales
+    csv_path = PROJECT_ROOT / "data" / "benchmark_results" / "resultados.csv"
+    if csv_path.exists() and len(auto_dict) < len(clave_entries):
+        with open(csv_path, "r", encoding="utf-8") as f_csv:
+            csv_rows = list(csv.DictReader(f_csv))
+
+        lookup = {}
+        for r in csv_rows:
+            m = r.get("model_id", "").strip().lower()
+            s = r.get("scenario_id", "").strip()
+            try:
+                sd = int(r.get("seed", 0))
+            except Exception:
+                sd = 0
+            is_corr = bool(str(r.get("is_full_diagnosis_correct") or r.get("is_root_cause_correct_full_text") or r.get("is_root_cause_correct", "")).strip().lower() in ("1", "true", "si"))
+            rub = float(r.get("rubric_score") or 0.0)
+            ev = bool(str(r.get("evidence_backed", "")).strip().lower() in ("1", "true", "si"))
+            lookup[(m, s, sd)] = {
+                "is_correct": is_corr,
+                "rubric_score": rub,
+                "evidence_backed": ev,
+            }
+
+        for entry in clave_entries:
+            code = entry.get("codigo")
+            if code and code not in auto_dict:
+                m = str(entry.get("model_id", "")).strip().lower()
+                s = str(entry.get("scenario_id", "")).strip()
+                try:
+                    sd = int(entry.get("seed", 0))
+                except Exception:
+                    sd = 0
+                if (m, s, sd) in lookup:
+                    matched = lookup[(m, s, sd)]
+                    auto_dict[code] = {
+                        "codigo": code,
+                        "scenario_id": s,
+                        "is_correct": matched["is_correct"],
+                        "rubric_score": matched["rubric_score"],
+                        "evidence_backed": matched["evidence_backed"],
+                    }
+
     return auto_dict
 
 
@@ -1316,7 +1358,10 @@ def api_get_correlation(sesion_id: Optional[str] = None):
 
     active_id = s_dir.name
 
-    state = get_session_state(active_id)
+    try:
+        state = get_session_state(active_id)
+    except Exception:
+        state = {}
 
     is_blind = not state.get("is_key_opened", False)
 

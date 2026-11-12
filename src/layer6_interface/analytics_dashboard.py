@@ -1050,7 +1050,8 @@ function renderComparativo(d) {
         hBarChart({ title: "Latencia total p50", unit: "ms", items: items(m => m.latency_p50_ms), lowerIsBetter: true, decimals: 0 }) +
         hBarChart({ title: "Latencia total p95", unit: "ms", items: items(m => m.latency_p95_ms), lowerIsBetter: true, decimals: 0 }) +
         hBarChart({ title: "VRAM (Declarada/Estimada) pico (límite de referencia 8 GB)", unit: "GB", items: items(m => m.vram_gb), lowerIsBetter: true, limit: d.vram_limit_gb, limitLabel: "8 GB" }) +
-        hBarChart({ title: "Precisión diagnóstica (causa raíz)", unit: "%", items: items(m => m.accuracy_pct) });
+        hBarChart({ title: "Exactitud diagnóstica completa", unit: "%", items: items(m => m.accuracy_pct) }) +
+        hBarChart({ title: "Causa raíz estricta", unit: "%", items: items(m => m.strict_root_cause_accuracy_pct !== undefined ? m.strict_root_cause_accuracy_pct : m.accuracy_pct) });
 
     document.getElementById("energyCharts").innerHTML =
         hBarChart({ title: "Energía total estimada", unit: "µWh", items: items(m => m.energy_uwh), lowerIsBetter: true, compact: true }) +
@@ -1059,7 +1060,8 @@ function renderComparativo(d) {
 
     // Tabla multidimensional
     const cols = [
-        ["Precisión", m => m.accuracy_pct, v => fmt(v) + "%", false],
+        ["Diag. Completo", m => m.accuracy_pct, v => fmt(v) + "%", false],
+        ["Causa Raíz Estricta", m => m.strict_root_cause_accuracy_pct !== undefined ? m.strict_root_cause_accuracy_pct : m.accuracy_pct, v => fmt(v) + "%", false],
         ["Puntaje de Coincidencia Parcial", m => m.partial_f1, v => fmt(v, 3), false],
         ["Evidencia", m => m.evidence_rate_pct, v => fmt(v) + "%", false],
         ["TTFT", m => m.ttft_ms, v => fmt(v) + " ms", true],

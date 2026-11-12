@@ -34,7 +34,11 @@
     "driver_version": "32.0.21030.13004"
   },
   "aggregated_results": {
+    "full_diagnosis_accuracy_all_models": 0.7531,
     "root_cause_accuracy_all_models": 0.7531,
+    "strict_root_cause_accuracy_all_models": 0.4383,
+    "fault_class_accuracy_all_models": 0.7407,
+    "evidence_backed_accuracy_all_models": 0.2346,
     "evidence_backing_rate_all_models": 0.2346,
     "f1_macro_all_models": 0.7744,
     "partial_f1_score_all_models": 0.5037,
@@ -49,17 +53,17 @@
         "evidence_rate_pct": 42.6,
         "ttft_ms_mean": 288148.8,
         "ttft_ms_ci95": [
-          276966.695,
-          300522.3133
+          276742.8644,
+          299240.8004
         ],
         "tokens_per_sec_mean": 2.9,
         "tokens_per_sec_ci95": [
-          2.8807,
-          2.937
+          2.8839,
+          2.938
         ],
         "latency_p50_ms": 501916.8,
         "latency_p95_ms": 706684.8,
-        "peak_vram_gb": null,
+        "peak_vram_gb": 5.9,
         "rubric_score": 4.13,
         "total_energy_kwh": 1.131579,
         "recommended_tier": "Mejor compromiso global (NOC)"
@@ -73,17 +77,17 @@
         "evidence_rate_pct": 0.0,
         "ttft_ms_mean": 133724.2,
         "ttft_ms_ci95": [
-          129587.0069,
-          137789.8807
+          129529.0069,
+          137507.3656
         ],
         "tokens_per_sec_mean": 3.3,
         "tokens_per_sec_ci95": [
-          3.2437,
-          3.3424
+          3.2385,
+          3.3426
         ],
         "latency_p50_ms": 213264.3,
         "latency_p95_ms": 248464.1,
-        "peak_vram_gb": null,
+        "peak_vram_gb": 2.8,
         "rubric_score": 3.55,
         "total_energy_kwh": 0.459677,
         "recommended_tier": "Borde / Triaje Rapido (Edge Triage)"
@@ -97,17 +101,17 @@
         "evidence_rate_pct": 27.8,
         "ttft_ms_mean": 253500.1,
         "ttft_ms_ci95": [
-          243482.0143,
-          264297.1289
+          243315.5806,
+          263356.8913
         ],
         "tokens_per_sec_mean": 1.8,
         "tokens_per_sec_ci95": [
-          1.7207,
-          1.782
+          1.7196,
+          1.7822
         ],
         "latency_p50_ms": 761328.4,
         "latency_p95_ms": 1681855.0,
-        "peak_vram_gb": null,
+        "peak_vram_gb": 5.5,
         "rubric_score": 4.07,
         "total_energy_kwh": 2.033261,
         "recommended_tier": "Razonamiento CoT / Recursos Acotados"
@@ -247,6 +251,7 @@
       "category": "Familia de servicio de red (DNS, HTTP_WEB, API_GATEWAY, TLS)",
       "fault_class": "Taxonomía oficial IETF de la falla L7",
       "is_root_cause_correct": "Acierto estricto en aislamiento de causa raíz (71/162, 43.8%)",
+      "is_full_diagnosis_correct": "Acierto en diagnóstico completo de la falla Layer 7 (122/162, 75.3%)",
       "is_component_correct": "Booleano de aislamiento del componente afectado",
       "partial_match_score": "Puntaje continuo de similitud léxica y componente (0.0..1.0)",
       "evidence_backed": "Booleano de sustento en evidencia técnica empírica",
@@ -270,6 +275,12 @@
       "semilla": "Alias entero de la semilla pseudoaleatoria",
       "timestamp": "Marca temporal ISO-8601 de ejecución de la prueba",
       "execution_mode": "Modalidad de ejecución: emulado o sintetico_determinista",
+      "engine_mode": "Motor de inferencia empleado: live_ollama o deterministic_simulator",
+      "factual_accuracy_c6": "Exactitud factual C6: 2 (plena), 1 (parcial), 0 (nula)",
+      "c6_automated_evidence_check": "Métrica / atributo c6_automated_evidence_check del benchmark experimental",
+      "c6_human_score": "Métrica / atributo c6_human_score del benchmark experimental",
+      "evidence_status": "Métrica / atributo evidence_status del benchmark experimental",
+      "sustentation_status": "Métrica / atributo sustentation_status del benchmark experimental",
       "model_diagnosis_text": "Texto completo emitido por el modelo en su respuesta",
       "root_cause": "Texto exacto de la causa raíz identificada",
       "git_commit_hash": "Hash commit SHA de git en la corrida",
@@ -282,20 +293,26 @@
       "reasoning_tokens": "Conteo de tokens dedicados al razonamiento",
       "ttft_final_ms": "Tiempo al primer token de la respuesta diagnóstica final",
       "rescore_commit": "Identificador de la recalificación normativa",
-      "engine_mode": "Motor de inferencia empleado: live_ollama o deterministic_simulator",
-      "factual_accuracy_c6": "Exactitud factual C6: 2 (plena), 1 (parcial), 0 (nula)",
       "ttft_s": "Time to first token normalizado en segundos",
       "tokens_per_kwh": "Eficiencia energética en tokens por kilovatio-hora",
       "energy_measurement_type": "Modalidad de medición energética: estimada",
       "ram_gb": "RAM de trabajo del proceso en gigabytes",
       "gpu_model_detected": "Modelo real de GPU detectado físicamente",
       "vram_total_gb": "VRAM física total en gigabytes",
+      "vram_peak_gb": "Métrica / atributo vram_peak_gb del benchmark experimental",
+      "vram_declared_gb": "VRAM declarada en el perfil del modelo",
+      "vram_estimated_gb": "Métrica / atributo vram_estimated_gb del benchmark experimental",
+      "vram_shared_gb": "Métrica / atributo vram_shared_gb del benchmark experimental",
       "vram_measurement_method": "Método de medición de VRAM empleado",
       "vram_measurement_valid": "Booleano que certifica validez física directa de medición de VRAM",
-      "vram_declared_gb": "VRAM declarada en el perfil del modelo",
+      "vram_measurement_status": "Métrica / atributo vram_measurement_status del benchmark experimental",
       "ram_total_gb": "RAM física total del host en gigabytes",
       "ram_available_gb": "RAM física disponible al inicio de la corrida en gigabytes",
+      "ram_peak_gb": "Métrica / atributo ram_peak_gb del benchmark experimental",
+      "ram_measurement_method": "Métrica / atributo ram_measurement_method del benchmark experimental",
       "process_max_ram_gb": "Memoria RAM pico alcanzada por el proceso en gigabytes",
+      "hardware_classification": "Métrica / atributo hardware_classification del benchmark experimental",
+      "inference_backend": "Métrica / atributo inference_backend del benchmark experimental",
       "cpu_model": "Modelo de CPU del host detectado",
       "os_version": "Sistema operativo y versión del kernel del host",
       "driver_version": "Versión del driver gráfico del host",
@@ -307,18 +324,6 @@
       "puntaje_compuesto": "Puntaje compuesto multicriterio normalizado 40/20/20/20",
       "elegibilidad": "Elegibilidad técnica según umbral mínimo de exactitud (>= 70%) a nivel modelo",
       "motivo_exclusion": "Motivo explícito de exclusión técnica de selección",
-      "c6_automated_evidence_check": "Métrica / atributo c6_automated_evidence_check del benchmark experimental",
-      "c6_human_score": "Métrica / atributo c6_human_score del benchmark experimental",
-      "evidence_status": "Métrica / atributo evidence_status del benchmark experimental",
-      "sustentation_status": "Métrica / atributo sustentation_status del benchmark experimental",
-      "vram_peak_gb": "Métrica / atributo vram_peak_gb del benchmark experimental",
-      "vram_estimated_gb": "Métrica / atributo vram_estimated_gb del benchmark experimental",
-      "vram_shared_gb": "Métrica / atributo vram_shared_gb del benchmark experimental",
-      "vram_measurement_status": "Métrica / atributo vram_measurement_status del benchmark experimental",
-      "ram_peak_gb": "Métrica / atributo ram_peak_gb del benchmark experimental",
-      "ram_measurement_method": "Métrica / atributo ram_measurement_method del benchmark experimental",
-      "hardware_classification": "Métrica / atributo hardware_classification del benchmark experimental",
-      "inference_backend": "Métrica / atributo inference_backend del benchmark experimental",
       "rubric_score_recovered": "Métrica / atributo rubric_score_recovered del benchmark experimental",
       "is_root_cause_correct_strict": "Métrica / atributo is_root_cause_correct_strict del benchmark experimental",
       "is_root_cause_correct_full_text": "Métrica / atributo is_root_cause_correct_full_text del benchmark experimental",
@@ -337,8 +342,7 @@
       "human_eval_c5": "Métrica / atributo human_eval_c5 del benchmark experimental",
       "human_eval_c6": "Métrica / atributo human_eval_c6 del benchmark experimental",
       "human_eval_s": "Métrica / atributo human_eval_s del benchmark experimental",
-      "human_score_source": "Métrica / atributo human_score_source del benchmark experimental",
-      "is_full_diagnosis_correct": "Acierto en diagnóstico completo de la falla Layer 7 (122/162, 75.3%)"
+      "human_score_source": "Métrica / atributo human_score_source del benchmark experimental"
     }
   },
   "file_integrity_fingerprints_sha256": {
