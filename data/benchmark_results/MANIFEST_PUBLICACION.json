@@ -1,0 +1,113 @@
+{
+  "name": "NetDiagBench-L7 public release manifest",
+  "version": "1.0.4",
+  "integrity_algorithm": "Git blob SHA-1",
+  "note": "Los valores git_blob_sha1 son identificadores de objetos blob Git; no deben interpretarse como SHA-256 del contenido.",
+  "files": [
+    {
+      "path": "README.md",
+      "git_blob_sha1": "cb1f7140b0f27f74009dca1da2fae340e5f32d1b",
+      "size_bytes": 6977
+    },
+    {
+      "path": "configs/benchmark_config.yaml",
+      "git_blob_sha1": "63cbe2fda45f698bbd848cf5b45fc0997ffe5a1c",
+      "size_bytes": 1129
+    },
+    {
+      "path": "configs/models.yaml",
+      "git_blob_sha1": "1d2006bafb3f84387b97cba8deb20773c8be08b8",
+      "size_bytes": 1875
+    },
+    {
+      "path": "configs/hardware_reference.yaml",
+      "git_blob_sha1": "de8612ba30b285067790a04fb95690c446a7aff0",
+      "size_bytes": 1755
+    },
+    {
+      "path": "data/benchmark_results/resultados.csv",
+      "git_blob_sha1": "4c658774655332a16737d5764a7373f40176d9cd",
+      "size_bytes": 280321
+    },
+    {
+      "path": "data/benchmark_results/traza.jsonl",
+      "git_blob_sha1": "ac709d31ab8648915b6e6437e91e0adae9251c4a",
+      "size_bytes": 2286904
+    },
+    {
+      "path": "data/benchmark_results/resultados_resumen.md",
+      "git_blob_sha1": "980ad24a8cb907a880e1eb05c3c8369023c42761",
+      "size_bytes": 2651
+    },
+    {
+      "path": "data/benchmark_results/analisis_correlacional.md",
+      "git_blob_sha1": "76f683586fe83db682135db36a009b0442a32353",
+      "size_bytes": 2124
+    },
+    {
+      "path": "data/benchmark_results/benchmark_summary.json",
+      "git_blob_sha1": "027bb183a7ec4b864ed37df987edee218a5fb61f",
+      "size_bytes": 5837
+    },
+    {
+      "path": "data/human_eval/evaluaciones_adjudicadas.csv",
+      "git_blob_sha1": "a60d8e8fdfdb85c6daa4bad6b2efe9a5d120587b",
+      "size_bytes": 6410
+    },
+    {
+      "path": "data/human_eval/informe_concordancia.md",
+      "git_blob_sha1": "c76d016bc41031299c5c6c5f4f184a0742fa19f5",
+      "size_bytes": 2738
+    },
+    {
+      "path": "data/human_eval/concordancia_resultados.csv",
+      "git_blob_sha1": "7bce8f4ce535f760b313e710f29b95f127ea7bcf",
+      "size_bytes": 720
+    },
+    {
+      "path": "docs/RESULTADOS_BENCHMARK.md",
+      "git_blob_sha1": "770a3fd3878e087e1b0205e8e4c292ea23b0497f",
+      "size_bytes": 6967
+    },
+    {
+      "path": "docs/ANALISIS_ESTADISTICO.md",
+      "git_blob_sha1": "c8b33d248b3c6adb492237f8d3b620ba351a9358",
+      "size_bytes": 3962
+    },
+    {
+      "path": "docs/EVALUACION_TRADEOFF.md",
+      "git_blob_sha1": "dddf0bd08a21f102de237908b4cb47d82d429b9c",
+      "size_bytes": 2539
+    },
+    {
+      "path": "docs/CONFIGURACION_MODELOS.md",
+      "git_blob_sha1": "f0302b8387e01b38f45a42a03369eb63fbf80ff5",
+      "size_bytes": 2190
+    },
+    {
+      "path": "docs/GUIA_REPRODUCIBILIDAD.md",
+      "git_blob_sha1": "a96089dee9beb0466976c1746c357bd53a377422",
+      "size_bytes": 3230
+    },
+    {
+      "path": "docs/GUIA_OPERACION.md",
+      "git_blob_sha1": "f976c037bf036e4dc2b4b5e12662f20218ba0a7b",
+      "size_bytes": 2269
+    },
+    {
+      "path": "docs/MANUAL_TECNICO.md",
+      "git_blob_sha1": "5db8ba99ffc6db24a833f4d037311d5006586653",
+      "size_bytes": 2162
+    },
+    {
+      "path": "src/core/config.py",
+      "git_blob_sha1": "2f25c51574beb51509c037f63b63ee7578380f78",
+      "size_bytes": 14674
+    },
+    {
+      "path": "manifest.json",
+      "git_blob_sha1": "099e3b917beb054c7a89a87003bba7d6b93b40d7",
+      "size_bytes": 2715
+    }
+  ]
+}

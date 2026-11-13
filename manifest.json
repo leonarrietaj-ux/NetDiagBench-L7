@@ -1,81 +1,180 @@
 {
   "benchmark_name": "NetDiagBench-L7",
-  "version": "Parte 3/4 - Campaña Oficial 162 Corridas",
-  "created_at": "2026-11-07T16:03:05.924595+00:00",
+  "version": "1.0.4",
   "experimental_design": {
     "total_runs": 162,
-    "total_scenarios": 18,
     "models_count": 3,
-    "seeds_count": 3,
-    "repetitions_per_seed": 1,
-    "distribution": {
-      "emulated_docker_scenarios": [
-        "TLS-EXP-01",
-        "HTTP-502-01",
-        "DNS-SRV-01"
-      ],
-      "synthetic_lab_scenarios": [
-        "DNS-DEL-01",
-        "DNS-NXD-01",
-        "DNS-REF-01",
-        "DNS-TRUNC-01",
-        "HTTP-403-01",
-        "HTTP-429-01",
-        "HTTP-500-01",
-        "HTTP-503-01",
-        "HTTP-504-01",
-        "HTTP-ORIGIN-01",
-        "HTTP-POOL-01",
-        "NET-LAT-01",
-        "TLS-CHN-01",
-        "TLS-CIPH-01",
-        "TLS-SNI-01"
-      ]
-    },
-    "cluster_units": 18,
-    "seeds_authorized": [
+    "scenarios_count": 18,
+    "seeds": [
       42,
       1337,
       2026
     ],
-    "temperature": 0.0,
+    "repetitions_per_model_scenario_seed": 1,
+    "emulated_runs": 27,
+    "synthetic_deterministic_runs": 135
+  },
+  "inference": {
+    "engine": "Ollama 0.34.2",
+    "backend": "CPU",
+    "temperature": 0,
     "top_p": 0.9,
+    "context_window_tokens": 8192,
     "max_tokens": 1024,
-    "context_window": 8192
+    "read_timeout_seconds": 900
   },
   "models": {
-    "qwen3-8b": {
-      "ollama_tag": "qwen3:8b",
-      "parameters_raw": "8.2B",
-      "architecture": "qwen3",
-      "quantization_declared": "Q4_K_M",
-      "quantization_effective": "Q4_K_M",
-      "digest": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41",
-      "notes": "Tag oficial de Ollama qwen3:8b con cuantización Q4_K_M verificada en blob GGUF."
-    },
     "glm-4-9b-chat": {
       "ollama_tag": "glm4:9b-chat-q4_K_M",
-      "parameters_raw": "9.4B",
-      "architecture": "chatglm",
+      "parameters_declared": "9.0B",
+      "parameters_runtime_reported": "9.4B",
       "quantization_declared": "Q4_K_M",
       "quantization_effective": "Q4_0",
-      "digest": "5b699761eca535dc55047ad9d2dbf54e3b8697709419ef78a70503ed4bfbcf44",
-      "notes": "Discrepancia resuelta documentalmente: el tag de distribución y registro en configs/models.yaml declara glm4:9b-chat-q4_K_M, mientras que la cuantización interna efectiva del blob de pesos descargado corresponde a Q4_0. Se conserva el digest SHA-256 completo inalterable."
+      "weights_sha256": "5b699761eca535dc55047ad9d2dbf54e3b8697709419ef78a70503ed4bfbcf44"
+    },
+    "qwen3-8b": {
+      "ollama_tag": "qwen3:8b",
+      "parameters": "8.2B",
+      "quantization_effective": "Q4_K_M",
+      "weights_sha256": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41"
     },
     "phi-4-mini-instruct": {
       "ollama_tag": "phi4-mini:instruct-q4_K_M",
-      "parameters_raw": "3.8B",
-      "architecture": "phi3",
-      "quantization_declared": "Q4_K_M",
+      "local_alias": "phi4-mini:latest",
+      "parameters": "3.8B",
       "quantization_effective": "Q4_K_M",
-      "digest": "78fad5d182a7c33065e153a5f8ba210754207ba9d91973f57dffa7f487363753",
-      "notes": "Tag oficial de Ollama phi4-mini:instruct-q4_K_M con cuantización Q4_K_M verificada en blob GGUF."
+      "weights_sha256": "78fad5d182a7c33065e153a5f8ba210754207ba9d91973f57dffa7f487363753"
     }
   },
-  "infrastructure": {
-    "ollama_host": "http://localhost:11434",
-    "docker_engine": "Docker Desktop 28.4.0",
-    "execution_backend": "CPU",
-    "hardware_summary": "AMD64 Family 23 Model 160 Stepping 0, AuthenticAMD | 13.8 GB RAM | GPU: AMD Radeon(TM) 610M"
+  "host": {
+    "cpu": "AMD Ryzen 5 7520U, 4 núcleos físicos, 8 lógicos",
+    "gpu": "AMD Radeon 610M integrada, 2 GB compartidos, sin sensor físico de VRAM",
+    "ram_installed_gb": 16,
+    "ram_usable_gb": 13.8,
+    "os": "Windows 11 10.0.26300",
+    "docker": "Docker Desktop 28.4.0 sobre WSL2",
+    "backend": "CPU"
+  },
+  "dataset": {
+    "path": "data/benchmark_results/resultados.csv",
+    "rows": 162,
+    "columns": 99,
+    "trace": "data/benchmark_results/traza.jsonl"
+  },
+  "human_evaluation": {
+    "adjudicated_cases": 54,
+    "original_independent_e1_e2_records_public": false,
+    "agreement_coefficients_status": "reported_not_recalculated_from_public_files"
+  },
+  "integrity": {
+    "algorithm": "Git blob SHA-1",
+    "files": [
+      {
+        "path": "README.md",
+        "git_blob_sha1": "cb1f7140b0f27f74009dca1da2fae340e5f32d1b",
+        "size_bytes": 6977
+      },
+      {
+        "path": "configs/benchmark_config.yaml",
+        "git_blob_sha1": "63cbe2fda45f698bbd848cf5b45fc0997ffe5a1c",
+        "size_bytes": 1129
+      },
+      {
+        "path": "configs/models.yaml",
+        "git_blob_sha1": "1d2006bafb3f84387b97cba8deb20773c8be08b8",
+        "size_bytes": 1875
+      },
+      {
+        "path": "configs/hardware_reference.yaml",
+        "git_blob_sha1": "de8612ba30b285067790a04fb95690c446a7aff0",
+        "size_bytes": 1755
+      },
+      {
+        "path": "data/benchmark_results/resultados.csv",
+        "git_blob_sha1": "4c658774655332a16737d5764a7373f40176d9cd",
+        "size_bytes": 280321
+      },
+      {
+        "path": "data/benchmark_results/traza.jsonl",
+        "git_blob_sha1": "ac709d31ab8648915b6e6437e91e0adae9251c4a",
+        "size_bytes": 2286904
+      },
+      {
+        "path": "data/benchmark_results/resultados_resumen.md",
+        "git_blob_sha1": "980ad24a8cb907a880e1eb05c3c8369023c42761",
+        "size_bytes": 2651
+      },
+      {
+        "path": "data/benchmark_results/analisis_correlacional.md",
+        "git_blob_sha1": "76f683586fe83db682135db36a009b0442a32353",
+        "size_bytes": 2124
+      },
+      {
+        "path": "data/benchmark_results/benchmark_summary.json",
+        "git_blob_sha1": "027bb183a7ec4b864ed37df987edee218a5fb61f",
+        "size_bytes": 5837
+      },
+      {
+        "path": "data/human_eval/evaluaciones_adjudicadas.csv",
+        "git_blob_sha1": "a60d8e8fdfdb85c6daa4bad6b2efe9a5d120587b",
+        "size_bytes": 6410
+      },
+      {
+        "path": "data/human_eval/informe_concordancia.md",
+        "git_blob_sha1": "c76d016bc41031299c5c6c5f4f184a0742fa19f5",
+        "size_bytes": 2738
+      },
+      {
+        "path": "data/human_eval/concordancia_resultados.csv",
+        "git_blob_sha1": "7bce8f4ce535f760b313e710f29b95f127ea7bcf",
+        "size_bytes": 720
+      },
+      {
+        "path": "docs/RESULTADOS_BENCHMARK.md",
+        "git_blob_sha1": "770a3fd3878e087e1b0205e8e4c292ea23b0497f",
+        "size_bytes": 6967
+      },
+      {
+        "path": "docs/ANALISIS_ESTADISTICO.md",
+        "git_blob_sha1": "c8b33d248b3c6adb492237f8d3b620ba351a9358",
+        "size_bytes": 3962
+      },
+      {
+        "path": "docs/EVALUACION_TRADEOFF.md",
+        "git_blob_sha1": "dddf0bd08a21f102de237908b4cb47d82d429b9c",
+        "size_bytes": 2539
+      },
+      {
+        "path": "docs/CONFIGURACION_MODELOS.md",
+        "git_blob_sha1": "f0302b8387e01b38f45a42a03369eb63fbf80ff5",
+        "size_bytes": 2190
+      },
+      {
+        "path": "docs/GUIA_REPRODUCIBILIDAD.md",
+        "git_blob_sha1": "a96089dee9beb0466976c1746c357bd53a377422",
+        "size_bytes": 3230
+      },
+      {
+        "path": "docs/GUIA_OPERACION.md",
+        "git_blob_sha1": "f976c037bf036e4dc2b4b5e12662f20218ba0a7b",
+        "size_bytes": 2269
+      },
+      {
+        "path": "docs/MANUAL_TECNICO.md",
+        "git_blob_sha1": "5db8ba99ffc6db24a833f4d037311d5006586653",
+        "size_bytes": 2162
+      },
+      {
+        "path": "src/core/config.py",
+        "git_blob_sha1": "2f25c51574beb51509c037f63b63ee7578380f78",
+        "size_bytes": 14674
+      },
+      {
+        "path": "manifest.json",
+        "git_blob_sha1": "099e3b917beb054c7a89a87003bba7d6b93b40d7",
+        "size_bytes": 2715
+      }
+    ],
+    "note": "Las huellas de esta lista son SHA-1 de objetos blob Git, no SHA-256 del contenido. Las huellas SHA-256 de pesos GGUF se identifican por separado."
   }
 }
