@@ -1641,7 +1641,7 @@ class BenchmarkEvaluatorHarness:
 
 
 
-        # Por defecto los reportes de tesis (E4-E7) usan solo model_group="oficial"
+        # Por defecto los reportes consolidados usan solo model_group="oficial"
 
         official_results = [r for r in results if getattr(r, "model_group", "oficial") == "oficial"]
 

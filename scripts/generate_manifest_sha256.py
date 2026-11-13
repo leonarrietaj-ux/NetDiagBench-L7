@@ -1,6 +1,6 @@
 """
 Generador del Manifiesto Criptográfico de Publicación SHA-256
-Proyecto: NetDiagBench-L7 v1.0.0
+Proyecto: NetDiagBench-L7 v1.0.3
 """
 
 import hashlib
@@ -39,6 +39,14 @@ def main():
         "evaluacion_humana_publica": [
             "data/human_eval/evaluaciones_adjudicadas.csv",
         ],
+        "instrumentos_evaluacion_humana": [
+            "docs/evaluacion_humana/00_LEEME.md",
+            "docs/evaluacion_humana/05_Registro_evaluaciones.csv",
+            "docs/evaluacion_humana/06_Clave_tecnica_escenarios.csv",
+            "docs/evaluacion_humana/07_Plan_analisis_concordancia.md",
+            "docs/evaluacion_humana/08_analizar_concordancia.py",
+            "docs/evaluacion_humana/09_Guia_anonimizacion_y_adjudicacion.md",
+        ],
         "configuraciones_oficiales": [
             "configs/models.yaml",
             "configs/benchmark_config.yaml",
@@ -61,12 +69,13 @@ def main():
             "requirements.txt",
             ".gitignore",
             "LICENSE",
+            "CITATION.cff",
         ],
     }
 
     manifest_data = {
         "project": "NetDiagBench-L7",
-        "version": "1.0.2",
+        "version": "1.0.3",
         "release_type": "scientific_public_release",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "repository": "https://github.com/leonarrietaj-ux/NetDiagBench-L7.git",

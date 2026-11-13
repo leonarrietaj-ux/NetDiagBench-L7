@@ -205,7 +205,7 @@ def _build_sheet_portada(ws, comp: dict[str, Any], corr: dict[str, Any]):
     ws["B2"] = "NetDiagBench-L7: Benchmark de Diagnóstico L7 con SLMs Locales"
     ws["B2"].font = TITLE_FONT
 
-    ws["B3"] = "Universidad de Pamplona · Facultad de Ingenierías y Arquitectura · Ingeniería en Telecomunicaciones"
+    ws["B3"] = "Evaluación Integral de Modelos de Lenguaje Locales para Redes IP"
     ws["B3"].font = SUBTITLE_FONT
 
     ws["B4"] = "NetDiagBench-L7: Benchmark Agéntico de Diagnóstico de Redes Layer 7 sobre IP"

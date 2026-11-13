@@ -1,7 +1,7 @@
 # NetDiagBench-L7 • Guía de Operación del Sistema
 
 **Proyecto:** NetDiagBench-L7: Benchmark Agéntico de Diagnóstico de Redes Layer 7 sobre IP  
-**Versión:** 1.0.2 | **Fecha:** Noviembre 2026 | **Entorno:** Local-First Web Dashboard & CLI  
+**Versión:** 1.0.3 | **Fecha:** Noviembre 2026 | **Entorno:** Local-First Web Dashboard & CLI  
 
 ---
 
@@ -65,7 +65,7 @@ El operador puede verificar en cualquier momento el estado de las protecciones d
 ```powershell
 .venv\Scripts\pytest.exe tests/test_security_audit.py -v
 ```
-Para mayores detalles técnicos de la auditoría, consulte [`docs/INFORME_SEGURIDAD.md`](docs/INFORME_SEGURIDAD.md).
+Para mayores detalles técnicos de la auditoría, consulte [`SEGURIDAD_SISTEMA.md`](SEGURIDAD_SISTEMA.md).
 
 ---
 

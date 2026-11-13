@@ -11,7 +11,7 @@ Implementa el analisis correlacional requerido por la Tarea 4.1.2 y el OE4:
   - Generacion del informe de correlacion en formato Markdown.
 
 Referencia metodologica: SciPy Stats (scipy.stats.spearmanr, pearsonr,
-kruskal) segun el diseno descrito en la propuesta de trabajo de grado.
+kruskal) segun el diseno experimental del benchmark.
 """
 
 import csv

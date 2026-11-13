@@ -769,7 +769,7 @@ ANALYTICS_DASHBOARD_HTML = r"""<!DOCTYPE html>
         </div>
     </section>
 
-    <footer>Dashboard autogenerado por NetDiagBench-L7 · Universidad de Pamplona · 100% local, sin dependencias externas · <a href="/api/report-html" style="color:inherit;text-decoration:underline;" target="_blank">Informe Consolidado Global</a></footer>
+    <footer>Dashboard autogenerado por NetDiagBench-L7 · 100% local, sin dependencias externas · <a href="/api/report-html" style="color:inherit;text-decoration:underline;" target="_blank">Informe Consolidado Global</a></footer>
 </div>
 
 <script>

@@ -4,7 +4,7 @@
 **Dataset Oficial:** `data/benchmark_results/resultados.csv` (162 corridas oficiales congeladas)  
 **Diseño Experimental:** 3 modelos × 18 escenarios (3 emulados Docker + 15 sintéticos) × 3 semillas deterministas (`[42, 1337, 2026]`)  
 **Unidad de Muestreo:** 18 conglomerados de escenarios  
-**Versión:** 1.0.2  
+**Versión:** 1.0.3  
 
 ---
 

@@ -56,7 +56,7 @@ class NumberedCanvas(canvas.Canvas):
 
         # Encabezado (solo a partir de la página 2)
         if self._pageNumber > 1:
-            self.drawString(54, 11 * inch - 46, "NetDiagBench-L7 · Universidad de Pamplona · Trabajo de Grado")
+            self.drawString(54, 11 * inch - 46, "NetDiagBench-L7: Benchmark Agéntico de Diagnóstico Layer 7 sobre IP")
             self.setStrokeColor(colors.HexColor("#CBD5E1"))
             self.setLineWidth(0.5)
             self.line(54, 11 * inch - 52, 8.5 * inch - 54, 11 * inch - 52)
@@ -504,7 +504,7 @@ def export_consolidated_report_pdf(
         markdown_text=unified_text,
         output_path=output_path,
         document_title="NetDiagBench-L7: Informe Técnico Consolidado",
-        document_subtitle="Universidad de Pamplona · Evaluación Integral de Modelos SLM para Diagnóstico L7",
+        document_subtitle="Evaluación Integral de Modelos SLM para Diagnóstico L7",
     )
 
 
@@ -793,6 +793,6 @@ def export_individual_diagnosis_pdf(
         markdown_text="\n".join(md_lines),
         output_path=output_path,
         document_title=f"Diagnóstico L7: {scenario_id}",
-        document_subtitle=f"Modelo: {model_id} · Semilla: {seed} · Universidad de Pamplona",
+        document_subtitle=f"Modelo: {model_id} · Semilla: {seed} · NetDiagBench-L7",
     )
 

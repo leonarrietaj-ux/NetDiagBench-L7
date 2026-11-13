@@ -3,7 +3,7 @@ message: "If you use this benchmark, code, or datasets in your research, please 
 title: "NetDiagBench-L7: Benchmark Reproducible para Diagnóstico de Fallas en Servicios de Capa de Aplicación sobre IP con SLMs Locales"
 authors:
   - name: "NetDiagBench-L7 Contributors"
-version: 1.0.2
+version: 1.0.3
 date-released: 2026-11-12
 url: "https://github.com/leonarrietaj-ux/NetDiagBench-L7"
 keywords:

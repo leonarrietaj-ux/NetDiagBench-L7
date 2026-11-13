@@ -1,8 +1,8 @@
 {
   "project": "NetDiagBench-L7",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "release_type": "scientific_public_release",
-  "generated_at": "2026-11-12T21:16:41.096439+00:00",
+  "generated_at": "2026-11-13T00:15:37.692165+00:00",
   "repository": "https://github.com/leonarrietaj-ux/NetDiagBench-L7.git",
   "experimental_summary": {
     "total_runs": 162,
@@ -39,7 +39,7 @@
         "size_bytes": 2287090
       },
       "data/benchmark_results/dataset_bundle.json": {
-        "sha256": "78E94EA9665B3832D6B48883AC634F4828277C5A3450B5B0E66DECF93BF34397",
+        "sha256": "5C33B82667FD0A8A586F55241B93225BCE20A4C6D5FB01C7C72A3C7BC21BC480",
         "size_bytes": 15992
       }
     },
@@ -67,6 +67,32 @@
         "size_bytes": 6465
       }
     },
+    "instrumentos_evaluacion_humana": {
+      "docs/evaluacion_humana/00_LEEME.md": {
+        "sha256": "E595E06B5816016865F596511980030E46E864C31C80BB47964E4F6764476FF6",
+        "size_bytes": 3818
+      },
+      "docs/evaluacion_humana/05_Registro_evaluaciones.csv": {
+        "sha256": "26D368512AD1BCDBBB7DF9B0030290645E0EAD63F669F7BF0C9EC2DB7DC359E5",
+        "size_bytes": 151
+      },
+      "docs/evaluacion_humana/06_Clave_tecnica_escenarios.csv": {
+        "sha256": "AA4CF1942ECBA91340C0F9F1AB8B51F70EF8C27D837B941CFC50A337F254B26B",
+        "size_bytes": 190
+      },
+      "docs/evaluacion_humana/07_Plan_analisis_concordancia.md": {
+        "sha256": "E10046F1446112123D07EDCADDA88CDE75CB04FD9ED05D3442AA95505E28D0AF",
+        "size_bytes": 2218
+      },
+      "docs/evaluacion_humana/08_analizar_concordancia.py": {
+        "sha256": "63C8CF6B9BE22DF70CD20F8FC86F2036D53D3220AEB1D17ED5A3BE6221218A96",
+        "size_bytes": 4644
+      },
+      "docs/evaluacion_humana/09_Guia_anonimizacion_y_adjudicacion.md": {
+        "sha256": "BE8A8AEB1F44B085F999FD67DBCBC21E3BC309D5AA98B45173C66308A6AB992D",
+        "size_bytes": 1221
+      }
+    },
     "configuraciones_oficiales": {
       "configs/models.yaml": {
         "sha256": "432D205C8C80B6044BBA6EDEC9C08C35401E14AF6499B041F178E0772A068DFD",
@@ -91,41 +117,41 @@
         "size_bytes": 16949
       },
       "docs/GUIA_REPRODUCIBILIDAD.md": {
-        "sha256": "1E700D0E3FF2FCE86BCBCC4037A0AB41A3740202B22AC7690594CC62C4970017",
-        "size_bytes": 12351
+        "sha256": "9C68DF5CFA560BDD502AED4011043E7511E7674C63A48AB56A164D5F29EFB159",
+        "size_bytes": 12341
       },
       "docs/MANUAL_TECNICO.md": {
-        "sha256": "76672DF8AE968404592679D575189F21FD8975579D951CB52555940227D411F3",
-        "size_bytes": 12813
+        "sha256": "845278087648439493EE2EE592604744C28AEE4C60A1757A4351B8EB56E93E49",
+        "size_bytes": 12806
       },
       "docs/GUIA_OPERACION.md": {
-        "sha256": "2521A868598704BF68C96230767B9574170415CAB7CD95B97D0B131A4D6032F5",
-        "size_bytes": 5219
+        "sha256": "13251B64EC05B159B01F0BF87923DE12C60AF55EE9881F99ED7CACDBA178257B",
+        "size_bytes": 5209
       },
       "docs/CONFIGURACION_MODELOS.md": {
-        "sha256": "24294E1B8233141C57A5A00555FFBE7DD2ED45408EF5FD2191B4AA876E5A0803",
+        "sha256": "7B73103183EBFCE02CE6B985E3C8DA7DCE5750CD0A712F7C9980F197599472EE",
         "size_bytes": 8327
       },
       "docs/RESULTADOS_BENCHMARK.md": {
-        "sha256": "BA848E01E1DFD3BAB6F380731E74E89928D9623F0516F4F22DC09B73D1BB83A0",
-        "size_bytes": 19374
+        "sha256": "F137567550CF155D2966200612AE8F538070DBC9AFBAAD1424196068F077D48B",
+        "size_bytes": 20512
       },
       "docs/EVALUACION_TRADEOFF.md": {
-        "sha256": "7D184BB540ABD40CFD2ADD13F8B7911BC58BFB18B63C73051DCA779C835A3059",
+        "sha256": "4B8A259AC2037219054FD6C6060A071FED3979700344C1C774C2C9B66CD0F33A",
         "size_bytes": 4328
       },
       "docs/ANALISIS_ESTADISTICO.md": {
-        "sha256": "59978EEE44A6C60C12B139D8159EFC4C2CFB2C0C96D7BA738DFD0A1828FD18E0",
+        "sha256": "96C639665A57C3885C5579247F9B8DB4B4F77700695A1F00D89F5C291C07FCDB",
         "size_bytes": 5975
       },
       "docs/SEGURIDAD_SISTEMA.md": {
-        "sha256": "FF1870DBAE56DC50227957133E6E4C6C9CA59FCC374DFF00A7C6D8EB98BEE5C7",
-        "size_bytes": 12667
+        "sha256": "25CC4C2BC2E6DA4C735A1AE4B8CF18951D913F2F4EAC35A2C0DD1054822CB9D8",
+        "size_bytes": 12676
       }
     },
     "metadatos_del_proyecto": {
       "pyproject.toml": {
-        "sha256": "6F8EC4A2587ABB80CA7272BB6A039DCA8A0F4B362CF8701FE598E09521359C51",
+        "sha256": "EBCDECDB0FAB6CCD26BBA904F8DA458E56C8B7082F7445B1E85E7120253FFC5B",
         "size_bytes": 2777
       },
       "requirements.txt": {
@@ -139,6 +165,10 @@
       "LICENSE": {
         "sha256": "B3729F8029408BA7E49E4064FEABA919D56764AFC4A320EF534FD9321604ACF4",
         "size_bytes": 1201
+      },
+      "CITATION.cff": {
+        "sha256": "44CA6EA197551FDDC3F0A706650BE8F1B144470B35254C1A74A2BDF79B9A7F10",
+        "size_bytes": 600
       }
     }
   }

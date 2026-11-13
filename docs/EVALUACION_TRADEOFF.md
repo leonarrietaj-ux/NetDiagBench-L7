@@ -1,7 +1,7 @@
 # NetDiagBench-L7: Evaluación Comparativa de Compromiso y Trade-off
 
 **Proyecto:** NetDiagBench-L7: Benchmark Agéntico de Diagnóstico de Redes Layer 7 sobre IP  
-**Fecha:** Noviembre de 2026 (v1.0.2)  
+**Fecha:** Noviembre de 2026 (v1.0.3)  
 
 ---
 

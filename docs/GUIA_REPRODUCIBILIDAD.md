@@ -1,7 +1,7 @@
 # NetDiagBench-L7: Guía de Reproducibilidad y Manual de Operación
 
 **Proyecto:** NetDiagBench-L7: Benchmark Agéntico de Diagnóstico de Redes Layer 7 sobre IP  
-**Versión:** 1.0.2 | **Fecha:** Noviembre de 2026  
+**Versión:** 1.0.3 | **Fecha:** Noviembre de 2026  
 
 Esta guía proporciona las instrucciones exhaustivas para que investigadores independientes puedan verificar y reproducir la totalidad de los experimentos, diagnósticos agénticos y matrices de evaluación del framework **NetDiagBench-L7**.
 
@@ -76,7 +76,7 @@ Para certificar la robustez del sistema frente a riesgos de seguridad (inyecció
 3. `test_read_only_tools_ssrf_blocking`: Bloqueo estricto anti-SSRF hacia metadatos de proveedores cloud (AWS IPv4/IPv6, Alibaba Cloud, GCP, Tencent Cloud, Kubernetes CoreDNS) y banderas mutativas (`-X POST`, `-d`, etc.).
 4. `test_diagnose_request_validation`: Validación estricta de límites y expresiones regulares en contratos Pydantic de la API.
 
-Para la especificación exhaustiva de seguridad, consulte [`docs/SEGURIDAD_SISTEMA.md`](docs/SEGURIDAD_SISTEMA.md).
+Para la especificación exhaustiva de seguridad, consulte [`SEGURIDAD_SISTEMA.md`](SEGURIDAD_SISTEMA.md).
 
 ---
 

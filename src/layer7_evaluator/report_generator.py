@@ -313,7 +313,7 @@ def generate_html_benchmark_report(
                     <span class="badge">NetDiagBench-L7 v1.0.0</span>
                     <h1 style="margin-top: 10px;">Informe Consolidado de Evaluación y Benchmark</h1>
                     <p style="color: var(--text-dim); font-size: 0.9rem;">
-                        Universidad de Pamplona &bull; Facultad de Ingenierías y Arquitectura (E.E.S.T.)
+                        NetDiagBench-L7 &bull; Benchmark Agéntico de Diagnóstico Layer 7
                     </p>
                 </div>
                 <div style="text-align: right; font-size: 0.85rem; color: var(--text-dim);">
@@ -578,7 +578,7 @@ def generate_html_benchmark_report(
         </section>
 
         <footer style="text-align: center; color: var(--text-dim); font-size: 0.85rem; margin-top: 40px; border-top: 1px solid var(--border); padding-top: 20px;">
-            NetDiagBench-L7 &bull; Universidad de Pamplona &bull; Reporte Autogenerado por Evaluator Harness &bull; Septiembre 2026
+            NetDiagBench-L7 &bull; Reporte Autogenerado por Evaluator Harness &bull; Noviembre 2026
         </footer>
     </div>
 </body>

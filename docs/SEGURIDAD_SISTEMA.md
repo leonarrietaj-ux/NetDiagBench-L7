@@ -2,7 +2,7 @@
 
 **Proyecto:** NetDiagBench-L7: Benchmark Agéntico de Diagnóstico de Redes Layer 7 sobre IP  
 **Clasificación:** Especificación Técnica de Seguridad y Mitigaciones Defensivas  
-**Versión:** 1.0.2 | **Fecha:** Noviembre de 2026  
+**Versión:** 1.0.3 | **Fecha:** Noviembre de 2026  
 **Estado:** **VERIFICADO (100% de Pruebas de Seguridad Aprobadas)**  
 
 ---
@@ -17,7 +17,7 @@ Como parte del proceso de consolidación científica y técnica de **NetDiagBenc
 ### Resultado Global de la Auditoría
 * **Vulnerabilidades Identificadas:** 5 hallazgos (1 Severidad Media, 4 Severidad Baja / Defensa en Profundidad).
 * **Vulnerabilidades Remediadas:** **5 / 5 (100% resueltas y parcheadas en el código fuente)**.
-* **Pruebas de Seguridad Automatizadas:** 4 pruebas dedicadas creadas en [`tests/test_security_audit.py`](tests/test_security_audit.py) con **100% de aprobación**.
+* **Pruebas de Seguridad Automatizadas:** 4 pruebas dedicadas creadas en [`tests/test_security_audit.py`](../tests/test_security_audit.py) con **100% de aprobación**.
 * **Estado de Riesgo Residual:** **BAJO / CONTROLADO**.
 
 ---
@@ -88,7 +88,7 @@ La evaluación combinó inspección manual de código (*Code Review*), análisis
 ---
 
 ### SEC-03: Mitigación Estricta de SSRF en Herramientas de Red
-* **Descripción:** El orquestador de herramientas de red de solo lectura ([`tools.py`](src/layer5_orchestrator/tools.py)) bloqueaba el acceso a `169.254.169.254` (AWS/GCP IPv4) y `metadata.google.internal`. Sin embargo, no contemplaba endpoints de metadatos de otros proveedores en la nube ni de orquestadores de contenedores que pudieran encontrarse en redes híbridas.
+* **Descripción:** El orquestador de herramientas de red de solo lectura ([`tools.py`](../src/layer5_orchestrator/tools.py)) bloqueaba el acceso a `169.254.169.254` (AWS/GCP IPv4) y `metadata.google.internal`. Sin embargo, no contemplaba endpoints de metadatos de otros proveedores en la nube ni de orquestadores de contenedores que pudieran encontrarse en redes híbridas.
 * **Impacto:** Si el agente fuese ejecutado en un entorno de nube pública y un prompt adversarial manipulara al modelo para sondear la red, existía riesgo de exfiltración de credenciales IAM o metadatos de instancia.
 * **Remediación Aplicada:** Se amplió la tupla de destinos bloqueados en `ReadOnlyNetworkTools._assert_read_only`:
   ```python
@@ -137,7 +137,7 @@ La evaluación combinó inspección manual de código (*Code Review*), análisis
 
 ## 5. Verificación y Pruebas de Seguridad Automatizadas
 
-Se desarrolló una suite de pruebas de seguridad dedicada en [`tests/test_security_audit.py`](tests/test_security_audit.py), cubriendo:
+Se desarrolló una suite de pruebas de seguridad dedicada en [`tests/test_security_audit.py`](../tests/test_security_audit.py), cubriendo:
 
 1. `test_ssrf_mitigation_cloud_metadata`: Valida el bloqueo efectivo contra los 8 vectores de SSRF listados.
 2. `test_container_name_validation`: Comprueba el rechazo de inyecciones de comandos y caracteres de control en nombres de contenedor.

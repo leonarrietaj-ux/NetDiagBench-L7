@@ -1,7 +1,7 @@
 # NetDiagBench-L7 • Manual Técnico del Sistema
 
 **Proyecto:** NetDiagBench-L7: Benchmark Agéntico de Diagnóstico de Redes Layer 7 sobre IP  
-**Versión:** 1.0.2 | **Fecha:** Noviembre 2026 | **Aislamiento:** 100% Local (≤ 8 GB VRAM)  
+**Versión:** 1.0.3 | **Fecha:** Noviembre 2026 | **Aislamiento:** 100% Local (≤ 8 GB VRAM)  
 
 ---
 
@@ -116,7 +116,7 @@ benchapp serve-dashboard --port 8000
 
 ## 6. Arquitectura de Seguridad, Sandboxing y Guardrails Defensivos
 
-NetDiagBench-L7 implementa una arquitectura de seguridad por capas (*Defense-in-Depth*) orientada a mitigar vectores de riesgo OWASP Top 10, CWE-78/88 (Command/Argument Injection), CWE-22 (Path Traversal) y CWE-918 (SSRF). Todos los hallazgos y mitigaciones están auditados formalmente en [`docs/INFORME_SEGURIDAD.md`](docs/INFORME_SEGURIDAD.md).
+NetDiagBench-L7 implementa una arquitectura de seguridad por capas (*Defense-in-Depth*) orientada a mitigar vectores de riesgo OWASP Top 10, CWE-78/88 (Command/Argument Injection), CWE-22 (Path Traversal) y CWE-918 (SSRF). Todos los hallazgos y mitigaciones están auditados formalmente en [`SEGURIDAD_SISTEMA.md`](SEGURIDAD_SISTEMA.md).
 
 ### 6.1. Herramientas de Red en Modo Read-Only Estricto (`src/layer5_orchestrator/tools.py`)
 - **Prohibición de Mutación:** El agente solo tiene acceso a `dig`, `curl` y `openssl s_client`. Banderas que alteren estado (`-X POST`, `-X PUT`, `-d`, `-F`, `-T`) son interceptadas y bloqueadas en tiempo de ejecución.
@@ -144,7 +144,7 @@ NetDiagBench-L7 implementa una arquitectura de seguridad por capas (*Defense-in-
 - **Sanitización de Identificadores de Lote:** En `/api/execute-suite`, el parámetro `run_id` es normalizado eliminando cualquier secuencia fuera de `[a-zA-Z0-9_\-]`, neutralizando intentos de salto de directorio (CWE-22).
 
 ### 6.4. Verificación Automatizada de Seguridad
-El marco cuenta con una suite de pruebas de seguridad automatizadas en [`tests/test_security_audit.py`](tests/test_security_audit.py):
+El marco cuenta con una suite de pruebas de seguridad automatizadas en [`tests/test_security_audit.py`](../tests/test_security_audit.py):
 ```bash
 pytest tests/test_security_audit.py -v
 ```

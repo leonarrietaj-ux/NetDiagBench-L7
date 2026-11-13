@@ -2644,7 +2644,7 @@ def vista_human_eval_fragment():
 
           <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
 
-            La apertura de la clave de cegamiento es una acción <strong>irreversible</strong> conforme a las directrices de validación de tesis. Revelará la identidad de los modelos y registrará una marca de auditoría con fecha y hora.
+            La apertura de la clave de cegamiento es una acción <strong>irreversible</strong> conforme a las directrices de validación del estudio. Revelará la identidad de los modelos y registrará una marca de auditoría con fecha y hora.
 
           </p>
 

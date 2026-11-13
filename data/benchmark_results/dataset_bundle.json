@@ -1,12 +1,12 @@
 {
   "academic_context": {
     "project_title": "NetDiagBench-L7: Benchmark Agéntico de Diagnóstico de Redes Layer 7 sobre IP",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "year": 2026,
     "description": "Benchmark reproducible para el diagnóstico de fallas en servicios de capa de aplicación sobre IP con modelos de lenguaje ligeros de ejecución local"
   },
   "benchmark_protocol": {
-    "version": "1.0.2",
+    "version": "1.0.3",
     "models_count": 3,
     "models": [
       "qwen3-8b",

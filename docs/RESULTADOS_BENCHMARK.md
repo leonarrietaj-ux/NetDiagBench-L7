@@ -1,7 +1,7 @@
 # NetDiagBench-L7: Resultados del Benchmark y Especificación del Dataset
 
 **Proyecto:** NetDiagBench-L7: Benchmark Agéntico de Diagnóstico de Redes Layer 7 sobre IP  
-**Fecha:** Noviembre de 2026 (v1.0.2)  
+**Fecha:** Noviembre de 2026 (v1.0.3)  
 
 ---
 
@@ -36,7 +36,7 @@ Cada fila del archivo `resultados.csv` corresponde a una prueba individual deter
 18. `energy_kwh`: Consumo energético estimado según el modelo dinámico de potencia calibrado.
 19. `co2_emissions_kg`: Emisiones indirectas de carbono calculadas para la matriz energética nacional.
 20. `rubric_score`: Puntuación cuantitativa según la rúbrica de interpretabilidad ($0.0$ a $5.0$).
-21. `host_hardware_fingerprint`: Huella inmutable de hardware del equipo de cómputo de la Universidad de Pamplona.
+21. `host_hardware_fingerprint`: Huella inmutable de hardware del equipo de cómputo del entorno de evaluación experimental.
 22. `created_at`: Marca temporal ISO 8601 con zona horaria UTC.
 23. `modelo_version`: Versión o etiqueta del modelo local en Ollama.
 24. `model_family`: Linaje arquitectónico del modelo (`qwen`, `glm`, `phi`, etc.).
@@ -178,15 +178,17 @@ Cada valor numérico de la tabla superior es directamente auditable en el archiv
 
 ## 6. Desglose de Resultados por Modo de Ejecución (135 Simuladas vs. 27 Emuladas)
 
-Conforme a los datos consolidados y auditados directamente desde el archivo `resultados.csv`, el desempeño comparativo entre ambos modos de ejecución es el siguiente:
+Conforme a los datos consolidados y auditados directamente desde el archivo canónico `resultados.csv`, el desempeño comparativo entre ambos modos de ejecución es el siguiente:
 
-| Modo de Ejecución | Total Corridas | Precisión Diagnóstica | Tasa Evidencia | Latencia Media (ms) | Rúbrica Prom. |
-|---|---|---|---|---|---|
-| **Laboratorio en Contenedores (Docker Compose) (emulado)** | 27 | **48.1%** | 96.3% | 460,288.9 ms (~7.67 min) | 4.00 / 5.0 |
-| **Simulador Sintético Calibrado (sintetico_determinista)** | 135 | **85.2%** | 95.6% | 295,466.1 ms (~4.92 min) | 4.29 / 5.0 |
-| **Consolidado Global (Benchmark L7)** | **162** | **79.0%** (128/162) | **95.1%** (154/162) | **322,723.4 ms** (~5.38 min) | **4.24 / 5.0** |
+| Modo de Ejecución | Total Corridas | Diagnóstico Completo | Causa Raíz Estricta | Tasa Evidencia Read-Only | Latencia Media (ms) | Rúbrica Humana Prom. |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|
+| **Laboratorio en Contenedores (Docker Compose) (emulado)** | 27 | **48.1%** (13/27) | **14.8%** (4/27) | **22.2%** (6/27) | 665,644.3 ms (~11.09 min) | 3.78 / 5.0 |
+| **Simulador Sintético Calibrado (sintetico_determinista)** | 135 | **80.7%** (109/135) | **49.6%** (67/135) | **23.7%** (32/135) | 528,914.5 ms (~8.82 min) | 3.94 / 5.0 |
+| **Consolidado Global (Benchmark L7)** | **162** | **75.3%** (122/162) | **43.8%** (71/162) | **23.5%** (38/162) | **551,702.8 ms** (~9.20 min) | **3.92 / 5.0** |
 
-*Observación Metodológica:* El modo emulado impone el desafío de lidiar con telemetría de red real, tiempos de respuesta dinámicos y registros crudos de servicios vivos (BIND9, Nginx), lo que evidencia una brecha respecto al entorno controlado del simulador sintético, demostrando la necesidad de pruebas en contenedores reales para evaluar la robustez práctica de los SLM.
+*Observación Metodológica y Trazabilidad:*
+1. **Brecha de Complejidad Real vs. Sintética:** El modo emulado impone el desafío de lidiar con telemetría de red real, tiempos de respuesta dinámicos y registros crudos de servicios vivos (BIND9, Nginx), lo que evidencia una brecha cuantitativa frente al entorno controlado del simulador sintético (48.1% vs. 80.7% en diagnóstico; 14.8% vs. 49.6% en causa raíz estricta). Esto demuestra la necesidad metodológica de contrastar con contenedores reales para evaluar la robustez práctica de los SLM.
+2. **Nota Histórica sobre Versiones Preliminares:** En borradores iniciales de desarrollo y pruebas piloto no normativas previas a la auditoría estricta, se manejaron estimaciones preliminares no calibradas (79.0% / 128 aciertos en diagnóstico, 95.1% / 154 en evidencia laxa y rúbrica promedio preliminar de 4.24/5.0). Conforme a la recalificación auditada con oráculos IETF rigurosos bajo la clave evaluadora canónica `b26a394b7fb3` (`evaluator_concepts.yaml`), los valores oficiales definitivos, consolidados e inmutables del benchmark corresponden exclusivamente a las cifras de la tabla superior: **75.3% (122/162)** en diagnóstico completo, **43.8% (71/162)** en causa raíz estricta, **23.5% (38/162)** en evidencia read-only estricta y **3.92 / 5.0** en la rúbrica humana.
 
 ---
 
