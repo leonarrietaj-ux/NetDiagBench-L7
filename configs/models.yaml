@@ -1,41 +1,45 @@
-# Terna de Modelos Seleccionados (Num. 5.3, Tabla 5.1)
+# Modelos incluidos en la campaña oficial
 models:
+  - id: "glm-4-9b-chat"
+    name: "GLM-4-9B-Chat"
+    provider: "Zhipu AI"
+    architecture: "chatglm"
+    parameters_declared: "9.0B"
+    parameters_runtime_reported: "9.4B"
+    license: "GLM-4 License"
+    ollama_tag: "glm4:9b-chat-q4_K_M"
+    quantization_declared: "Q4_K_M"
+    quantization_effective: "Q4_0"
+    format: "GGUF"
+    context_window_tokens: 8192
+    approx_vram_gb: 5.9
+    weights_sha256: "5b699761eca535dc55047ad9d2dbf54e3b8697709419ef78a70503ed4bfbcf44"
+
   - id: "qwen3-8b"
     name: "Qwen3-8B"
     provider: "Alibaba"
+    architecture: "qwen3"
     parameters_raw: "8.2B"
-    parameters_without_embeddings: "6.95B"
     license: "Apache 2.0"
-    quantization: "Q4_K_M"
+    ollama_tag: "qwen3:8b"
+    quantization_declared: "Q4_K_M"
+    quantization_effective: "Q4_K_M"
     format: "GGUF"
-    context_window_tokens: 32768
-    function_calling_support: "native"
-    ollama_tag: "qwen3:8b-q4_K_M"
+    context_window_tokens: 8192
     approx_vram_gb: 5.5
-    reason_for_inclusion: "Modo de razonamiento conmutable y soporte nativo de herramientas para orquestación."
-
-  - id: "glm-4-9b-chat"
-    name: "GLM-4-9B-Chat"
-    provider: "Zhipu AI (Z.ai)"
-    parameters_raw: "9.0B"
-    license: "GLM-4 License"
-    quantization: "Q4_K_M"
-    format: "GGUF"
-    context_window_tokens: 131072
-    function_calling_support: "berkeley_81pct"
-    ollama_tag: "glm4:9b-chat-q4_K_M"
-    approx_vram_gb: 5.9
-    reason_for_inclusion: "Mayor rendimiento en invocación de funciones y familia arquitectónica independiente."
+    weights_sha256: "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41"
 
   - id: "phi-4-mini-instruct"
     name: "Phi-4-mini-instruct"
     provider: "Microsoft"
+    architecture: "phi3"
     parameters_raw: "3.8B"
     license: "MIT"
-    quantization: "Q4_K_M"
-    format: "GGUF"
-    context_window_tokens: 131072
-    function_calling_support: "json_schema_tool_format"
     ollama_tag: "phi4-mini:instruct-q4_K_M"
+    ollama_local_alias: "phi4-mini:latest"
+    quantization_declared: "Q4_K_M"
+    quantization_effective: "Q4_K_M"
+    format: "GGUF"
+    context_window_tokens: 8192
     approx_vram_gb: 2.8
-    reason_for_inclusion: "Extremo inferior del eje de parámetros con licencia permisiva y alta eficiencia en edge."
+    weights_sha256: "78fad5d182a7c33065e153a5f8ba210754207ba9d91973f57dffa7f487363753"
