@@ -2,7 +2,7 @@
 
 **Proyecto:** NetDiagBench-L7: Benchmark Agéntico de Diagnóstico de Redes Layer 7 sobre IP  
 **Clasificación:** Especificación Técnica de Seguridad y Mitigaciones Defensivas  
-**Versión:** 1.0.3 | **Fecha:** Noviembre de 2026  
+**Versión:** 1.0.4 | **Fecha:** Noviembre de 2026  
 **Estado:** **VERIFICADO (100% de Pruebas de Seguridad Aprobadas)**  
 
 ---

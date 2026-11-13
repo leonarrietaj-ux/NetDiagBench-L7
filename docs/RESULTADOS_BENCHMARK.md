@@ -1,7 +1,7 @@
 # NetDiagBench-L7: Resultados del Benchmark y Especificación del Dataset
 
 **Proyecto:** NetDiagBench-L7: Benchmark Agéntico de Diagnóstico de Redes Layer 7 sobre IP  
-**Fecha:** Noviembre de 2026 (v1.0.3)  
+**Fecha:** Noviembre de 2026 (v1.0.4)  
 
 ---
 
@@ -73,7 +73,7 @@ A continuación se presentan las magnitudes cuantitativas oficiales de la campa�
 | | Tasa Respaldada por Evidencia Read-Only | 0.0% (0/54) | 27.8% (15/54) | **42.6%** (23/54) | **23.5%** (38/162) |
 | | Rúbrica Humana de Evaluación (0 - 5.0) | 3.55 / 5.0 | 4.07 / 5.0 | **4.13 / 5.0** | **3.92 / 5.0** |
 | **Rendimiento Temporal** | TTFT Fase Prefill Promedio | **135.8 ms** | 161.5 ms | 182.8 ms | — |
-| | Velocidad de Generación (tok/s) | **42.1 tok/s** | 1.8 tok/s | 26.3 tok/s | — |
+| | Velocidad de Generación (tok/s) | **3.29 tok/s** | 1.75 tok/s | 2.91 tok/s | **2.65 tok/s** |
 | **Huella Computacional (UMA)** | Memoria VRAM Declarada/Estimada (GB) | **2.8 GB** | 5.5 GB | 5.9 GB | — |
 | | Estado de Medición Física VRAM | Declarada (UMA) | Declarada (UMA) | Declarada (UMA) | `vram_peak_gb = null` |
 | **Scorecard Multicriterio (40/20/20/20)** | Puntaje Compuesto Provisional | 0.8012 | 0.7217 | 0.7323 | — |
@@ -139,15 +139,15 @@ Para verificar si las diferencias de rendimiento entre la terna son estadística
 | Modelo Evaluado | Métrica | IC 95% Inferior | IC 95% Superior |
 |---|---|---|---|
 | **Phi-4-mini-instruct** | TTFT (ms) | $78,606.6\text{ ms}$ (~78.6 s) | $88,326.7\text{ ms}$ (~88.3 s) |
-| | Velocidad (tok/s) | $4.34\text{ tok/s}$ | $4.68\text{ tok/s}$ |
+| | Velocidad (tok/s) | $3.24\text{ tok/s}$ | $3.35\text{ tok/s}$ |
 | | Latencia Total Media (ms) | $167,253.6\text{ ms}$ (~2.79 min) | $187,521.7\text{ ms}$ (~3.13 min) |
 | | Energía Media (kWh) | $0.0057\text{ kWh}$ | $0.0065\text{ kWh}$ |
 | **Qwen3-8B** | TTFT (ms) | $151,745.7\text{ ms}$ (~151.7 s) | $173,262.8\text{ ms}$ (~173.3 s) |
-| | Velocidad (tok/s) | $3.33\text{ tok/s}$ | $3.64\text{ tok/s}$ |
+| | Velocidad (tok/s) | $1.72\text{ tok/s}$ | $1.78\text{ tok/s}$ |
 | | Latencia Total Media (ms) | $363,856.3\text{ ms}$ (~6.06 min) | $417,268.9\text{ ms}$ (~6.95 min) |
 | | Energía Media (kWh) | $0.0149\text{ kWh}$ | $0.0173\text{ kWh}$ |
 | **GLM-4-9B-Chat** | TTFT (ms) | $173,733.8\text{ ms}$ (~173.7 s) | $193,533.5\text{ ms}$ (~193.5 s) |
-| | Velocidad (tok/s) | $3.28\text{ tok/s}$ | $3.42\text{ tok/s}$ |
+| | Velocidad (tok/s) | $2.88\text{ tok/s}$ | $2.94\text{ tok/s}$ |
 | | Latencia Total Media (ms) | $383,535.7\text{ ms}$ (~6.39 min) | $427,132.6\text{ ms}$ (~7.12 min) |
 | | Energía Media (kWh) | $0.0159\text{ kWh}$ | $0.0180\text{ kWh}$ |
 

@@ -14,7 +14,7 @@ Exporta a Excel (hojas Correlación y Datos_correlación), HTML/PDF interactivo 
 import json
 import math
 from pathlib import Path
-from typing import Any
+from typing import Any, Callable, Dict, List, Optional, Tuple, Union
 
 import numpy as np
 import openpyxl

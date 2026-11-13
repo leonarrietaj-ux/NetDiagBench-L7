@@ -1,7 +1,7 @@
 # NetDiagBench-L7 • Manual Técnico del Sistema
 
 **Proyecto:** NetDiagBench-L7: Benchmark Agéntico de Diagnóstico de Redes Layer 7 sobre IP  
-**Versión:** 1.0.3 | **Fecha:** Noviembre 2026 | **Aislamiento:** 100% Local (≤ 8 GB VRAM)  
+**Versión:** 1.0.4 | **Fecha:** Noviembre 2026 | **Aislamiento:** 100% Local (≤ 8 GB VRAM)  
 
 ---
 

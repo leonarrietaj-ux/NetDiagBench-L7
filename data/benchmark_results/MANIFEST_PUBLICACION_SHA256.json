@@ -1,8 +1,8 @@
 {
   "project": "NetDiagBench-L7",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "release_type": "scientific_public_release",
-  "generated_at": "2026-11-13T00:15:37.692165+00:00",
+  "generated_at": "2026-11-13T03:17:06.932829+00:00",
   "repository": "https://github.com/leonarrietaj-ux/NetDiagBench-L7.git",
   "experimental_summary": {
     "total_runs": 162,
@@ -29,7 +29,47 @@
     }
   },
   "integrity_hashes": {
+    "campana_congelada_162": {
+      "data/campaign_162/manifest.json": {
+        "sha256": "07CF3DBFB6CC099D1C33660B71E37094A7DDD3F05AE13B1CDEA6AFB770AEBF0C",
+        "size_bytes": 2715
+      },
+      "data/campaign_162/recalificacion_auditada.csv": {
+        "sha256": "7D0817F6A0890F85630E2B2B01BA605A37F20398A116FB2961ABBED9EEA8B542",
+        "size_bytes": 280484
+      },
+      "data/campaign_162/resultados.csv": {
+        "sha256": "045BB8B1A3E92F29AA2230512F5845EC7E6E09E9B7A1AB5D62F0CB5847C042F9",
+        "size_bytes": 259728
+      },
+      "data/campaign_162/traza.jsonl": {
+        "sha256": "FFC1DBD7A008ED94823D5F41CB48EF270B2D3E900DBF5464A944CE5145840025",
+        "size_bytes": 2027692
+      }
+    },
+    "configuraciones_oficiales": {
+      "configs/benchmark_config.yaml": {
+        "sha256": "C098B3F2E1ABBA879D77115FAF79D8AAA60F3E102FA86512B0872C9E4C6B65A5",
+        "size_bytes": 1268
+      },
+      "configs/evaluator_concepts.yaml": {
+        "sha256": "B26A394B7FB37DE4A7432D018EA1E7285166D856CDAAA621B6EB354B672C0350",
+        "size_bytes": 22365
+      },
+      "configs/hardware_reference.yaml": {
+        "sha256": "18894E488F0EAA5B1327C30D7B63857E8A1B523C631BA9C06A0DFB841BD17375",
+        "size_bytes": 681
+      },
+      "configs/models.yaml": {
+        "sha256": "432D205C8C80B6044BBA6EDEC9C08C35401E14AF6499B041F178E0772A068DFD",
+        "size_bytes": 1412
+      }
+    },
     "dataset_canonico": {
+      "data/benchmark_results/dataset_bundle.json": {
+        "sha256": "3D52E9CFB037C393A59C433AA904F5D7ABFBA476D97A347F87225F07DF3425E4",
+        "size_bytes": 15643
+      },
       "data/benchmark_results/resultados.csv": {
         "sha256": "0B63EB335EBA2BB923DD341BA0DC6A6EFC09E3A14D91F1F6A69F86F2D96B4F27",
         "size_bytes": 280505
@@ -37,40 +77,96 @@
       "data/benchmark_results/traza.jsonl": {
         "sha256": "611FA9C0100B69E801E68217D6149B5A5B281FA9BBB25D17C15F63216648EF83",
         "size_bytes": 2287090
-      },
-      "data/benchmark_results/dataset_bundle.json": {
-        "sha256": "5C33B82667FD0A8A586F55241B93225BCE20A4C6D5FB01C7C72A3C7BC21BC480",
-        "size_bytes": 15992
       }
     },
-    "campana_congelada_162": {
-      "data/campaign_162/resultados.csv": {
-        "sha256": "045BB8B1A3E92F29AA2230512F5845EC7E6E09E9B7A1AB5D62F0CB5847C042F9",
-        "size_bytes": 259728
+    "documentacion_tecnica": {
+      "README.md": {
+        "sha256": "5DC6B9DB3CDAD134635146955A51F6937363689E54A1225A16F0C7205555DD44",
+        "size_bytes": 16949
       },
-      "data/campaign_162/recalificacion_auditada.csv": {
-        "sha256": "7D0817F6A0890F85630E2B2B01BA605A37F20398A116FB2961ABBED9EEA8B542",
-        "size_bytes": 280484
+      "docs/ANALISIS_ESTADISTICO.md": {
+        "sha256": "5A8637BBCA002C99B00E8BD2A3C038D6C49C1BA8F90F2A9C942FBDE221E18CD9",
+        "size_bytes": 10558
       },
-      "data/campaign_162/traza.jsonl": {
-        "sha256": "FFC1DBD7A008ED94823D5F41CB48EF270B2D3E900DBF5464A944CE5145840025",
-        "size_bytes": 2027692
+      "docs/CONFIGURACION_MODELOS.md": {
+        "sha256": "1AC49B86C177B4E32558D41A6A0D7F767EF44BEFCBC0119B175ED17692E33688",
+        "size_bytes": 8327
       },
-      "data/campaign_162/manifest.json": {
-        "sha256": "07CF3DBFB6CC099D1C33660B71E37094A7DDD3F05AE13B1CDEA6AFB770AEBF0C",
-        "size_bytes": 2715
+      "docs/EVALUACION_TRADEOFF.md": {
+        "sha256": "B8D4A71EBE29B2F4CC0E65A163D1D82B77BBD41A5C1A1C5CE43F5C919F761365",
+        "size_bytes": 4343
+      },
+      "docs/GUIA_OPERACION.md": {
+        "sha256": "B8FFCCBCC23C4B7B2A36EB2AADAD8ED1336D1DCA48E649023A9CC3A18B09603F",
+        "size_bytes": 5120
+      },
+      "docs/GUIA_REPRODUCIBILIDAD.md": {
+        "sha256": "05DC853C8173B7A555A3A6CD2FE3531B2219ED43E81DC8A3A0C3CF89A9DB6B1B",
+        "size_bytes": 13452
+      },
+      "docs/MANUAL_TECNICO.md": {
+        "sha256": "705CE497DFC6B9930ADD2739C1E887CA1FE0563CC30AF9564BE433F30D0F8D57",
+        "size_bytes": 12637
+      },
+      "docs/RESULTADOS_BENCHMARK.md": {
+        "sha256": "2394CDE9621DDB90A4BB7DC6E43C9FECBA7DA985533B0ACC042F33DB682DD567",
+        "size_bytes": 20524
+      },
+      "docs/SEGURIDAD_SISTEMA.md": {
+        "sha256": "78A22746F8D2949E4C0DD2693AB2BD065C86A95D03A882CF2A48C3FD3C95B33A",
+        "size_bytes": 12515
       }
     },
     "evaluacion_humana_publica": {
+      "data/human_eval/acta_pilotaje.md": {
+        "sha256": "8BCFCB04207E351432AC18AC8F725A5E7681F43046CD30D20894803E9CC8F0DD",
+        "size_bytes": 2629
+      },
+      "data/human_eval/clave_tecnica_escenarios.csv": {
+        "sha256": "349002E8BDD992C775D06FD7F234EC3B09F2104F62A6ABB6655F578CF33FE098",
+        "size_bytes": 13699
+      },
+      "data/human_eval/concordancia_resultados.csv": {
+        "sha256": "FF967CDEB3331AD4000CDFD385A7F46B9B05943DC2D06057D05AD8393B5B7EB1",
+        "size_bytes": 759
+      },
       "data/human_eval/evaluaciones_adjudicadas.csv": {
         "sha256": "43FCBF3C5AF8F021B9763A413A62697CA0E02910B80459086ABBABAF1E1603F9",
         "size_bytes": 6465
+      },
+      "data/human_eval/informe_concordancia.md": {
+        "sha256": "1A546C72BD697AB898F92C8E2B35C8F69E8809B1556A6B0AB9B7B1F55A3CC8BC",
+        "size_bytes": 4408
+      },
+      "data/human_eval/registro_evaluadores.md": {
+        "sha256": "E25BD8F6A97AEAB19F8FEF4573BFCFD1DBB4F74B1124F8ECF3FA4BF16F81BFD0",
+        "size_bytes": 2489
+      },
+      "data/human_eval/version_rubrica.json": {
+        "sha256": "625CAE13B05F1E25A8342FFDDBC27EAF0CCAAC2EFEDACA181F3079B22343280C",
+        "size_bytes": 2652
       }
     },
     "instrumentos_evaluacion_humana": {
       "docs/evaluacion_humana/00_LEEME.md": {
         "sha256": "E595E06B5816016865F596511980030E46E864C31C80BB47964E4F6764476FF6",
         "size_bytes": 3818
+      },
+      "docs/evaluacion_humana/01_Protocolo_evaluacion_humana.docx": {
+        "sha256": "B27F011D592A8B99BB050505E6F88D3BAC7AA7744CDAC9FED9BCC0DE8B05422D",
+        "size_bytes": 39734
+      },
+      "docs/evaluacion_humana/02_Rubrica_y_matriz_evaluacion.xlsx": {
+        "sha256": "4EFED6BFA287FD933ACEBBB761923C41AC76A1A55E0037482E8277C86D2EBB41",
+        "size_bytes": 19342
+      },
+      "docs/evaluacion_humana/03_Formulario_individual_evaluador.docx": {
+        "sha256": "200F63228AE55AC8D24116756E42ECDCE110FCD611B5E1FD212B0B05D676989B",
+        "size_bytes": 37883
+      },
+      "docs/evaluacion_humana/04_Consentimiento_y_confidencialidad.docx": {
+        "sha256": "35673608DD743BB7466438679B28A138C6311C9AAE5D0AEA4D18C8261622DC92",
+        "size_bytes": 37920
       },
       "docs/evaluacion_humana/05_Registro_evaluaciones.csv": {
         "sha256": "26D368512AD1BCDBBB7DF9B0030290645E0EAD63F669F7BF0C9EC2DB7DC359E5",
@@ -93,82 +189,26 @@
         "size_bytes": 1221
       }
     },
-    "configuraciones_oficiales": {
-      "configs/models.yaml": {
-        "sha256": "432D205C8C80B6044BBA6EDEC9C08C35401E14AF6499B041F178E0772A068DFD",
-        "size_bytes": 1412
-      },
-      "configs/benchmark_config.yaml": {
-        "sha256": "C098B3F2E1ABBA879D77115FAF79D8AAA60F3E102FA86512B0872C9E4C6B65A5",
-        "size_bytes": 1268
-      },
-      "configs/evaluator_concepts.yaml": {
-        "sha256": "B26A394B7FB37DE4A7432D018EA1E7285166D856CDAAA621B6EB354B672C0350",
-        "size_bytes": 22365
-      },
-      "configs/hardware_reference.yaml": {
-        "sha256": "18894E488F0EAA5B1327C30D7B63857E8A1B523C631BA9C06A0DFB841BD17375",
-        "size_bytes": 681
-      }
-    },
-    "documentacion_tecnica": {
-      "README.md": {
-        "sha256": "5DC6B9DB3CDAD134635146955A51F6937363689E54A1225A16F0C7205555DD44",
-        "size_bytes": 16949
-      },
-      "docs/GUIA_REPRODUCIBILIDAD.md": {
-        "sha256": "9C68DF5CFA560BDD502AED4011043E7511E7674C63A48AB56A164D5F29EFB159",
-        "size_bytes": 12341
-      },
-      "docs/MANUAL_TECNICO.md": {
-        "sha256": "845278087648439493EE2EE592604744C28AEE4C60A1757A4351B8EB56E93E49",
-        "size_bytes": 12806
-      },
-      "docs/GUIA_OPERACION.md": {
-        "sha256": "13251B64EC05B159B01F0BF87923DE12C60AF55EE9881F99ED7CACDBA178257B",
-        "size_bytes": 5209
-      },
-      "docs/CONFIGURACION_MODELOS.md": {
-        "sha256": "7B73103183EBFCE02CE6B985E3C8DA7DCE5750CD0A712F7C9980F197599472EE",
-        "size_bytes": 8327
-      },
-      "docs/RESULTADOS_BENCHMARK.md": {
-        "sha256": "F137567550CF155D2966200612AE8F538070DBC9AFBAAD1424196068F077D48B",
-        "size_bytes": 20512
-      },
-      "docs/EVALUACION_TRADEOFF.md": {
-        "sha256": "4B8A259AC2037219054FD6C6060A071FED3979700344C1C774C2C9B66CD0F33A",
-        "size_bytes": 4328
-      },
-      "docs/ANALISIS_ESTADISTICO.md": {
-        "sha256": "96C639665A57C3885C5579247F9B8DB4B4F77700695A1F00D89F5C291C07FCDB",
-        "size_bytes": 5975
-      },
-      "docs/SEGURIDAD_SISTEMA.md": {
-        "sha256": "25CC4C2BC2E6DA4C735A1AE4B8CF18951D913F2F4EAC35A2C0DD1054822CB9D8",
-        "size_bytes": 12676
-      }
-    },
     "metadatos_del_proyecto": {
-      "pyproject.toml": {
-        "sha256": "EBCDECDB0FAB6CCD26BBA904F8DA458E56C8B7082F7445B1E85E7120253FFC5B",
-        "size_bytes": 2777
-      },
-      "requirements.txt": {
-        "sha256": "62D7269D0EA8BF1AFA444BBAB3C0C76E357D65483E690718195321EC54A0099F",
-        "size_bytes": 940
-      },
       ".gitignore": {
         "sha256": "734A5BBA770C4A855A1081451FBC076F118C8E4A7531797D98CBDC34B80F5D04",
         "size_bytes": 1137
+      },
+      "CITATION.cff": {
+        "sha256": "379FD4F16F06B5DD74E758A3CFC0AB79DDF6033A0C99C6DD532039E3AF31F11D",
+        "size_bytes": 582
       },
       "LICENSE": {
         "sha256": "B3729F8029408BA7E49E4064FEABA919D56764AFC4A320EF534FD9321604ACF4",
         "size_bytes": 1201
       },
-      "CITATION.cff": {
-        "sha256": "44CA6EA197551FDDC3F0A706650BE8F1B144470B35254C1A74A2BDF79B9A7F10",
-        "size_bytes": 600
+      "pyproject.toml": {
+        "sha256": "1B618CBACD8849F066A8A56639A9ED356E7C193D096A0D3C356EFECAF42A89D0",
+        "size_bytes": 2669
+      },
+      "requirements.txt": {
+        "sha256": "62D7269D0EA8BF1AFA444BBAB3C0C76E357D65483E690718195321EC54A0099F",
+        "size_bytes": 940
       }
     }
   }

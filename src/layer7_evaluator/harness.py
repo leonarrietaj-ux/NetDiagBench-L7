@@ -64,23 +64,20 @@ import platform
 import statistics
 
 from datetime import UTC, datetime
-
 from pathlib import Path
-
-
+from typing import Any, Callable, Dict, List, Optional, Tuple, Union
 
 import psutil
 
-
-
 from src.core.config import PROJECT_ROOT, SystemConfig
-
 from src.core.contracts import (
-
+    ContextoRAGContract,
+    DiagnosticoFinalContract,
     EscenarioLabContract,
-
+    RespuestaInferenciaContract,
     ResultadoEvaluacionContract,
-
+    TrazaOrquestacionContract,
+    VentanaLogContract,
 )
 
 from src.core.logger import logger

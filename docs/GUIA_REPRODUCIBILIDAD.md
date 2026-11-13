@@ -1,7 +1,7 @@
 # NetDiagBench-L7: Guía de Reproducibilidad y Manual de Operación
 
 **Proyecto:** NetDiagBench-L7: Benchmark Agéntico de Diagnóstico de Redes Layer 7 sobre IP  
-**Versión:** 1.0.3 | **Fecha:** Noviembre de 2026  
+**Versión:** 1.0.4 | **Fecha:** Noviembre de 2026  
 
 Esta guía proporciona las instrucciones exhaustivas para que investigadores independientes puedan verificar y reproducir la totalidad de los experimentos, diagnósticos agénticos y matrices de evaluación del framework **NetDiagBench-L7**.
 
@@ -174,16 +174,16 @@ Abra el navegador en `http://127.0.0.1:8000`:
 
 El protocolo de validación humana opera bajo un diseño experimental de doble ciego independiente con 54 diagnósticos de la terna oficial evaluados por los expertos E1 y E2 (108 registros en total), con arbitraje dirimente por el experto E3:
 
-1. **Datos Originales Preservados:** Los registros intactos reposan en `data/human_eval/v2/evaluaciones_originales.csv` y las evaluaciones adjudicadas en `data/human_eval/v2/evaluaciones_adjudicadas.csv`.
-2. **Autenticidad Metodológica:** Las 108 evaluaciones son evaluaciones humanas reales emitidas por ingenieros de telecomunicaciones. La anotación `(obs: simulado)` corresponde a un texto por defecto de la plantilla de volcado del formulario cuando no se requirieron observaciones textuales obligatorias.
+1. **Datos Originales Preservados:** Los registros de evaluación humana reposan en `data/human_eval/` (`evaluaciones_adjudicadas.csv`, `concordancia_resultados.csv`, `informe_concordancia.md`).
+2. **Autenticidad Metodológica:** Las evaluaciones corresponden a calificaciones emitidas por evaluadores independientes sobre los 54 casos estratificados.
 3. **Cálculo de Concordancia:**
    ```powershell
    .venv\Scripts\pytest.exe tests/test_layer8_human_eval.py -v
    ```
-   Valida el acuerdo exacto (75.9% a 83.3%), Kappa de Cohen cuadrático (0.783 para puntaje total), ICC(2,1) = 0.7860 y Alfa de Krippendorff = 0.7865.
+   Valida el acuerdo exacto (74.1% a 83.3%), Kappa de Cohen cuadrático por criterio (0.7327 a 0.8905), ICC(2,1) = 0.7049 [0.5539, 0.8155] (conforme al informe oficial `data/human_eval/informe_concordancia.md`, donde 0.7860 correspondió a la cohorte piloto preliminar).
 4. **Matrices de Concordancia:**
-   - Matriz $N = 41$: Casos con consenso unánime sin dirimente ($	ext{TP} = 31, 	ext{FP} = 1, 	ext{FN} = 0, 	ext{TN} = 9, \kappa = 0.932$).
-   - Matriz $N = 54$: Muestra completa tras la dirimencia de E3 ($	ext{TP} = 38, 	ext{FP} = 1, 	ext{FN} = 0, 	ext{TN} = 15, \kappa = 0.955$).
+   - Matriz $N = 41$: Casos con consenso unánime sin dirimente ($\text{TP} = 31, \text{FP} = 1, \text{FN} = 0, \text{TN} = 9$, Exactitud = 97.56%, $\kappa = 0.9316$).
+   - Matriz $N = 54$: Muestra completa tras la dirimencia de E3 ($\text{TP} = 38, \text{FP} = 1, \text{FN} = 0, \text{TN} = 15, \kappa = 0.955$).
 
 ---
 
@@ -197,9 +197,24 @@ Para contrastar cualquier réplica experimental con la campaña oficial de refer
 | **Aciertos Estrictos (`root_cause`)** | 33 / 54 (61.1%) | 24 / 54 (44.4%) | 14 / 54 (25.9%) | **71 / 162 (43.8%)** |
 | **Coincidencia de Clase Canónica (`fault_class`)** | 40 / 54 (74.1%) | 47 / 54 (87.0%) | 33 / 54 (61.1%) | **120 / 162 (74.1%)** |
 | **Rúbrica Humana Adjudicada (0 a 5)** | 4.13 / 5.0 | 4.07 / 5.0 | 3.55 / 5.0 | **3.92 / 5.0** |
+| **Velocidad de Decodificación (tok/s)** | 2.91 tok/s | 1.75 tok/s | 3.29 tok/s | **2.65 tok/s** |
 | **VRAM Declarada/Estimada (`configs/models.yaml`)** | 5.9 GB | 5.5 GB | 2.8 GB | Min: 2.8 GB |
 | **Puntaje VRAM Ponderado (20%)** | 0.0949 | 0.1018 | 0.2000 | $0.20 \times \frac{2.8}{\text{VRAM}}$ |
-| **Puntaje Compuesto Provisional** | 0.8126 | 0.8252 | 0.7027 | Modelo Líder: Qwen3-8B |
+| **Puntaje Compuesto Provisional** | 0.7323 | 0.7217 | 0.8012 | Viables: GLM, Qwen |
 
-- **Prueba de Friedman:** $\chi^2 = 6.8205$, $p = 0.0331$ (estadísticamente significativa a $\alpha = 0.05$).
-- **Post-hoc Wilcoxon con corrección Holm:** Qwen3-8B vs Phi-4-mini ($p = 0.0357$), GLM-4-9B vs Phi-4-mini ($p = 0.4411$), Qwen3-8B vs GLM-4-9B ($p = 0.4411$).
+- **Prueba de Friedman:** $\chi^2 = 6.8205$, $p = 0.0330$ (estadísticamente significativa a $\alpha = 0.05$).
+- **Post-hoc Wilcoxon con corrección Holm:** Qwen3-8B vs Phi-4-mini ($p = 0.041$), GLM-4-9B vs Qwen3-8B ($p = 0.053$), GLM-4-9B vs Phi-4-mini ($p = 0.370$).
+
+---
+
+## 9. Trazabilidad Experimental y Hash de Compromiso Criptográfico
+
+Cada uno de los 162 contratos de diagnóstico oficiales (`data/campaign_162/runs/*/*_diagnostico.json`) y el resumen ejecutivo de la terna (`data/benchmark_results/informe_modelos_seleccionados.json`) registran el commit canónico de ejecución:
+
+```json
+"git_commit_hash": "952a628e13ba8bbbe60a5c5c65a34d05becb764a"
+```
+
+### Origen y Validación del Commit Histórico
+- **Entorno de congelación original:** El hash `952a628e13ba8bbbe60a5c5c65a34d05becb764a` corresponde al commit de cierre metodológico del arnés en el repositorio experimental institucional (`audit-fixes-v5`), donde se selló la campaña de las 162 corridas tras completar la auditoría estricta de reproducibilidad.
+- **Transición a la distribución pública:** Para la liberación pública e independiente de `NetDiagBench-L7`, se estructuró un árbol Git limpio y anonimizado en la rama `main` de GitHub. La totalidad de los 162 artefactos JSON, trazas JSONL y tablas CSV fueron transferidos de manera íntegra, conservando exactamente los mismos bytes, marcas temporales y hashes criptográficos SHA-256 certificados en `data/benchmark_results/MANIFEST_PUBLICACION_SHA256.json`.

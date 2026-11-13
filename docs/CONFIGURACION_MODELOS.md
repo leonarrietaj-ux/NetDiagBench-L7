@@ -1,7 +1,7 @@
 # NetDiagBench-L7: Configuración y Caracterización de Modelos
 
 **Proyecto:** NetDiagBench-L7: Benchmark Agéntico de Diagnóstico de Redes Layer 7 sobre IP  
-**Fecha:** Septiembre de 2026 / Noviembre de 2026 (v1.0.3)  
+**Fecha:** Septiembre de 2026 / Noviembre de 2026 (v1.0.4)  
 
 ---
 

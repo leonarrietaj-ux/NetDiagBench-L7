@@ -1,7 +1,7 @@
 # NetDiagBench-L7: Evaluación Comparativa de Compromiso y Trade-off
 
 **Proyecto:** NetDiagBench-L7: Benchmark Agéntico de Diagnóstico de Redes Layer 7 sobre IP  
-**Fecha:** Noviembre de 2026 (v1.0.3)  
+**Fecha:** Noviembre de 2026 (v1.0.4)  
 
 ---
 
@@ -26,7 +26,7 @@ La evaluación compara cuatro dimensiones de desempeño operativo sobre 18 escen
 | **Coincidencia de Clase Canónica (`fault_class_match`)** | 61.1% (33/54) | **87.0%** (47/54) | 74.1% (40/54) |
 | **Tasa de Respaldo en Evidencia Read-Only** | 0.0% (0/54) | 27.8% (15/54) | **42.6%** (23/54) |
 | **Rúbrica Humana de Evaluación (0 - 5.0)** | 3.55 / 5.0 | 4.07 / 5.0 | **4.13 / 5.0** |
-| **Velocidad de Inferencia (tok/s)** | **42.1 tok/s** | 1.8 tok/s | 26.3 tok/s |
+| **Velocidad de Inferencia (tok/s)** | **3.29 tok/s** | 1.75 tok/s | 2.91 tok/s |
 | **Memoria VRAM Declarada/Estimada (GB)** | **2.8 GB** | 5.5 GB | 5.9 GB |
 | **Puntaje Compuesto Provisional (Scorecard 40/20/20/20)** | 0.8012 | 0.7217 | **0.7323** |
 | **Umbral Mínimo Viable ($\ge 70.0\%$)** | No (64.8% < 70.0%) | **Sí (87.0%)** | **Sí (74.1%)** |
@@ -44,10 +44,10 @@ El análisis de compensaciones examina la tensión intrínseca entre **latencia 
 
 ### 3.2. Qwen3-8B (8.2B): Máxima Exactitud Diagnóstica con Razonamiento CoT
 - **Ventajas:** Lidera la exactitud diagnóstica completa con un **87.0%** (47/54 aciertos) y coincidencia canónica del 87.0%, integrando un bloque reflexivo nativo (`<thought>`) que explicita el razonamiento analítico.
-- **Compromiso:** Velocidad de generación acotada en CPU (1.8 tok/s), con puntaje compuesto de **0.7217** (Elegible).
+- **Compromiso:** Velocidad de generación acotada en CPU/UMA (1.75 tok/s), con puntaje compuesto de **0.7217** (Elegible).
 
 ### 3.3. Phi-4-mini-instruct (3.8B): Máxima Velocidad y Despliegue en Borde
-- **Ventajas:** Máxima velocidad de inferencia (**42.1 tok/s**) y menor huella de memoria (2.8 GB VRAM estimada).
+- **Ventajas:** Mayor velocidad de inferencia en CPU/UMA (**3.29 tok/s**) y menor huella de memoria (2.8 GB VRAM estimada).
 - **Compromiso / Limitación:** Exactitud diagnóstica del **64.8%** (35/54 aciertos), situándose por debajo del umbral mínimo del 70.0% requerido para diagnóstico autónomo, resultando **NO ELEGIBLE** para operaciones no supervisadas.
 
 ---
