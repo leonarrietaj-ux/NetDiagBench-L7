@@ -1,59 +1,21 @@
 {
-  "benchmark_name": "NetDiagBench-L7",
-  "release_version": "1.0.4",
-  "campaign_window_utc": {
-    "start": "2026-11-07T16:55:00Z",
-    "end": "2026-11-08T18:46:00Z"
-  },
-  "experimental_design": {
-    "total_runs": 162,
-    "models_count": 3,
-    "scenarios_count": 18,
-    "seeds": [
-      42,
-      1337,
-      2026
-    ],
-    "repetitions_per_model_scenario_seed": 1,
-    "emulated_runs": 27,
-    "synthetic_deterministic_runs": 135,
-    "inference_backend": "CPU",
-    "runtime": "Ollama 0.34.2"
-  },
-  "dataset": {
-    "canonical_path": "data/benchmark_results/resultados.csv",
-    "rows": 162,
-    "columns": 99,
-    "documented_experimental_fields": 98,
-    "additional_provenance_field": "human_score_source",
-    "trace_path": "data/benchmark_results/traza.jsonl"
-  },
-  "models": {
-    "glm-4-9b-chat": {
-      "ollama_tag": "glm4:9b-chat-q4_K_M",
-      "parameters_declared": "9.0B",
-      "parameters_runtime_reported": "9.4B",
-      "quantization_declared": "Q4_K_M",
-      "quantization_effective": "Q4_0",
-      "memory_declared_gb": 5.9,
-      "weights_sha256": "5b699761eca535dc55047ad9d2dbf54e3b8697709419ef78a70503ed4bfbcf44"
-    },
-    "qwen3-8b": {
-      "ollama_tag": "qwen3:8b",
-      "parameters": "8.2B",
-      "quantization_effective": "Q4_K_M",
-      "memory_declared_gb": 5.5,
-      "weights_sha256": "500a1f067a9f782620b40bee6f7b0c89e17ae61f686b92c24933e4ca4b2b8b41"
-    },
-    "phi-4-mini-instruct": {
-      "ollama_tag": "phi4-mini:instruct-q4_K_M",
-      "local_alias": "phi4-mini:latest",
-      "parameters": "3.8B",
-      "quantization_effective": "Q4_K_M",
-      "memory_declared_gb": 2.8,
-      "weights_sha256": "78fad5d182a7c33065e153a5f8ba210754207ba9d91973f57dffa7f487363753"
-    }
-  },
+  "acta_tipo": "ACTA_PROMOCION_DEFINITIVA_PARTE_4",
+  "timestamp_utc": "20261108_231324",
+  "git_commit": "unknown",
+  "campaign_total_runs": 162,
+  "models": [
+    "glm-4-9b-chat",
+    "qwen3-8b",
+    "phi-4-mini-instruct"
+  ],
+  "seeds": [
+    42,
+    1337,
+    2026
+  ],
+  "scenarios_count": 18,
+  "emulated_scenarios_count": 3,
+  "synthetic_scenarios_count": 15,
   "diagnostic_results": {
     "strict_root_cause": {
       "glm-4-9b-chat": "33/54 (61.1%)",
@@ -67,146 +29,33 @@
       "phi-4-mini-instruct": "35/54 (64.8%)",
       "total": "122/162 (75.3%)"
     },
-    "f1_macro": {
-      "glm-4-9b-chat": 0.757,
-      "qwen3-8b": 0.848,
-      "phi-4-mini-instruct": 0.661
-    },
-    "automated_evidence": {
-      "glm-4-9b-chat": "23/54 (42.6%)",
-      "qwen3-8b": "15/54 (27.8%)",
-      "phi-4-mini-instruct": "0/54 (0.0%)",
-      "total": "38/162 (23.5%)"
+    "canonical_class_match": {
+      "glm-4-9b-chat": "40/54 (74.1%)",
+      "qwen3-8b": "47/54 (87.0%)",
+      "phi-4-mini-instruct": "33/54 (61.1%)",
+      "total": "120/162 (74.1%)"
     }
   },
-  "performance": {
-    "glm-4-9b-chat": {
-      "ttft_median_s": 295.5,
-      "latency_p50_s": 491.6,
-      "latency_p50_ci95_s": [
-        451.3,
-        571.5
-      ],
-      "latency_p95_s": 687.7,
-      "latency_p95_ci95_s": [
-        634.6,
-        734.9
-      ],
-      "tokens_per_second": 2.91,
-      "energy_per_run_wh": 21,
-      "energy_total_kwh": 1.132,
-      "co2e_total_kg": 0.317
-    },
-    "qwen3-8b": {
-      "ttft_median_s": 261,
-      "latency_p50_s": 756.5,
-      "latency_p50_ci95_s": [
-        697.1,
-        952.1
-      ],
-      "latency_p95_s": 1663.1,
-      "latency_p95_ci95_s": [
-        1343.8,
-        1901.5
-      ],
-      "tokens_per_second": 1.75,
-      "energy_per_run_wh": 37.7,
-      "energy_total_kwh": 2.033,
-      "co2e_total_kg": 0.569
-    },
-    "phi-4-mini-instruct": {
-      "ttft_median_s": 136.2,
-      "latency_p50_s": 213,
-      "latency_p50_ci95_s": [
-        200.1,
-        219.1
-      ],
-      "latency_p95_s": 247.9,
-      "latency_p95_ci95_s": [
-        230.7,
-        269.7
-      ],
-      "tokens_per_second": 3.29,
-      "energy_per_run_wh": 8.5,
-      "energy_total_kwh": 0.46,
-      "co2e_total_kg": 0.129
-    }
+  "human_rubric_scores": {
+    "glm-4-9b-chat": 4.13,
+    "qwen3-8b": 4.07,
+    "phi-4-mini-instruct": 3.55
   },
-  "quality": {
-    "technical_rubric_mean": {
-      "glm-4-9b-chat": 4.13,
-      "qwen3-8b": 4.07,
-      "phi-4-mini-instruct": 3.55
-    },
-    "human_rubric_v3_mean": {
-      "glm-4-9b-chat": 3.82,
-      "qwen3-8b": 3.65,
-      "phi-4-mini-instruct": 3.64
-    },
-    "human_s_yes": {
-      "glm-4-9b-chat": "14/18",
-      "qwen3-8b": "13/18",
-      "phi-4-mini-instruct": "15/18"
-    },
-    "automated_s_yes": {
-      "glm-4-9b-chat": "23/54",
-      "qwen3-8b": "15/54",
-      "phi-4-mini-instruct": "0/54"
-    }
+  "vram_declared_gb": {
+    "glm-4-9b-chat": 5.9,
+    "qwen3-8b": 5.5,
+    "phi-4-mini-instruct": 2.8
   },
-  "human_agreement": {
-    "cohen_kappa_s_consensus": {
-      "value": 0.932,
-      "n": 41
-    },
-    "cohen_kappa_s_with_adjudicator": {
-      "value": 0.955,
-      "n": 54
-    },
-    "icc_2_1": 0.786,
-    "krippendorff_alpha_ordinal": 0.787,
-    "weighted_kappa_total_score": 0.783,
-    "reported_consensus_cases": 32,
-    "adjudicated_cases": 22,
-    "limitation": "Los 108 registros originales E1/E2 no forman parte del conjunto público; los coeficientes se conservan como valores comunicados. El denominador n=41 para consenso no coincide con los 32 casos de consenso espontáneo informados."
+  "vram_measurement_valid": false,
+  "vram_peak_gb": null,
+  "canonical_artifacts": {
+    "resultados_csv": "C:\\Users\\USUARIO\\OneDrive\\Escritorio\\benchapp-ip\\data\\benchmark_results\\resultados.csv",
+    "resultados_csv_sha256": "410e901a3ae58ca4f9f5c9f1e8cdb59b395accb2ca679959c96e0a52b156bdda",
+    "traza_jsonl": "C:\\Users\\USUARIO\\OneDrive\\Escritorio\\benchapp-ip\\data\\benchmark_results\\traza.jsonl",
+    "traza_jsonl_sha256": "ffc1dbd7a008ed94823d5f41cb48ef270b2d3e900dbf5464a944ce5145840025"
   },
-  "scorecard": {
-    "formula": "0.40*A + 0.20*R + 0.20*V + 0.20*M",
-    "rubric_component": "technical_rubric",
-    "minimum_complete_accuracy": 0.7,
-    "composite_score": {
-      "glm-4-9b-chat": 0.732,
-      "qwen3-8b": 0.722,
-      "phi-4-mini-instruct": 0.801
-    },
-    "eligible": {
-      "glm-4-9b-chat": true,
-      "qwen3-8b": true,
-      "phi-4-mini-instruct": false
-    },
-    "provisional": true,
-    "reason": "El componente de memoria utiliza memoria declarada; no existe medición física de VRAM."
-  },
-  "campaign_host": {
-    "cpu": "AMD Ryzen 5 7520U, 4 núcleos físicos, 8 lógicos",
-    "gpu": "AMD Radeon 610M integrada, 2 GB compartidos, sin sensor de VRAM",
-    "ram_installed_gb": 16,
-    "ram_usable_gb": 13.8,
-    "os": "Windows 11 10.0.26300",
-    "docker": "Docker Desktop 28.4.0 sobre WSL2",
-    "inference_backend": "CPU"
-  },
-  "inference_parameters": {
-    "seeds": [
-      42,
-      1337,
-      2026
-    ],
-    "repetitions": 1,
-    "temperature": 0,
-    "top_p": 0.9,
-    "context_window_tokens": 8192,
-    "max_tokens": 1024,
-    "read_timeout_seconds": 900
+  "historical_archive": {
+    "location": "C:\\Users\\USUARIO\\OneDrive\\Escritorio\\benchapp-ip\\data\\historical_runs_archive\\archive_20261108_231324_pre_promocion",
+    "files_count": 28
   }
 }

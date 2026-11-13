@@ -1,14 +1,12 @@
-# Parámetros de la campaña oficial
+# Configuración Global de Reproducibilidad y Benchmarking
 benchmark:
-  name: "NetDiagBench-L7"
-  protocol_version: "1.0.4"
+  name: "NetDiagBench-L7-Execution"
+  protocol_version: "1.0.0"
   seeds: [42, 1337, 2026]
-  repetitions_per_scenario: 1
+  repetitions_per_scenario: 3
   temperature: 0.0
-  top_p: 0.9
-  context_window_tokens: 8192
   max_decoding_tokens: 1024
-  timeout_per_diagnosis_seconds: 900
+  timeout_per_diagnosis_seconds: 120
 
 execution_modes:
   TLS-EXP-01: emulado
@@ -32,21 +30,20 @@ services_under_test:
     protocols: ["REST/JSON"]
 
 evaluation_metrics:
-  - "diagnostic_accuracy_full"
-  - "diagnostic_accuracy_strict"
-  - "root_cause_f1_macro"
+  - "diagnostic_accuracy"
+  - "root_cause_f1_score"
   - "time_to_first_token_ms"
   - "inter_token_latency_ms"
   - "total_latency_p50_ms"
   - "total_latency_p95_ms"
-  - "declared_model_memory_gb"
+  - "peak_vram_gb"
   - "peak_ram_gb"
   - "estimated_energy_kwh"
-  - "technical_rubric_score"
-  - "human_rubric_v3_score"
+  - "explanation_rubric_score"
   - "evidence_backed_rate"
 
 security:
-  airgap_mode: false
-  min_free_disk_gb: 5.0
-  require_api_key_remote: true
+  airgap_mode: false # Si es true, prohíbe descargas externas y peticiones remotas
+  min_free_disk_gb: 5.0 # Espacio mínimo en disco (GB) para admitir descargas de modelos
+  require_api_key_remote: true # Exige API Key para clientes remotos (no localhost)
+

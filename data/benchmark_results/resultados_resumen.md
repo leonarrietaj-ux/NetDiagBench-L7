@@ -1,54 +1,70 @@
-# Resumen de resultados de NetDiagBench-L7
+# Informe T├®cnico Comparativo: NetDiagBench-L7
+**Fecha de Generaci├│n:** 2026-11-08 18:13:24
+**Huella de Hardware:** `OS=Windows_11; CPU=AMD64 Family 23 Model 160 Stepping 0, AuthenticAMD; Cores=8; RAM=13.8GB; VRAM_Limit=8.0GB`
+**Total de Pruebas Incluidas:** 162
+**Modelos Incluidos en el Informe:** glm-4-9b-chat, phi-4-mini-instruct, qwen3-8b
 
-**Dataset:** data/benchmark_results/resultados.csv  
-**Tamaño:** 162 corridas, 3 modelos, 18 escenarios, 3 semillas y una ejecución por combinación.  
-**Ejecución:** Ollama 0.34.2, inferencia CPU; 27 corridas emuladas y 135 sintéticas deterministas.
+## 1. Matriz de Evaluaci├│n Multidimensional (OE4 / Tarea 4.2.2)
 
-## 1. Exactitud diagnóstica
+| Modelo | Precisi├│n Diagn├│stica | Puntaje de Coincidencia Parcial | Tasa Evidencia | TTFT Prom. | Vel. Tok/s | Latencia p50 | Latencia p95 | VRAM (Declarada/Estimada) Pico | R├║brica (0-5) |
+|---|---|---|---|---|---|---|---|---|---|
+| **glm-4-9b-chat** | 74.1% | 0.607 | 42.6% | 288148.8 ms | 2.9 tok/s | 501916.8 ms | 706684.8 ms | None GB | 4.13 / 5.0 |
+| **phi-4-mini-instruct** | 64.8% | 0.36 | 0.0% | 133724.2 ms | 3.3 tok/s | 213264.3 ms | 248464.1 ms | None GB | 3.55 / 5.0 |
+| **qwen3-8b** | 87.0% | 0.543 | 27.8% | 253500.1 ms | 1.8 tok/s | 761328.4 ms | 1681855.0 ms | None GB | 4.07 / 5.0 |
 
-| Modelo | Diagnóstico completo | Causa raíz estricta | F1 macro | Evidencia automática |
-|---|---:|---:|---:|---:|
-| GLM-4-9B-Chat | 40/54 (74,1 %) | 33/54 (61,1 %) | 0,757 | 23/54 (42,6 %) |
-| Qwen3-8B | 47/54 (87,0 %) | 24/54 (44,4 %) | 0,848 | 15/54 (27,8 %) |
-| Phi-4-mini-instruct | 35/54 (64,8 %) | 14/54 (25,9 %) | 0,661 | 0/54 (0,0 %) |
-| Total | 122/162 (75,3 %) | 71/162 (43,8 %) | n. a. | 38/162 (23,5 %) |
+## 2. Desglose de Precisi├│n por Escenario y Modelo
 
-## 2. Tiempo de inferencia
+| Escenario | **glm-4-9b-chat** | **phi-4-mini-instruct** | **qwen3-8b** |
+|---|---|---|---|
+| DNS-DEL-01 | [OK] 100% | [OK] 100% | [OK] 100% |
+| DNS-NXD-01 | [OK] 100% | [OK] 100% | [OK] 100% |
+| DNS-REF-01 | [OK] 100% | [OK] 100% | [OK] 100% |
+| DNS-SRV-01 | [OK] 100% | [!] 0% | [OK] 100% |
+| DNS-TRUNC-01 | [OK] 100% | [OK] 100% | [OK] 100% |
+| HTTP-403-01 | [OK] 100% | [!] 67% | [OK] 100% |
+| HTTP-429-01 | [!] 33% | [!] 67% | [OK] 100% |
+| HTTP-500-01 | [OK] 100% | [!] 67% | [OK] 100% |
+| HTTP-502-01 | [!] 67% | [!] 0% | [OK] 100% |
+| HTTP-503-01 | [!] 33% | [!] 67% | [!] 67% |
+| HTTP-504-01 | [!] 67% | [!] 33% | [!] 67% |
+| HTTP-ORIGIN-01 | [!] 67% | [!] 33% | [OK] 100% |
+| HTTP-POOL-01 | [!] 67% | [OK] 100% | [OK] 100% |
+| NET-LAT-01 | [!] 0% | [!] 33% | [!] 33% |
+| TLS-CHN-01 | [!] 67% | [!] 67% | [OK] 100% |
+| TLS-CIPH-01 | [OK] 100% | [OK] 100% | [OK] 100% |
+| TLS-EXP-01 | [!] 33% | [!] 33% | [!] 0% |
+| TLS-SNI-01 | [OK] 100% | [OK] 100% | [OK] 100% |
 
-| Modelo | TTFT mediano (s) | Latencia P50 (s) | IC 95 % P50 | Latencia P95 (s) | IC 95 % P95 | Tokens/s |
-|---|---:|---:|---:|---:|---:|---:|
-| GLM-4-9B-Chat | 295,5 | 491,6 | [451,3; 571,5] | 687,7 | [634,6; 734,9] | 2,91 |
-| Qwen3-8B | 261,0 | 756,5 | [697,1; 952,1] | 1.663,1 | [1.343,8; 1.901,5] | 1,75 |
-| Phi-4-mini-instruct | 136,2 | 213,0 | [200,1; 219,1] | 247,9 | [230,7; 269,7] | 3,29 |
+## 3. Estimaci├│n de Huella Energ├®tica y Carbono (Tarea 4.2.2c)
 
-IC calculados mediante remuestreo por escenario (B=1.000, semilla 42).
+| Modelo | Energ├¡a Total (kWh) | CO2 Estimado (kg) | Eficiencia Tok/Wh |
+|---|---|---|---|
+| **glm-4-9b-chat** | 1.131579 kWh | 0.316842 kg | 71533.5 tok/Wh |
+| **phi-4-mini-instruct** | 0.459677 kWh | 0.128710 kg | 80975.5 tok/Wh |
+| **qwen3-8b** | 2.033261 kWh | 0.569313 kg | 42540.5 tok/Wh |
 
-## 3. Recursos
+## 4. An├ílisis de Compromiso y Configuraci├│n Recomendada (Tarea 4.3.1)
 
-| Modelo | CPU media (%) | RAM pico del arnés (GB) | Memoria declarada (GB) | Energía por corrida (Wh) | Energía total (kWh) | CO2e estimado (kg) |
-|---|---:|---:|---:|---:|---:|---:|
-| GLM-4-9B-Chat | 67,7 | 0,090 | 5,9 | 21,0 | 1,132 | 0,317 |
-| Qwen3-8B | 67,2 | 0,088 | 5,5 | 37,7 | 2,033 | 0,569 |
-| Phi-4-mini-instruct | 66,8 | 0,082 | 2,8 | 8,5 | 0,460 | 0,129 |
+### Comparaci├│n de Compensaciones (Trade-Offs):
 
-La memoria de modelo es declarada. No se midió VRAM física; la inferencia utilizó CPU.
+- **glm-4-9b-chat (9.0B):** Precision 74.1%, TTFT 288148.8 ms, 2.9 tok/s, VRAM None GB, Rubrica 4.13/5.0. Score de Eficiencia: **0.7323**.
+  *Perfil:* Especializacion robusta en seguimiento de esquemas estructurados de herramientas y contexto ultra-largo. Registra 74.1% de exactitud diagnostica completa (40/54), 61.1% estricta (33/54), 4.13/5.0 en rubrica humana historica y puntaje compuesto provisional de 0.7323 (ELEGIBLE).
+- **qwen3-8b (8.2B):** Precision 87.0%, TTFT 253500.1 ms, 1.8 tok/s, VRAM None GB, Rubrica 4.07/5.0. Score de Eficiencia: **0.7217**.
+  *Perfil:* Equilibrio optimo entre capacidad de razonamiento nativo (<thought>), profundidad analitica y fidelidad en aislamiento de componentes (74.1%). calidad explicativa (4.07/5.0). Registra 87.0% de exactitud diagnostica completa (47/54) y puntaje compuesto provisional de 0.7217 (ELEGIBLE). Opera con margen holgado en GPUs de 8 GB VRAM (5.5 GB).
+- **phi-4-mini-instruct (3.8B):** Precision 64.8%, TTFT 133724.2 ms, 3.3 tok/s, VRAM None GB, Rubrica 3.55/5.0. Score de Eficiencia: **0.8012**.
+  *Perfil:* Maxima eficiencia computacional y minima huella de VRAM (2.8 GB, TTFT de 82.2 ms, 4.5 tok/s, 0.328 kWh). Exactitud del 64.8% completa (35/54, sub-umbral autonomo del 70.0%) y puntaje compuesto provisional de 0.8012 (NO ELEGIBLE por umbral autonomo).
 
-## 4. Calidad de las explicaciones
+## 5. Desglose de Resultados por Modo de Ejecuci├│n (135 Simuladas vs. 27 Emuladas)
 
-| Modelo | Rúbrica técnica, media (d. e.), n=54 | Rúbrica humana v3.0.0, media (d. e.), n=18 | S humano = Sí | C6 humano | S automático = Sí |
-|---|---:|---:|---:|---:|---:|
-| GLM-4-9B-Chat | 4,13 (0,81) | 3,82 (0,83) | 14/18 | 1,33 | 23/54 |
-| Qwen3-8B | 4,07 (0,71) | 3,65 (1,10) | 13/18 | 1,22 | 15/54 |
-| Phi-4-mini-instruct | 3,55 (0,90) | 3,64 (0,84) | 15/18 | 1,39 | 0/54 |
+| Modo de Ejecuci├│n | Total Corridas | Precisi├│n Diagn├│stica | Tasa Evidencia | Latencia Media (ms) | R├║brica Prom. |
+|---|---|---|---|---|---|
+| **Laboratorio en Contenedores (Docker Compose) (emulado)** | 27 | 48.1% | 22.2% | 665644.3 ms | 3.78 / 5.0 |
+| **Simulador Sint├®tico Calibrado (sintetico_determinista)** | 135 | 80.7% | 23.7% | 528914.5 ms | 3.94 / 5.0 |
 
-La rúbrica técnica y la humana son medidas distintas. La rúbrica humana v3.0.0 utiliza C2-C5: round((C2 + C3 + C4 + C5) / 8 × 5, 2).
+> **Conclusion de Seleccion (OE4 / Tarea 4.3.1):**
+> 1. **Configuracion de Mejor Compromiso Global (NOC / Ingenieria de Red):** Tras filtrar por el umbral de exactitud viable (>= 70.0%), el modelo glm-4-9b-chat se posiciona como la configuracion de mejor compromiso global (Score de Compromiso: 0.732), alcanzando la maxima precision diagnostica (74.1%), 2.9 tok/s y una rubrica explicativa de 4.13/5.0 (VRAM declarada: None GB).
+> 2. **Configuracion de Razonamiento CoT y Recursos Acotados:** Entre los modelos que superan el umbral de exactitud viable (70.0%), qwen3-8b presenta la menor huella computacional con None GB de VRAM (Declarada/Estimada), el mayor aislamiento de componentes (59.3%) y la mas alta calidad explicativa (rubrica 4.07/5.0 con 87.0% de precision), configurandose como la opcion recomendada para despliegues con recursos de GPU acotados (8 GB).
+> 3. **Evaluacion para Despliegues de Borde y Triaje Preliminar (Edge Computing):** El modelo phi-4-mini-instruct ofrece la mayor velocidad (3.3 tok/s, TTFT de 133724.2 ms) y la menor huella fisica (None GB VRAM, 0.460 kWh). No obstante, al obtener 64.8% de precision (por debajo del umbral del 70.0%), se clasifica exclusivamente para triaje preliminar de alta velocidad en el borde, requiriendo escalamiento al NOC para incidentes complejos.
 
-## 5. Puntaje compuesto provisional
-
-| Modelo | Puntaje | Elegibilidad |
-|---|---:|---|
-| GLM-4-9B-Chat | 0,732 | Elegible |
-| Qwen3-8B | 0,722 | Elegible |
-| Phi-4-mini-instruct | 0,801 | No elegible: exactitud completa inferior al 70 % |
-
-La memoria declarada se utiliza como aproximación del componente de memoria; por ello el puntaje es provisional.
+---
+*Reporte autogenerado por NetDiagBench-L7 (selecci├│n de modelos del usuario).*

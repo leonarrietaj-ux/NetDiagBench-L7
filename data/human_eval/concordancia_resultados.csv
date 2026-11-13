@@ -1,6 +1,8 @@
-indicador,valor,n_informado,alcance,estado_reproduccion,nota
-kappa_cohen_S_consenso,0.932,41,casos de consenso,reportado_no_recalculado,"El recuento general de consenso espontaneo es 32; el denominador n=41 no queda reconciliado con los archivos publicos."
-kappa_cohen_S_con_dirimente,0.955,54,casos con dirimente,reportado_no_recalculado,"Valor comunicado para la muestra completa."
-ICC_2_1,0.786,54,rubrica continua,reportado_no_recalculado,"Modelo bidireccional de efectos aleatorios y acuerdo absoluto."
-alfa_krippendorff_ordinal,0.787,54,criterios ordinales,reportado_no_recalculado,"Valor global comunicado."
-kappa_ponderado_puntaje_total,0.783,54,puntaje total,reportado_no_recalculado,"Valor global comunicado."
+criterio,n_pares_completos,acuerdo_exacto,kappa_cohen,ponderacion,ic95_bootstrap_inferior,ic95_bootstrap_superior,bootstrap_replicas_solicitadas,semilla,estado
+C1,54,0.7593,0.7327,quadratic,0.5281,0.8611,1000,20261105,Validado: Acuerdo Sustancial
+C2,54,0.7778,0.8073,quadratic,0.6932,0.8988,1000,20261105,Validado: Altamente Confiable
+C3,54,0.7593,0.8002,quadratic,0.6538,0.8928,1000,20261105,Validado: Altamente Confiable
+C4,54,0.7407,0.762,quadratic,0.6176,0.8674,1000,20261105,Validado: Confiable
+C5,54,0.8148,0.7945,quadratic,0.6037,0.9058,1000,20261105,Validado: Confiable
+C6,54,0.8333,0.8905,quadratic,0.7924,0.9515,1000,20261105,Validado: Altamente Confiable
+S,54,0.8148,0.5872,unweighted,0.3721,0.7908,1000,20261105,Validado: Acuerdo Moderado

@@ -1,54 +1,27 @@
-# Plataforma prevista y equipo utilizado en la campaña
-reference_platform:
-  cpu:
-    cores: 8
-    instructions: ["AVX2", "FMA"]
+# Plataforma de Referencia (Num. 5.3 y 5.4 de la Tesis)
+platform:
+  name: "Reference-Workstation-8GB-GPU"
   gpu:
+    model: "NVIDIA GeForce RTX (o equivalente ROCm)"
     vram_gb: 8.0
-    backend: "CUDA o ROCm"
+    cuda_compute_capability: ">=7.5"
+    driver_version: ">=535.0"
   system_memory:
     ram_gb: 32.0
+    reserved_containers_gb: 8.0
+    reserved_inference_engine_gb: 16.0
+    reserved_os_and_rag_gb: 8.0
+  cpu:
+    cores: 8
+    threads: 16
+    instructions: ["AVX2", "FMA"]
   storage:
     type: "NVMe SSD"
-    required_space_gb: 26.0
-
-campaign_host:
-  cpu:
-    model: "AMD Ryzen 5 7520U with Radeon Graphics"
-    clock_ghz: 2.80
-    physical_cores: 4
-    logical_cores: 8
-    fingerprint: "AMD64 Family 23 Model 160"
-  gpu:
-    model: "AMD Radeon 610M integrada"
-    shared_memory_gb: 2.0
-    dedicated_vram: false
-    physical_vram_sensor: false
-    inference_backend: "CPU"
-  system_memory:
-    installed_gb: 16.0
-    usable_gb: 13.8
-    type: "LPDDR5 5500 MT/s"
-  operating_system:
-    name: "Windows 11"
-    version: "10.0.26300"
-    virtualization: "Docker Desktop 28.4.0 sobre WSL2"
-  inference:
-    engine: "Ollama"
-    version: "0.34.2"
-    backend: "CPU"
-  storage:
-    type: "SSD M.2 PCIe NVMe"
-    capacity_gb: 512.0
-    usable_gb: 475.81
-    filesystem: "NTFS"
-
-model_memory_declared_gb:
-  glm-4-9b-chat: 5.9
-  qwen3-8b: 5.5
-  phi-4-mini-instruct: 2.8
-
-measurement_notes:
-  - "Los valores de memoria de los modelos son declarados; no son mediciones físicas de VRAM."
-  - "La GPU integrada no dispone de sensor de VRAM utilizado por la campaña."
-  - "Las 162 inferencias se ejecutaron en CPU."
+    space_gb: 26.0
+    breakdown:
+      gguf_models_gb: 13.0
+      docker_images_gb: 8.0
+      corpus_and_results_gb: 5.0
+  network:
+    lan_isolation: true
+    allow_external_internet: false

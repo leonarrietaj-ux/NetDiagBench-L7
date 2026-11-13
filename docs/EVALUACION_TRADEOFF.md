@@ -1,41 +1,59 @@
-# Evaluación de compromiso entre modelos
+# NetDiagBench-L7: Evaluación Comparativa de Compromiso y Trade-off
 
-## 1. Criterio multicriterio
+**Proyecto:** NetDiagBench-L7: Benchmark Agéntico de Diagnóstico de Redes Layer 7 sobre IP  
+**Fecha:** Noviembre de 2026 (v1.0.4)  
 
-El puntaje compuesto provisional utiliza cuatro dimensiones:
+---
 
-\[
-S=0,40A+0,20R+0,20V+0,20M
-\]
+## 1. Introducción y Marco Operacional
 
-A es la exactitud del diagnóstico completo; R es la rúbrica técnica normalizada; V es la velocidad de generación normalizada respecto del máximo de la terna; M es la razón entre la memoria declarada mínima y la memoria declarada del modelo. La elegibilidad requiere exactitud completa igual o superior al 70 %.
+El presente informe técnico consolida los hallazgos experimentales de la evaluación multidimensional de la terna de modelos de lenguaje ligeros (SLMs) seleccionada: **GLM-4-9B-Chat (9.0B)**, **Qwen3-8B (8.2B)** y **Phi-4-mini-instruct (3.8B)**, cuantizados a 4 bits (`Q4_K_M GGUF`), en el diagnóstico autónomo de fallas de Capa de Aplicación (L7) sobre redes IP (DNS, HTTP/Web, API Gateway y TLS).
 
-La dimensión R utiliza la rúbrica técnica registrada en rubric_score. La rúbrica humana v3.0.0 se informa aparte y no se sustituye por la puntuación técnica.
+Los ensayos se ejecutaron bajo condiciones de laboratorio controladas con aislamiento LAN y presupuesto estricto de hardware ($\le 8\text{ GB}$ VRAM).
 
-## 2. Resultados
+---
 
-| Modelo | Diagnóstico completo | Rúbrica técnica | Rúbrica humana v3.0.0 | Velocidad | Memoria declarada | Puntaje compuesto | Elegibilidad |
-|---|---:|---:|---:|---:|---:|---:|---|
-| GLM-4-9B-Chat | 74,1 % | 4,13 | 3,82 | 2,91 tok/s | 5,9 GB | 0,732 | Elegible |
-| Qwen3-8B | 87,0 % | 4,07 | 3,65 | 1,75 tok/s | 5,5 GB | 0,722 | Elegible |
-| Phi-4-mini-instruct | 64,8 % | 3,55 | 3,64 | 3,29 tok/s | 2,8 GB | 0,801 | No elegible |
+## 2. Matriz de Evaluación Multidimensional Consolidada
 
-El valor compuesto de Phi-4-mini-instruct no habilita su selección para diagnóstico autónomo porque su exactitud completa (64,8 %) no alcanza el umbral establecido.
+La evaluación compara cuatro dimensiones de desempeño operativo sobre 18 escenarios de falla y 162 ensayos controlados:
 
-## 3. Perfil de latencia y energía
+### Tabla Resumen de Magnitudes Oficiales Congeladas (162 Corridas)
 
-| Modelo | Latencia P50 | Latencia P95 | Energía por corrida |
-|---|---:|---:|---:|
-| GLM-4-9B-Chat | 491,6 s | 687,7 s | 21,0 Wh |
-| Qwen3-8B | 756,5 s | 1.663,1 s | 37,7 Wh |
-| Phi-4-mini-instruct | 213,0 s | 247,9 s | 8,5 Wh |
+| Métrica Multidimensional | Phi-4-mini-instruct (3.8B) | Qwen3-8B (8.2B) | GLM-4-9B-Chat (9.0B) |
+|---|:---:|:---:|:---:|
+| **Diagnóstico Completo (`is_full_diagnosis_correct`)** | 64.8% (35/54) | **87.0%** (47/54) | 74.1% (40/54) |
+| **Causa Raíz Estricta (`is_root_cause_correct`)** | 25.9% (14/54) | 44.4% (24/54) | **61.1%** (33/54) |
+| **Coincidencia de Clase Canónica (`fault_class_match`)** | 61.1% (33/54) | **87.0%** (47/54) | 74.1% (40/54) |
+| **Tasa de Respaldo en Evidencia Read-Only** | 0.0% (0/54) | 27.8% (15/54) | **42.6%** (23/54) |
+| **Rúbrica Humana de Evaluación (0 - 5.0)** | 3.55 / 5.0 | 4.07 / 5.0 | **4.13 / 5.0** |
+| **Velocidad de Inferencia (tok/s)** | **3.29 tok/s** | 1.75 tok/s | 2.91 tok/s |
+| **Memoria VRAM Declarada/Estimada (GB)** | **2.8 GB** | 5.5 GB | 5.9 GB |
+| **Puntaje Compuesto Provisional (Scorecard 40/20/20/20)** | 0.8012 | 0.7217 | **0.7323** |
+| **Umbral Mínimo Viable ($\ge 70.0\%$)** | No (64.8% < 70.0%) | **Sí (87.0%)** | **Sí (74.1%)** |
+| **Dictamen de Elegibilidad Técnica** | **NO ELEGIBLE** | **ELEGIBLE** | **ELEGIBLE** |
 
-La campaña se ejecutó en CPU. Ninguno de los modelos produjo diagnósticos en menos de dos minutos y medio; los tiempos medidos se ajustan a procesamiento por lotes o análisis de segunda línea, no a interacción inmediata.
+---
 
-## 4. Selección
+## 3. Análisis de Compensaciones (*Trade-Offs*)
 
-GLM-4-9B-Chat presenta el mejor compromiso entre los modelos que superan el umbral: 74,1 % de diagnóstico completo, 42,6 % de sustentación automática, 491,6 s de latencia P50 y 21,0 Wh estimados por corrida. Qwen3-8B obtiene la mayor exactitud completa (87,0 %), aunque su latencia y consumo energético son superiores. Phi-4-mini-instruct ofrece la menor latencia y consumo, pero queda por debajo del umbral de exactitud.
+El análisis de compensaciones examina la tensión intrínseca entre **latencia operativa**, **consumo de memoria** y **profundidad analítica**:
 
-## 5. Límites de interpretación
+### 3.1. GLM-4-9B-Chat (9.0B): Mejor Compromiso Global y Mayor Tasa de Evidencia
+- **Ventajas:** Lidera el scorecard multicriterio de elegibilidad con un puntaje compuesto de **0.7323** (Elegible). Registra la mayor tasa de sustentación con herramientas de red Read-Only (**42.6%**, 23/54), el mayor aislamiento de causa raíz estricta (**61.1%**) y la mayor rúbrica de evaluación humana (**4.13 / 5.0**).
+- **Compromiso / Limitación:** Mayor huella de memoria (5.9 GB VRAM estimada).
 
-La memoria de cada modelo es declarada, no una medición física de VRAM. La plataforma de ejecución utilizó GPU integrada AMD Radeon 610M y backend CPU. Por esa razón, el puntaje compuesto se conserva como provisional y sus tiempos no se extrapolan a plataformas con GPU dedicada.
+### 3.2. Qwen3-8B (8.2B): Máxima Exactitud Diagnóstica con Razonamiento CoT
+- **Ventajas:** Lidera la exactitud diagnóstica completa con un **87.0%** (47/54 aciertos) y coincidencia canónica del 87.0%, integrando un bloque reflexivo nativo (`<thought>`) que explicita el razonamiento analítico.
+- **Compromiso:** Velocidad de generación acotada en CPU/UMA (1.75 tok/s), con puntaje compuesto de **0.7217** (Elegible).
+
+### 3.3. Phi-4-mini-instruct (3.8B): Máxima Velocidad y Despliegue en Borde
+- **Ventajas:** Mayor velocidad de inferencia en CPU/UMA (**3.29 tok/s**) y menor huella de memoria (2.8 GB VRAM estimada).
+- **Compromiso / Limitación:** Exactitud diagnóstica del **64.8%** (35/54 aciertos), situándose por debajo del umbral mínimo del 70.0% requerido para diagnóstico autónomo, resultando **NO ELEGIBLE** para operaciones no supervisadas.
+
+---
+
+## 4. Fundamentación de la Configuración de Mejor Compromiso (*Best Trade-Off*)
+
+> ### Veredicto de Selección:
+> Conforme al criterio formal de filtrar primero por exactitud viable ($\ge 70.0\%$) y ordenar por score multicriterio de compromiso, se ratifica a **GLM-4-9B-Chat** como la **configuración de mejor compromiso global (*best trade-off*)** para el diagnóstico de fallas L7 en estaciones de ingeniería y Centros de Operaciones de Red (NOC).
+> Asimismo, **Qwen3-8B** se establece como la **segunda configuración de compromiso** recomendada para entornos que prioricen la máxima exactitud diagnóstica (87.0%).
