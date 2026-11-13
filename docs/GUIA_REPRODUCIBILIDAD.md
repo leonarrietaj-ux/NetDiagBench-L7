@@ -57,13 +57,21 @@ La instrucción de ejecución documentada es:
 
 Una ejecución nueva produce mediciones nuevas; no debe confundirse con la campaña congelada que se publica en data/benchmark_results/resultados.csv. La campaña histórica cubrió del 7 de noviembre de 2026 a las 16:55 UTC al 8 de noviembre de 2026 a las 18:46 UTC.
 
+### 4.1. Trazabilidad del commit de la campaña (`git_commit_hash`)
+
+Las 162 filas de `data/benchmark_results/resultados.csv` registran en la columna `git_commit_hash` el valor `952a628e13ba8bbbe60a5c5c65a34d05becb764a`. Este identificador corresponde al commit del árbol de trabajo en el repositorio interno de desarrollo activo durante la ejecución y congelación de la campaña (7 de noviembre de 2026).
+
+El presente repositorio público se configuró a partir del 11 de noviembre de 2026 con un historial independiente y depurado para su distribución académica abierta, excluyendo borradores y artefactos no canónicos. En consecuencia, el commit `952a628e` pertenece a la fase de desarrollo previa a la publicación y no existe como objeto en este historial público. Para propósitos de reproducción, auditoría o reimplementación de la suite, la referencia canónica en este repositorio es la etiqueta **`v1.0.4`** (o la rama `main`), la cual preserva con estricta equivalencia el código del evaluador, los 18 escenarios, las plantillas de prompt, el corpus normativo RAG BM25 y la instrumentación de telemetría utilizados en la campaña.
+
 ## 5. Artefactos canónicos
 
-- data/benchmark_results/resultados.csv: 162 registros de resultados.
-- data/benchmark_results/traza.jsonl: trazas consolidadas.
-- data/benchmark_results/resultados_resumen.md: resultados descriptivos.
-- data/benchmark_results/analisis_correlacional.md: inferencia estadística.
-- manifest.json: diseño experimental, etiquetas de modelos y parámetros.
+- `data/benchmark_results/resultados.csv`: 162 registros de resultados. Contiene **99 columnas**: los 98 campos experimentales canónicos de telemetría y diagnóstico descritos en el protocolo más la columna `human_score_source`, incorporada para registrar la trazabilidad de procedencia de las calificaciones humanas adjudicadas. (Archivos intermedios de auditoría interna de 98 columnas, como `recalificacion_auditada.csv`, quedan consolidados en este archivo canónico).
+- `data/benchmark_results/traza.jsonl`: trazas consolidadas.
+- `data/benchmark_results/resultados_resumen.md`: resultados descriptivos.
+- `data/benchmark_results/analisis_correlacional.md`: inferencia estadística.
+- `data/human_eval/concordancia_resultados.csv`: matriz de concordancia inter-evaluador de la muestra humana.
+- `data/human_eval/evaluaciones_adjudicadas.csv`: 54 casos humanos adjudicados con trazabilidad.
+- `manifest.json`: diseño experimental, etiquetas de modelos y parámetros.
 
 El CSV publicado tiene 99 columnas. Los resultados de la campaña se deben analizar sin reemplazar mediciones por valores de ejecuciones anteriores.
 

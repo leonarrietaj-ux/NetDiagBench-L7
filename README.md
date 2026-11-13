@@ -6,6 +6,8 @@ Benchmark reproducible para evaluar modelos de lenguaje pequeños en el diagnós
 
 El archivo canónico es **data/benchmark_results/resultados.csv**. Contiene 162 corridas: tres modelos, 18 escenarios y tres semillas (42, 1337 y 2026), con una ejecución por combinación de modelo, escenario y semilla. El CSV publicado contiene 99 columnas: los 98 campos experimentales descritos en el protocolo y el campo adicional human_score_source, utilizado para identificar la procedencia de las calificaciones humanas.
 
+> **Trazabilidad de commit:** La columna `git_commit_hash` de las 162 filas registra el commit `952a628e`, correspondiente al árbol de trabajo en el repositorio interno de desarrollo en la fecha de congelación de la campaña (7 de noviembre de 2026). Dado que el repositorio público se inicializó con un historial depurado para publicación, la referencia canónica congelada para auditar o reproducir el benchmark en este repositorio es la etiqueta **`v1.0.4`**.
+
 Las 162 inferencias de la campaña se ejecutaron con Ollama en CPU. La distribución comprende 27 corridas emuladas en contenedores y 135 corridas sintéticas deterministas. El archivo data/benchmark_results/traza.jsonl conserva la trazabilidad consolidada.
 
 ## Modelos evaluados

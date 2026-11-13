@@ -6,8 +6,8 @@
   "files": [
     {
       "path": "README.md",
-      "git_blob_sha1": "cb1f7140b0f27f74009dca1da2fae340e5f32d1b",
-      "size_bytes": 6977
+      "git_blob_sha1": "aab2ad2de08a034c49297a9cbbaf7172cc2bf0c5",
+      "size_bytes": 7446
     },
     {
       "path": "configs/benchmark_config.yaml",
@@ -86,8 +86,8 @@
     },
     {
       "path": "docs/GUIA_REPRODUCIBILIDAD.md",
-      "git_blob_sha1": "a96089dee9beb0466976c1746c357bd53a377422",
-      "size_bytes": 3230
+      "git_blob_sha1": "638e874f49be9109969a66342b9b170cfb6fba41",
+      "size_bytes": 5008
     },
     {
       "path": "docs/GUIA_OPERACION.md",
