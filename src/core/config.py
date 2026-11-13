@@ -41,7 +41,7 @@ class ModelDefinition(BaseModel):
 
 class BenchmarkSettings(BaseModel):
     name: str = "NetDiagBench-L7-Execution"
-    protocol_version: str = "1.0.0"
+    protocol_version: str = "1.0.4"
     seeds: list[int] = Field(default_factory=lambda: [42, 1337, 2026])
     repetitions_per_scenario: int = 1
     temperature: float = 0.0
