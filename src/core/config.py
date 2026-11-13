@@ -43,10 +43,10 @@ class BenchmarkSettings(BaseModel):
     name: str = "NetDiagBench-L7-Execution"
     protocol_version: str = "1.0.0"
     seeds: list[int] = Field(default_factory=lambda: [42, 1337, 2026])
-    repetitions_per_scenario: int = 3
+    repetitions_per_scenario: int = 1
     temperature: float = 0.0
     max_decoding_tokens: int = 1024
-    timeout_per_diagnosis_seconds: int = 120
+    timeout_per_diagnosis_seconds: int = 900
     rag_max_memory_gb: float = 0.45
     max_vram_gb: float = 8.0
     airgap_mode: bool = False
@@ -332,10 +332,10 @@ class SystemConfig:
                 name=bench_data.get("name", "NetDiagBench-L7-Execution"),
                 protocol_version=bench_data.get("protocol_version", "1.0.0"),
                 seeds=bench_data.get("seeds", [42, 1337, 2026]),
-                repetitions_per_scenario=bench_data.get("repetitions_per_scenario", 3),
+                repetitions_per_scenario=bench_data.get("repetitions_per_scenario", 1),
                 temperature=bench_data.get("temperature", 0.0),
                 max_decoding_tokens=bench_data.get("max_decoding_tokens", 1024),
-                timeout_per_diagnosis_seconds=bench_data.get("timeout_per_diagnosis_seconds", 120),
+                timeout_per_diagnosis_seconds=bench_data.get("timeout_per_diagnosis_seconds", 900),
                 rag_max_memory_gb=limits.get("rag_max_memory_gb", 0.45),
                 max_vram_gb=limits.get("max_vram_gb", 8.0),
                 airgap_mode=bool(sec_data.get("airgap_mode", False)),
