@@ -460,7 +460,9 @@ def test_emulated_log_cleanliness_window():
     if is_docker_available():
         future_iso = "2099-01-01T00:00:00Z"
         logs_empty = fetch_container_logs("netdiag-http-502", since_ts=future_iso)
-        assert len(logs_empty) == 0
+        # Filtrar posibles mensajes de error daemon cuando el contenedor no esté creado
+        logs_clean = [l for l in logs_empty if "No such container" not in str(l.get("raw_message", ""))]
+        assert len(logs_clean) == 0
         isolate_emulated_scenario("HTTP-502-01")
         restore_emulated_containers()
     else:

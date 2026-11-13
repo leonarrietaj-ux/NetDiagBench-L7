@@ -251,6 +251,9 @@ def fetch_container_logs(container_name: str, tail: int = 50, since_ts: str | No
             text=True,
             timeout=10
         )
+        if res.returncode != 0:
+            logger.debug(f"docker logs retorno codigo no-cero ({res.returncode}) para {container_name}: {res.stderr.strip()}")
+            return []
         raw_text = (res.stdout or "") + "\n" + (res.stderr or "")
         lines = [ln.strip() for ln in raw_text.splitlines() if ln.strip()]
 
