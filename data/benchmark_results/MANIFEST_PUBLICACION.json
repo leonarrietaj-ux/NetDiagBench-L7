@@ -103,11 +103,6 @@
       "path": "src/core/config.py",
       "git_blob_sha1": "2f25c51574beb51509c037f63b63ee7578380f78",
       "size_bytes": 14674
-    },
-    {
-      "path": "manifest.json",
-      "git_blob_sha1": "099e3b917beb054c7a89a87003bba7d6b93b40d7",
-      "size_bytes": 2715
     }
   ]
 }
