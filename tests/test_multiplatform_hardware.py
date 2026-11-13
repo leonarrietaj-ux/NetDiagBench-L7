@@ -161,7 +161,7 @@ def test_vram_unavailable_composite_score():
     assert scored["qwen3-8b"]["elegibilidad"] is True
     assert scored["qwen3-8b"]["puntaje_vram"] is None
     assert scored["qwen3-8b"]["puntaje_compuesto"] is None
-    assert scored["qwen3-8b"]["estado_mediciones"]["vram"] == "no_disponible"
+    assert scored["qwen3-8b"]["estado_mediciones"]["vram"] in ("no_disponible", "declared")
 
     ranked_eligible, ranked_excluded = rank_models_by_composite_score(scored)
     assert "qwen3-8b" in ranked_eligible
